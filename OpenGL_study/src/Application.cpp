@@ -124,6 +124,10 @@ int main()
     if (!glfwInit())
         return -1;
 
+//    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+//    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+//    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
     /* Create a windowed mode window and its OpenGL context */
     GLFWwindow * window = glfwCreateWindow(640, 480, "Hello World", nullptr, nullptr);
     if (!window)
@@ -154,25 +158,31 @@ int main()
         0, 1, 2,
         2, 3, 0,
     };
-    
-    unsigned int buffer;
+
+    // vertext array object
+    unsigned int vao;
+    GLCall(glGenVertexArrays(1, &vao));
+    GLCall(glBindVertexArray(vao));
+
+    // vertex buffer object
+    unsigned int vbo;
     // 生成缓冲区对象名称
-    GLCall(glGenBuffers(1, &buffer));
+    GLCall(glGenBuffers(1, &vbo));
     // 指定缓冲区对象格式
-    GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffer));
+    GLCall(glBindBuffer(GL_ARRAY_BUFFER, vbo));
     // 创建并初始化一个缓冲区对象的数据存储
     GLCall(glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), positions, GL_STATIC_DRAW));
-
-    // vertex index
-    unsigned int ibo;
-    GLCall(glGenBuffers(1, &ibo));
-    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));
-    GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), index, GL_STATIC_DRAW));
 
     // 启用顶点属性数组
     GLCall(glEnableVertexAttribArray(0));
     // 定义一个通用顶点数组属性
     GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr));
+
+    // index buffer object
+    unsigned int ibo;
+    GLCall(glGenBuffers(1, &ibo));
+    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));
+    GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), index, GL_STATIC_DRAW));
 
     // 解析 shader 文件
     const auto shader_src = ParseShader("res/shaders/basic.shader");
@@ -184,6 +194,11 @@ int main()
     GLCall(glUseProgram(shader));
 
     const auto location = glGetUniformLocation(shader, "u_Color");
+
+    GLCall(glUseProgram(0));
+    GLCall(glBindVertexArray(0));
+    GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
+    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 
     float r = 0.0f;
     float increament = 0.01f;
@@ -202,7 +217,12 @@ int main()
 
         r += increament;
 
+        GLCall(glUseProgram(shader));
         GLCall(glUniform4f(location, r, 0.0f, 0.0f, 1.0f));
+
+        GLCall(glBindVertexArray(vao));
+        GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));
+
         GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 
         /* Swap front and back buffers */
@@ -213,6 +233,6 @@ int main()
     }
 
     GLCall(glDeleteProgram(shader));
-    GLCall(glfwTerminate());
+
     return 0;
 }
