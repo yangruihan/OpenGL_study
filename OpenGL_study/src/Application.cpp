@@ -8,6 +8,32 @@
 
 using namespace std;
 
+#define ASSERT(x) if (!(x)) __debugbreak();
+
+#ifdef DEBUG
+    #define GLCall(x) do { GLClearError(); x; ASSERT(GLLogCall(#x, __FILE__, __LINE__)) } while (0);
+#else
+    #define GLCall(x) x
+#endif
+
+static void GLClearError()
+{
+    while (glGetError() != GL_NO_ERROR);
+}
+
+static bool GLLogCall(const char* function_name, const char* file_name, int line)
+{
+    while (const GLenum error = glGetError())
+    {
+        cout << "[OpenGL Error] (" << error << ") " 
+             << function_name << " " 
+             << file_name << " : " 
+             << line << endl;
+        return false;
+    }
+    return true;
+}
+
 struct ShaderProgramSource
 {
     string vertex_source;
@@ -41,7 +67,6 @@ static ShaderProgramSource ParseShader(const string& filepath)
         }
         else
         {
-            cout << line << endl;
             ss[static_cast<int>(type)] << line << "\n";       
         }
     }
@@ -165,7 +190,7 @@ int main()
 
 //        glDrawArrays(GL_TRIANGLES, 0, 3);
 
-        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+        GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
