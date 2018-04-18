@@ -30,6 +30,20 @@ int main()
 
     cout << glGetString(GL_VERSION) << endl;
 
+        float positions[6] = {
+        -0.5f, -0.5f,
+         0.0f,  0.5f,
+         0.5f, -0.5f,
+    };
+    
+    unsigned int buffer;
+    // 生成缓冲区对象名称
+    glGenBuffers(1, &buffer);
+    // 指定缓冲区对象格式
+    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    // 创建并初始化一个缓冲区对象的数据存储
+    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_STATIC_DRAW);
+
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
