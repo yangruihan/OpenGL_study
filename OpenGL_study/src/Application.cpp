@@ -117,10 +117,16 @@ int main()
 
     cout << glGetString(GL_VERSION) << endl;
 
-        float positions[6] = {
+    float positions[] = {
         -0.5f, -0.5f,
-         0.0f,  0.5f,
          0.5f, -0.5f,
+         0.5f,  0.5f,
+        -0.5f,  0.5f,
+    };
+
+    unsigned int index[] = {
+        0, 1, 2,
+        2, 3, 0,
     };
     
     unsigned int buffer;
@@ -129,7 +135,13 @@ int main()
     // 指定缓冲区对象格式
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     // 创建并初始化一个缓冲区对象的数据存储
-    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), positions, GL_STATIC_DRAW);
+
+    // vertex index
+    unsigned int ibo;
+    glGenBuffers(1, &ibo);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), index, GL_STATIC_DRAW);
 
     // 启用顶点属性数组
     glEnableVertexAttribArray(0);
@@ -138,11 +150,6 @@ int main()
 
     // 解析 shader 文件
     const auto shader_src = ParseShader("res/shaders/basic.shader");
-
-    cout << "VERTEX" << endl;
-    cout << shader_src.vertex_source << endl;
-    cout << "FRAGMENT" << endl;
-    cout << shader_src.fragment_source << endl;
 
     // 创建 shader program
     const auto shader = CreateShader(shader_src.vertex_source, shader_src.fragment_source);
@@ -156,7 +163,9 @@ int main()
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+//        glDrawArrays(GL_TRIANGLES, 0, 3);
+
+        glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
 
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
