@@ -1,8 +1,53 @@
-#include <iostream>
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <sstream>
+
 using namespace std;
+
+struct ShaderProgramSource
+{
+    string vertex_source;
+    string fragment_source;
+};
+
+static ShaderProgramSource ParseShader(const string& filepath)
+{
+    ifstream stream(filepath);
+
+    enum class ShaderType
+    {
+        none = -1,
+        vertext = 0,
+        fragment = 1,
+    };
+
+    string line;
+    stringstream ss[2];
+    auto type = ShaderType::none;
+    while (getline(stream, line))
+    {
+        if (line.find("#shader") != string::npos)
+        {
+            if (line.find("vertex") != string::npos)
+                type = ShaderType::vertext;
+            else if (line.find("fragment") != string::npos)
+                type = ShaderType::fragment;
+            else
+                cout << "parse shader error: syntax error" << endl;
+        }
+        else
+        {
+            cout << line << endl;
+            ss[static_cast<int>(type)] << line << "\n";       
+        }
+    }
+
+    return { ss[0].str(), ss[1].str() };
+}
 
 static unsigned int CompileShader(unsigned int type, const string& source)
 {
@@ -50,14 +95,12 @@ static unsigned int CreateShader(const string& vertexShader, const string& fragm
 
 int main()
 {
-    GLFWwindow* window;
-
     /* Initialize the library */
     if (!glfwInit())
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    GLFWwindow * window = glfwCreateWindow(640, 480, "Hello World", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
@@ -93,27 +136,18 @@ int main()
     // 定义一个通用顶点数组属性
     glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
 
-    string vertexShader =
-        "#version 330 core\n"
-        "\n"
-        "layout(location = 0) in vec4 position;"
-        "\n"
-        "void main()\n"
-        "{\n"
-        "   gl_Position = position;\n"
-        "}\n";
+    // 解析 shader 文件
+    const auto shader_src = ParseShader("res/shaders/basic.shader");
 
-    string fragmentShader = 
-        "#version 330 core\n"
-        "\n"
-        "layout(location = 0) out vec4 color;"
-        "\n"
-        "void main()\n"
-        "{\n"
-        "   color = vec4(1.0, 0.0, 0.0, 0.0);\n"
-        "}\n";
+    cout << "VERTEX" << endl;
+    cout << shader_src.vertex_source << endl;
+    cout << "FRAGMENT" << endl;
+    cout << shader_src.fragment_source << endl;
 
-    unsigned int shader = CreateShader(vertexShader, fragmentShader);
+    // 创建 shader program
+    const auto shader = CreateShader(shader_src.vertex_source, shader_src.fragment_source);
+
+    // 使用 shader program
     glUseProgram(shader);
 
     /* Loop until the user closes the window */
