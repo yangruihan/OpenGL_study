@@ -134,6 +134,7 @@ int main()
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+    glfwSwapInterval(1);
 
     if (glewInit() != GLEW_OK)
     {
@@ -156,22 +157,22 @@ int main()
     
     unsigned int buffer;
     // 生成缓冲区对象名称
-    glGenBuffers(1, &buffer);
+    GLCall(glGenBuffers(1, &buffer));
     // 指定缓冲区对象格式
-    glBindBuffer(GL_ARRAY_BUFFER, buffer);
+    GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffer));
     // 创建并初始化一个缓冲区对象的数据存储
-    glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), positions, GL_STATIC_DRAW);
+    GLCall(glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), positions, GL_STATIC_DRAW));
 
     // vertex index
     unsigned int ibo;
-    glGenBuffers(1, &ibo);
-    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), index, GL_STATIC_DRAW);
+    GLCall(glGenBuffers(1, &ibo));
+    GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));
+    GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), index, GL_STATIC_DRAW));
 
     // 启用顶点属性数组
-    glEnableVertexAttribArray(0);
+    GLCall(glEnableVertexAttribArray(0));
     // 定义一个通用顶点数组属性
-    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
+    GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr));
 
     // 解析 shader 文件
     const auto shader_src = ParseShader("res/shaders/basic.shader");
@@ -180,27 +181,38 @@ int main()
     const auto shader = CreateShader(shader_src.vertex_source, shader_src.fragment_source);
 
     // 使用 shader program
-    glUseProgram(shader);
+    GLCall(glUseProgram(shader));
+
+    const auto location = glGetUniformLocation(shader, "u_Color");
+
+    float r = 0.0f;
+    float increament = 0.01f;
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
         /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
+        GLCall(glClear(GL_COLOR_BUFFER_BIT));
 
 //        glDrawArrays(GL_TRIANGLES, 0, 3);
+        if (r >= 1.0f)
+            increament = -0.01f;
+        else if (r <= 0.0f)
+            increament = 0.01f;
 
+        r += increament;
+
+        GLCall(glUniform4f(location, r, 0.0f, 0.0f, 1.0f));
         GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 
         /* Swap front and back buffers */
-        glfwSwapBuffers(window);
+        GLCall(glfwSwapBuffers(window));
 
         /* Poll for and process events */
-        glfwPollEvents();
+        GLCall(glfwPollEvents());
     }
 
-    glDeleteProgram(shader);
-
-    glfwTerminate();
+    GLCall(glDeleteProgram(shader));
+    GLCall(glfwTerminate());
     return 0;
 }
