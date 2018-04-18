@@ -44,6 +44,11 @@ int main()
     // 创建并初始化一个缓冲区对象的数据存储
     glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(float), positions, GL_STATIC_DRAW);
 
+    // 启用顶点属性数组
+    glEnableVertexAttribArray(0);
+    // 定义一个通用顶点数组属性
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr);
+
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
     {
