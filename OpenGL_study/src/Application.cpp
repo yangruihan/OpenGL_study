@@ -166,16 +166,16 @@ int main()
 
     // vertex buffer object
     unsigned int vbo;
-    // Éú³É»º³åÇø¶ÔÏóÃû³Æ
+    // ç”Ÿæˆç¼“å†²åŒºå¯¹è±¡åç§°
     GLCall(glGenBuffers(1, &vbo));
-    // Ö¸¶¨»º³åÇø¶ÔÏó¸ñÊ½
+    // æŒ‡å®šç¼“å†²åŒºå¯¹è±¡æ ¼å¼
     GLCall(glBindBuffer(GL_ARRAY_BUFFER, vbo));
-    // ´´½¨²¢³õÊ¼»¯Ò»¸ö»º³åÇø¶ÔÏóµÄÊı¾İ´æ´¢
+    // åˆ›å»ºå¹¶åˆå§‹åŒ–ä¸€ä¸ªç¼“å†²åŒºå¯¹è±¡çš„æ•°æ®å­˜å‚¨
     GLCall(glBufferData(GL_ARRAY_BUFFER, 8 * sizeof(float), positions, GL_STATIC_DRAW));
 
-    // ÆôÓÃ¶¥µãÊôĞÔÊı×é
+    // å¯ç”¨é¡¶ç‚¹å±æ€§æ•°ç»„
     GLCall(glEnableVertexAttribArray(0));
-    // ¶¨ÒåÒ»¸öÍ¨ÓÃ¶¥µãÊı×éÊôĞÔ
+    // å®šä¹‰ä¸€ä¸ªé€šç”¨é¡¶ç‚¹æ•°ç»„å±æ€§
     GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), nullptr));
 
     // index buffer object
@@ -184,13 +184,13 @@ int main()
     GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));
     GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), index, GL_STATIC_DRAW));
 
-    // ½âÎö shader ÎÄ¼ş
+    // è§£æ shader æ–‡ä»¶
     const auto shader_src = ParseShader("res/shaders/basic.shader");
 
-    // ´´½¨ shader program
+    // åˆ›å»º shader program
     const auto shader = CreateShader(shader_src.vertex_source, shader_src.fragment_source);
 
-    // Ê¹ÓÃ shader program
+    // ä½¿ç”¨ shader program
     GLCall(glUseProgram(shader));
 
     const auto location = glGetUniformLocation(shader, "u_Color");
