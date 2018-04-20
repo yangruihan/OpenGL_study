@@ -12,7 +12,7 @@ public:
     IndexBuffer(const unsigned int index[], const unsigned int& count);
     ~IndexBuffer();
 
-    void Bind() const;
-    void UnBind() const;
+    void bind() const;
+    void un_bind() const;
 };
 
