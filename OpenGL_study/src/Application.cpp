@@ -68,10 +68,10 @@ int main()
 
         Shader shader("res/shaders/basic.shader");
 
-        vertex_array.un_bind();
-        vertex_buffer.un_bind();
-        index_buffer.un_bind();
-        shader.un_bind();
+        vertex_array.unbind();
+        vertex_buffer.unbind();
+        index_buffer.unbind();
+        shader.unbind();
 
         Renderer renderer;
 

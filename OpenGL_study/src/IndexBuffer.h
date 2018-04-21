@@ -13,7 +13,7 @@ public:
     ~IndexBuffer();
 
     void bind() const;
-    void un_bind() const;
+    void unbind() const;
 
     inline int get_count() const { return count_; }
 };

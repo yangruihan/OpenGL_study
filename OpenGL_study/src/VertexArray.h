@@ -19,6 +19,6 @@ public:
                     const VertexBufferLayout& vertex_buffer_layout) const;
 
     void bind() const;
-    void un_bind() const;
+    void unbind() const;
 };
 

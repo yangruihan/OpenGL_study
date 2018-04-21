@@ -39,30 +39,30 @@ public:
     template <typename T>
     void push(unsigned count)
     {
-        static_assert(false);
-    }
-
-    template <>
-    void push<float>(unsigned count)
-    {
-        elements_.push_back({ GL_FLOAT, count, GL_FALSE });
-        stride_ += count * VertexBufferLayoutElement::get_type_size(GL_FLOAT);
-    }
-
-    template <>
-    void push<unsigned>(unsigned count)
-    {
-        elements_.push_back({ GL_UNSIGNED_INT, count, GL_FALSE });
-        stride_ += count * VertexBufferLayoutElement::get_type_size(GL_UNSIGNED_INT);
-    }
-
-    template <>
-    void push<unsigned char>(unsigned count)
-    {
-        elements_.push_back({ GL_UNSIGNED_BYTE, count, GL_TRUE });
-        stride_ += count * VertexBufferLayoutElement::get_type_size(GL_UNSIGNED_BYTE);
+        ASSERT(false);
     }
 
     std::vector<VertexBufferLayoutElement> get_elements() const { return elements_; }
     unsigned int get_stride() const { return stride_; }
 };
+
+template <>
+inline void VertexBufferLayout::push<float>(unsigned count)
+{
+    elements_.push_back({ GL_FLOAT, count, GL_FALSE });
+    stride_ += count * VertexBufferLayoutElement::get_type_size(GL_FLOAT);
+}
+
+template <>
+inline void VertexBufferLayout::push<unsigned>(unsigned count)
+{
+    elements_.push_back({ GL_UNSIGNED_INT, count, GL_FALSE });
+    stride_ += count * VertexBufferLayoutElement::get_type_size(GL_UNSIGNED_INT);
+}
+
+template <>
+inline void VertexBufferLayout::push<unsigned char>(unsigned count)
+{
+    elements_.push_back({ GL_UNSIGNED_BYTE, count, GL_TRUE });
+    stride_ += count * VertexBufferLayoutElement::get_type_size(GL_UNSIGNED_BYTE);
+}

@@ -7,7 +7,7 @@ VertexArray::VertexArray()
 
 VertexArray::~VertexArray()
 {
-    un_bind();
+    unbind();
     GLCall(glDeleteVertexArrays(1, &renderer_id_));
 }
 
@@ -35,7 +35,7 @@ void VertexArray::bind() const
     GLCall(glBindVertexArray(renderer_id_));
 }
 
-void VertexArray::un_bind() const
+void VertexArray::unbind() const
 {
     GLCall(glBindVertexArray(0));
 }
