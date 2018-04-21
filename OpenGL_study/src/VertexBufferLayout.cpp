@@ -1,8 +1,8 @@
 #include "VertexBufferLayout.h"
 
 VertexBufferLayout::VertexBufferLayout()
+    : stride_(0)
 {
-    stride_ = 0;
 }
 
 VertexBufferLayout::~VertexBufferLayout()

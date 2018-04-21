@@ -1,9 +1,8 @@
 #include "Shader.h"
 
 Shader::Shader(const std::string& filepath)
+    : filepath_(filepath)
 {
-    filepath_ = filepath;
-
     // ½âÎö shader ÎÄ¼ş
     const auto shader_src = parse_shader();
 

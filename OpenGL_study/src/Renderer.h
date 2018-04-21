@@ -12,9 +12,6 @@ class VertexArray;
 class IndexBuffer;
 class Shader;
 
-void GLClearError();
-bool GLLogCall(const char* function_name, const char* file_name, int line);
-
 class Renderer
 {
 public:
