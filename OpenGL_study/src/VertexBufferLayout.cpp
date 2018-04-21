@@ -7,6 +7,5 @@ VertexBufferLayout::VertexBufferLayout()
 
 VertexBufferLayout::~VertexBufferLayout()
 {
-    stride_ = 0;
     elements_.clear();
 }

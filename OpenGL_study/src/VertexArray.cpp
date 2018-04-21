@@ -18,6 +18,7 @@ void VertexArray::add_buffer(const VertexBuffer& vertex_buffer,
     vertex_buffer.bind();
 
     const auto& elements = vertex_buffer_layout.get_elements();
+    unsigned int offset = 0;
     for (size_t i = 0; i < elements.size(); ++i)
     {
         GLCall(glEnableVertexAttribArray(i));
@@ -26,7 +27,9 @@ void VertexArray::add_buffer(const VertexBuffer& vertex_buffer,
                                      elements[i].type,
                                      elements[i].normalized,
                                      vertex_buffer_layout.get_stride(),
-                                     nullptr));
+                                     reinterpret_cast<const void*>(offset)));
+
+        offset += elements[i].count * VertexBufferLayoutElement::get_type_size(elements[i].type);
     }
 }
 

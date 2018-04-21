@@ -11,6 +11,7 @@
 #include "VertexArray.h"
 #include "VertexBufferLayout.h"
 #include "Shader.h"
+#include "Texture.h"
 
 using namespace std;
 
@@ -20,12 +21,12 @@ int main()
     if (!glfwInit())
         return -1;
 
-//    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-//    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-//    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     /* Create a windowed mode window and its OpenGL context */
-    GLFWwindow * window = glfwCreateWindow(640, 480, "Hello World", nullptr, nullptr);
+    GLFWwindow * window = glfwCreateWindow(640, 640, "Hello World", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
@@ -46,10 +47,10 @@ int main()
 
     {
         float positions[] = {
-            -0.5f, -0.5f,  0.0f,
-             0.5f, -0.5f,  0.0f,
-             0.5f,  0.5f,  0.0f,
-            -0.5f,  0.5f,  0.0f,
+            -0.5f, -0.5f,  0.0f,  0.0f,
+             0.5f, -0.5f,  1.0f,  0.0f,
+             0.5f,  0.5f,  1.0f,  1.0f,
+            -0.5f,  0.5f,  0.0f,  1.0f,
         };
 
         unsigned int index[] = {
@@ -57,16 +58,27 @@ int main()
             2, 3, 0,
         };
 
+        GLCall(glEnable(GL_BLEND));
+        GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+
         VertexArray vertex_array;
-        VertexBuffer vertex_buffer(positions, 12 * sizeof(float));
+        VertexBuffer vertex_buffer(positions, 4 * 4 * sizeof(float));
         VertexBufferLayout vertex_buffer_layout;
-        vertex_buffer_layout.push<float>(3);
+        vertex_buffer_layout.push<float>(2);
+        vertex_buffer_layout.push<float>(2);
         vertex_array.add_buffer(vertex_buffer,
                                 vertex_buffer_layout);
 
         IndexBuffer index_buffer(index, 6);
 
         Shader shader("res/shaders/basic.shader");
+        shader.bind();
+
+        Texture texture("res/textures/hello.png");
+        texture.bind();
+
+        // ÉèÖÃÎÆÀíË÷Òý
+        shader.set_uniform1i("m_Texture", 0);
 
         vertex_array.unbind();
         vertex_buffer.unbind();
@@ -82,16 +94,6 @@ int main()
         while (!glfwWindowShouldClose(window))
         {
             renderer.clear();
-
-            if (r >= 1.0f)
-                increament = -0.01f;
-            else if (r <= 0.0f)
-                increament = 0.01f;
-
-            r += increament;
-
-            shader.bind();
-            shader.set_uniform4f("u_Color", r, 0.0f, 0.0f, 1.0f);
 
             renderer.draw(vertex_array, index_buffer, shader);
 
