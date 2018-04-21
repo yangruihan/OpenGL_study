@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 
+#include "Common.h"
 #include "Renderer.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
@@ -72,14 +73,15 @@ int main()
         index_buffer.un_bind();
         shader.un_bind();
 
+        Renderer renderer;
+
         float r = 0.0f;
         float increament = 0.01f;
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
-            /* Render here */
-            GLCall(glClear(GL_COLOR_BUFFER_BIT));
+            renderer.clear();
 
             if (r >= 1.0f)
                 increament = -0.01f;
@@ -91,10 +93,7 @@ int main()
             shader.bind();
             shader.set_uniform4f("u_Color", r, 0.0f, 0.0f, 1.0f);
 
-            vertex_array.bind();
-            index_buffer.bind();
-
-            GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+            renderer.draw(vertex_array, index_buffer, shader);
 
             /* Swap front and back buffers */
             GLCall(glfwSwapBuffers(window));

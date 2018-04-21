@@ -14,5 +14,7 @@ public:
 
     void bind() const;
     void un_bind() const;
+
+    inline int get_count() const { return count_; }
 };
 
