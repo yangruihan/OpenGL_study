@@ -13,6 +13,9 @@
 #include "Shader.h"
 #include "Texture.h"
 
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+
 using namespace std;
 
 int main()
@@ -26,7 +29,7 @@ int main()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     /* Create a windowed mode window and its OpenGL context */
-    GLFWwindow * window = glfwCreateWindow(640, 640, "Hello World", nullptr, nullptr);
+    GLFWwindow * window = glfwCreateWindow(640, 480, "Hello World", nullptr, nullptr);
     if (!window)
     {
         glfwTerminate();
@@ -71,8 +74,12 @@ int main()
 
         IndexBuffer index_buffer(index, 6);
 
+        const auto proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
+
         Shader shader("res/shaders/basic.shader");
         shader.bind();
+
+        shader.set_uniform_mat4f("u_MVP", proj);
 
         Texture texture("res/textures/hello.png");
         texture.bind();

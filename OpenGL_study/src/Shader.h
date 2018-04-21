@@ -8,6 +8,7 @@
 #include <sstream>
 
 #include "Renderer.h"
+#include "glm/gtc/matrix_transform.hpp"
 
 struct ShaderProgramSource
 {
@@ -33,6 +34,7 @@ public:
 
     void set_uniform4f(const std::string& name, float v0, float v1, float v2, float v3);
     void set_uniform1i(const std::string& name, int value);
+    void set_uniform_mat4f(const std::string& name, const glm::mat4 mat4);
 
 private:
     ShaderProgramSource parse_shader() const;
