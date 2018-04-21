@@ -8,7 +8,12 @@
 #include <sstream>
 
 #include "Renderer.h"
-#include "glm/gtc/matrix_transform.hpp"
+
+#ifdef __APPLE__
+    #include "libs/glm/gtc/matrix_transform.hpp"
+#else
+    #include "glm/gtc/matrix_transform.hpp"
+#endif
 
 struct ShaderProgramSource
 {

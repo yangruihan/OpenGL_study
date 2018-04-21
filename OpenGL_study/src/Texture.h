@@ -3,7 +3,12 @@
 #include <string>
 
 #include "Common.h"
-#include "stb/stb_image.h"
+
+#ifdef __APPLE__
+    #include "libs/stb/stb_image.h"
+#else
+    #include "stb/stb_image.h"
+#endif
 
 class Texture
 {

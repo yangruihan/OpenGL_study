@@ -13,8 +13,13 @@
 #include "Shader.h"
 #include "Texture.h"
 
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
+#ifdef __APPLE__
+    #include "libs/glm/glm.hpp"
+    #include "libs/glm/gtc/matrix_transform.hpp"
+#else
+    #include "glm/glm.hpp"
+    #include "glm/gtc/matrix_transform.hpp"
+#endif
 
 using namespace std;
 
@@ -26,6 +31,7 @@ int main()
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
     /* Create a windowed mode window and its OpenGL context */
