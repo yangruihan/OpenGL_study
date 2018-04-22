@@ -45,7 +45,7 @@
     <ClCompile Include="src\Window.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Application.cpp">
+    <ClCompile Include="src\test\test2\test2.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -512,6 +512,9 @@
     <ClInclude Include="src\Window.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\Header.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\libs\glm\detail\func_common.inl">
@@ -864,6 +867,7 @@
     </None>
     <None Include="res\shaders\basic.shader" />
     <None Include="res\shaders\texture.shader" />
+    <None Include="src\test\test2\test2.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png">

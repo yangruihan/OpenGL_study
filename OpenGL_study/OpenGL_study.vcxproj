@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src\libs;$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;src\libs;$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -125,12 +125,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\libs\glm\detail\glm.cpp" />
     <ClCompile Include="src\libs\stb\stb_image.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\IndexBuffer.cpp" />
     <ClCompile Include="src\Renderer.cpp" />
+    <ClCompile Include="src\test\test2\test2.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />
     <ClCompile Include="src\VertexBufferLayout.cpp" />
@@ -139,6 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Common.h" />
+    <ClInclude Include="src\Header.h" />
     <ClInclude Include="src\libs\glm\common.hpp" />
     <ClInclude Include="src\libs\glm\detail\compute_vector_relational.hpp" />
     <ClInclude Include="src\libs\glm\detail\qualifier.hpp" />
@@ -412,6 +413,7 @@
     <None Include="src\libs\glm\gtx\vector_angle.inl" />
     <None Include="src\libs\glm\gtx\vector_query.inl" />
     <None Include="src\libs\glm\gtx\wrap.inl" />
+    <None Include="src\test\test2\test2.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png" />

@@ -1,19 +1,4 @@
-#include "Window.h"
-#include "Renderer.h"
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
-#include "VertexArray.h"
-#include "VertexBufferLayout.h"
-#include "Shader.h"
-#include "Texture.h"
-
-#ifdef __APPLE__
-    #include "libs/glm/glm.hpp"
-    #include "libs/glm/gtc/matrix_transform.hpp"
-#else
-    #include "glm/glm.hpp"
-    #include "glm/gtc/matrix_transform.hpp"
-#endif
+#include "Header.h"
 
 using namespace std;
 
