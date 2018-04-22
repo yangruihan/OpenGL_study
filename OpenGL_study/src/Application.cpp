@@ -23,6 +23,9 @@
 
 using namespace std;
 
+void framebuffer_size_callback(GLFWwindow *window, int width, int height);
+void process_input(GLFWwindow *window);
+
 int main()
 {
     /* Initialize the library */
@@ -44,17 +47,22 @@ int main()
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+
+    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
     
-    GLCall(glfwSwapInterval(1));
+    glfwSwapInterval(1);
 
     if (glewInit() != GLEW_OK)
-    {
+    {   
         cout << "glew init error" << endl;
     }
 
     cout << glGetString(GL_VERSION) << endl;
 
     {
+        // set view port
+        GLCall(glViewport(0, 0, 640, 480));
+
         float positions[] = {
             -100.0f, -100.0f,  0.0f,  0.0f,
              100.0f, -100.0f,  1.0f,  0.0f,
@@ -97,7 +105,7 @@ int main()
         Texture texture("res/textures/hello.png");
         texture.bind();
 
-        // ÉèÖÃÎÆÀíË÷Òý
+        // set texture
         shader.set_uniform1i("m_Texture", 0);
 
         vertex_array.unbind();
@@ -107,12 +115,11 @@ int main()
 
         Renderer renderer;
 
-        float r = 0.0f;
-        float increament = 0.01f;
-
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
+            process_input(window);
+
             renderer.clear();
 
             renderer.draw(vertex_array, index_buffer, shader);
@@ -128,4 +135,21 @@ int main()
     glfwTerminate();
 
     return 0;
+}
+
+/**
+ * frame buffer resize callback 
+ */
+void framebuffer_size_callback(GLFWwindow *window, int width, int height)
+{
+    GLCall(glViewport(0, 0, width, height));
+}
+
+/**
+ * process input
+ */
+void process_input(GLFWwindow *window)
+{
+    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
 }
