@@ -10,6 +10,8 @@ VertexArray::~VertexArray()
 {
     unbind();
     GLCall(glDeleteVertexArrays(1, &renderer_id_));
+    vertex_buffer_ = nullptr;
+    index_buffer_ = nullptr;
 }
 
 void VertexArray::add_buffer(VertexBuffer& vertex_buffer, 
