@@ -45,6 +45,9 @@
     <ClCompile Include="src\libs\glm\detail\glm.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\Window.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -504,6 +507,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\libs\glm\vector_relational.hpp">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Window.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
