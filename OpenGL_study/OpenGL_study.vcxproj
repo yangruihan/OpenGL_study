@@ -293,6 +293,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.shader" />
+    <None Include="res\shaders\texture.shader" />
     <None Include="src\libs\glm\detail\func_common.inl" />
     <None Include="src\libs\glm\detail\func_common_simd.inl" />
     <None Include="src\libs\glm\detail\func_exponential.inl" />

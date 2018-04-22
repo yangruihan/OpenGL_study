@@ -63,11 +63,18 @@ int main()
         // set view port
         GLCall(glViewport(0, 0, 640, 480));
 
+        // line mode or fill mode
+#if 0
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+#else
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);   
+#endif
+
         float positions[] = {
-            -100.0f, -100.0f,  0.0f,  0.0f,
-             100.0f, -100.0f,  1.0f,  0.0f,
-             100.0f,  100.0f,  1.0f,  1.0f,
-            -100.0f,  100.0f,  0.0f,  1.0f,
+            -100.0f, -100.0f,  0.0f,  0.0f,  0.0f,
+             100.0f, -100.0f,  0.0f,  1.0f,  0.0f,
+             100.0f,  100.0f,  0.0f,  1.0f,  1.0f,
+            -100.0f,  100.0f,  0.0f,  0.0f,  1.0f,
         };
 
         unsigned int index[] = {
@@ -79,14 +86,15 @@ int main()
         GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
         VertexArray vertex_array;
-        VertexBuffer vertex_buffer(positions, 4 * 4 * sizeof(float));
+        VertexBuffer vertex_buffer(positions, 5 * 4 * sizeof(float));
         VertexBufferLayout vertex_buffer_layout;
+        vertex_buffer_layout.push<float>(3);
         vertex_buffer_layout.push<float>(2);
-        vertex_buffer_layout.push<float>(2);
-        vertex_array.add_buffer(vertex_buffer,
-                                vertex_buffer_layout);
-
         IndexBuffer index_buffer(index, 6);
+        
+        vertex_array.add_buffer(vertex_buffer,
+                                vertex_buffer_layout,
+                                index_buffer);
 
         // projection matrix
         const auto proj = glm::ortho(-320.0f, 320.0f, -240.0f, 240.0f, -1.0f, 1.0f);
@@ -97,11 +105,12 @@ int main()
 
         const auto mvp = proj * view * model;
 
-        Shader shader("res/shaders/basic.shader");
+        Shader shader("res/shaders/texture.shader");
         shader.bind();
 
         shader.set_uniform_mat4f("u_MVP", mvp);
-
+        //shader.set_uniform4f("u_Color", 1.0f, 0.0f, 0.0f, 1.0f);
+        
         Texture texture("res/textures/hello.png");
         texture.bind();
 
@@ -109,8 +118,6 @@ int main()
         shader.set_uniform1i("m_Texture", 0);
 
         vertex_array.unbind();
-        vertex_buffer.unbind();
-        index_buffer.unbind();
         shader.unbind();
 
         Renderer renderer;
@@ -122,7 +129,7 @@ int main()
 
             renderer.clear();
 
-            renderer.draw(vertex_array, index_buffer, shader);
+            renderer.draw(vertex_array, shader);
 
             /* Swap front and back buffers */
             GLCall(glfwSwapBuffers(window));

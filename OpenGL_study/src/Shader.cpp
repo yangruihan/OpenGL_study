@@ -3,14 +3,14 @@
 Shader::Shader(const std::string& filepath)
     : filepath_(filepath)
 {
-    // 解析 shader 文件
+    // 瑙ｆ瀽 shader 鏂囦欢
     const auto shader_src = parse_shader();
 
-    // 创建 shader program
+    // 鍒涘缓 shader program
     renderer_id_ = create_shader(shader_src.vertex_source, 
                                  shader_src.fragment_source);
 
-    // 使用 shader program
+    // 浣跨敤 shader program
     GLCall(glUseProgram(renderer_id_));
 }
 
@@ -130,6 +130,21 @@ unsigned Shader::create_shader(const std::string& vertexShader, const std::strin
     glAttachShader(program, fragment_shader_id_);
 
     glLinkProgram(program);
+
+    int result;
+    GLCall(glGetProgramiv(program, GL_LINK_STATUS, &result));
+    if (result == GL_FALSE)
+    {
+        int length;
+        glGetProgramiv(program, GL_INFO_LOG_LENGTH, &length);
+        char* message = static_cast<char*>(alloca(length * sizeof(char)));
+        glGetProgramInfoLog(program, length, &length, message);
+        std::cout << "Failed to link program!" << std::endl;
+        std::cout << message << std::endl;
+        glDeleteProgram(program);
+        return 0;
+    }
+
     glValidateProgram(program);
 
     glDeleteShader(vertex_shader_id_);
