@@ -56,10 +56,10 @@ int main()
 
     {
         float positions[] = {
-            -0.5f, -0.5f,  0.0f,  0.0f,
-             0.5f, -0.5f,  1.0f,  0.0f,
-             0.5f,  0.5f,  1.0f,  1.0f,
-            -0.5f,  0.5f,  0.0f,  1.0f,
+            -100.0f, -100.0f,  0.0f,  0.0f,
+             100.0f, -100.0f,  1.0f,  0.0f,
+             100.0f,  100.0f,  1.0f,  1.0f,
+            -100.0f,  100.0f,  0.0f,  1.0f,
         };
 
         unsigned int index[] = {
@@ -80,12 +80,19 @@ int main()
 
         IndexBuffer index_buffer(index, 6);
 
-        const auto proj = glm::ortho(-2.0f, 2.0f, -1.5f, 1.5f, -1.0f, 1.0f);
+        // projection matrix
+        const auto proj = glm::ortho(-320.0f, 320.0f, -240.0f, 240.0f, -1.0f, 1.0f);
+        // view transform matrix
+        const auto view = glm::translate(glm::mat4(1.0f), -glm::vec3(-100.0f, 100.0f, 0.0f));
+        // model transform matrix
+        const auto model = glm::rotate(glm::mat4(1.0f), 1.57f, glm::vec3(0.0f, 0.0f, 1.0f));
+
+        const auto mvp = proj * view * model;
 
         Shader shader("res/shaders/basic.shader");
         shader.bind();
 
-        shader.set_uniform_mat4f("u_MVP", proj);
+        shader.set_uniform_mat4f("u_MVP", mvp);
 
         Texture texture("res/textures/hello.png");
         texture.bind();

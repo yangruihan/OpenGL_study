@@ -292,6 +292,7 @@
     <ClInclude Include="src\Texture.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\basic.shader" />
     <None Include="src\libs\glm\detail\func_common.inl" />
     <None Include="src\libs\glm\detail\func_common_simd.inl" />
     <None Include="src\libs\glm\detail\func_exponential.inl" />
@@ -408,6 +409,9 @@
     <None Include="src\libs\glm\gtx\vector_angle.inl" />
     <None Include="src\libs\glm\gtx\vector_query.inl" />
     <None Include="src\libs\glm\gtx\wrap.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\hello.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

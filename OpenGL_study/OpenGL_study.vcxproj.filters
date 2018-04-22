@@ -856,5 +856,11 @@
     <None Include="src\libs\glm\gtx\wrap.inl">
       <Filter>头文件</Filter>
     </None>
+    <None Include="res\shaders\basic.shader" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\hello.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>
