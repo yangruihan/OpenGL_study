@@ -29,6 +29,8 @@
 		8DCA1C9B208B76BD009F737A /* IndexBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8DCA1C8A208B76BD009F737A /* IndexBuffer.h */; };
 		8DCA1C9E208B771E009F737A /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DCA1C9C208B771E009F737A /* stb_image.cpp */; };
 		8DCA1C9F208B771E009F737A /* stb_image.h in Sources */ = {isa = PBXBuildFile; fileRef = 8DCA1C9D208B771E009F737A /* stb_image.h */; };
+		8DD896A9208C9C0A00D6D4F4 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DD896A7208C9C0A00D6D4F4 /* Window.cpp */; };
+		8DD896AA208C9C0A00D6D4F4 /* Window.h in Sources */ = {isa = PBXBuildFile; fileRef = 8DD896A8208C9C0A00D6D4F4 /* Window.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,6 +73,8 @@
 		8DCA1C8A208B76BD009F737A /* IndexBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = IndexBuffer.h; path = OpenGL_study/src/IndexBuffer.h; sourceTree = "<group>"; };
 		8DCA1C9C208B771E009F737A /* stb_image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = stb_image.cpp; path = OpenGL_study/src/libs/stb/stb_image.cpp; sourceTree = "<group>"; };
 		8DCA1C9D208B771E009F737A /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stb_image.h; path = OpenGL_study/src/libs/stb/stb_image.h; sourceTree = "<group>"; };
+		8DD896A7208C9C0A00D6D4F4 /* Window.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Window.cpp; path = OpenGL_study/src/Window.cpp; sourceTree = "<group>"; };
+		8DD896A8208C9C0A00D6D4F4 /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Window.h; path = OpenGL_study/src/Window.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +94,8 @@
 		8D04F4372087AB8D00078D63 = {
 			isa = PBXGroup;
 			children = (
+				8DD896A7208C9C0A00D6D4F4 /* Window.cpp */,
+				8DD896A8208C9C0A00D6D4F4 /* Window.h */,
 				8DCA1C9C208B771E009F737A /* stb_image.cpp */,
 				8DCA1C9D208B771E009F737A /* stb_image.h */,
 				8DCA1C84208B76BC009F737A /* Application.cpp */,
@@ -200,6 +206,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DD896A9208C9C0A00D6D4F4 /* Window.cpp in Sources */,
+				8DD896AA208C9C0A00D6D4F4 /* Window.h in Sources */,
 				8DCA1C9E208B771E009F737A /* stb_image.cpp in Sources */,
 				8DCA1C9F208B771E009F737A /* stb_image.h in Sources */,
 				8DCA1C8B208B76BD009F737A /* Shader.cpp in Sources */,

@@ -64,7 +64,7 @@ bool Window::init()
     std::cout << glGetString(GL_VERSION) << std::endl;
 
     // set view port
-    GLCall(glViewport(0, 0, 640, 480));
+    GLCall(glViewport(0, 0, width_, height_));
 
     // line mode or fill mode
 #if 0
