@@ -46,11 +46,9 @@ int main()
     IndexBuffer index_buffer(index, 3 * 12);
     vertex_array.add_buffer(vertex_buffer, vertex_buffer_layout, index_buffer);
 
-    glm::mat4 proj = glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, 480.0f);
-//    glm::mat4 proj = glm::ortho(0.0f, 480.0f, 0.0f, 480.0f, 0.0f, 480.0f);
-    glm::mat4 view = glm::mat4(1.0f);
-    glm::mat4 model = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -360.0f));
-    model = glm::rotate(model, glm::radians(45.0f), glm::vec3(1.0f, 1.0f, 1.0f));
+    const auto proj = glm::perspective(glm::radians(90.0f), 1.0f, 0.1f, 480.0f);
+    const auto view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -360.0f));
+    auto model = glm::rotate(glm::mat4(1.0f), glm::radians(45.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 
     Shader shader("src/test/test4/test4.shader");
     shader.set_uniform4f("u_Color", 1, 1, 1, 1);
@@ -64,7 +62,7 @@ int main()
 
         renderer.clear();
 
-        model = glm::rotate(model, glm::radians(5.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+        model = glm::rotate(model, glm::radians(1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
         shader.set_uniform_mat4f("u_MVP", proj * view * model);
         renderer.draw(vertex_array, shader);
 
