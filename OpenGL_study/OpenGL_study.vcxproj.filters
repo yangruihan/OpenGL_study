@@ -45,7 +45,7 @@
     <ClCompile Include="src\Window.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Application.cpp">
+    <ClCompile Include="src\test\test5\test5.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -870,6 +870,7 @@
     <None Include="src\test\test2\test2.shader" />
     <None Include="src\test\test3\test3.shader" />
     <None Include="src\test\test4\test4.shader" />
+    <None Include="src\test\test5\test5.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png">
