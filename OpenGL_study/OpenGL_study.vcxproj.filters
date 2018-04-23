@@ -48,7 +48,7 @@
     <ClCompile Include="src\Camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\test6\test6.cpp">
+    <ClCompile Include="src\Application.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -519,6 +519,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Camera.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Geometry.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

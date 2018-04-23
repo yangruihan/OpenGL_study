@@ -62,6 +62,24 @@ void Shader::unbind() const
     GLCall(glUseProgram(0));
 }
 
+void Shader::set_uniform3f(const std::string& name, const float v0, const float v1, const float v2)
+{
+    bind();
+    GLCall(glUniform3f(get_uniform_location(name), v0, v1, v2));
+}
+
+void Shader::set_uniform3f(const std::string& name, glm::vec3 value)
+{
+    bind();
+    GLCall(glUniform3f(get_uniform_location(name), value.x, value.y, value.z));
+}
+
+void Shader::set_uniform4f(const std::string& name, glm::vec4 value)
+{
+    bind();
+    GLCall(glUniform4f(get_uniform_location(name), value.x, value.y, value.z, value.w));
+}
+
 ShaderProgramSource Shader::parse_shader() const
 {
     std::ifstream stream(filepath_);

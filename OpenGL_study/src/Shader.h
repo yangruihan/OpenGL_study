@@ -37,7 +37,10 @@ public:
     void bind() const;
     void unbind() const;
 
+    void set_uniform3f(const std::string& name, float v0, float v1, float v2);
+    void set_uniform3f(const std::string& name, glm::vec3 value);
     void set_uniform4f(const std::string& name, float v0, float v1, float v2, float v3);
+    void set_uniform4f(const std::string& name, glm::vec4 value);
     void set_uniform1i(const std::string& name, int value);
     void set_uniform_mat4f(const std::string& name, const glm::mat4 mat4);
 

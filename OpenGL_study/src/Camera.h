@@ -10,6 +10,8 @@ enum CameraMovement
     BACKWARD,
     LEFT,
     RIGHT,
+    UP,
+    DOWN,
 };
 
 const float CAM_DEFAULT_YAW = -90.0f;
@@ -53,6 +55,7 @@ public:
     void process_mouse_scroll(float y_offset);
 
     inline float get_zoom() const { return zoom_; }
+    inline glm::vec3 get_position() const { return position_; }
 
 private:
     void update_camera_vectors();

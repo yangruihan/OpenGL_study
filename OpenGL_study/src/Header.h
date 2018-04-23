@@ -13,6 +13,7 @@
 #include "VertexBufferLayout.h"
 #include "Window.h"
 #include "Camera.h"
+#include "Geometry.h"
 
 #ifdef __APPLE__
 #include "libs/glm/glm.hpp"
