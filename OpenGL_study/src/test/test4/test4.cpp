@@ -9,6 +9,7 @@ void process_input(GLFWwindow *window)
         glfwSetWindowShouldClose(window, true);
 }
 
+/* 立方体 */
 int main()
 {
     Window window(480, 480, "test4");

@@ -1,7 +1,7 @@
 #include "Header.h"
 
-float delta_time = 0.0f; // µ±Ç°Ö¡ÓëÉÏÒ»Ö¡µÄÊ±¼ä²î
-float last_frame = 0.0f; // ÉÏÒ»Ö¡µÄÊ±¼ä
+float delta_time = 0.0f; // å½“å‰å¸§ä¸ä¸Šä¸€å¸§çš„æ—¶é—´å·®
+float last_frame = 0.0f; // ä¸Šä¸€å¸§çš„æ—¶é—´
 
 glm::vec3 camera_pos     = glm::vec3(0.0f, 0.0f, 360.0f);
 glm::vec3 camera_front   = glm::vec3(0.0f, 0.0f, -1.0f);
@@ -42,7 +42,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     }
 
     float xoffset = xpos - mouse_last_x;
-    float yoffset = mouse_last_y - ypos; // ×¢ÒâÕâÀïÊÇÏà·´µÄ£¬ÒòÎªy×ø±êÊÇ´Óµ×²¿Íù¶¥²¿ÒÀ´ÎÔö´óµÄ
+    float yoffset = mouse_last_y - ypos; // æ³¨æ„è¿™é‡Œæ˜¯ç›¸åçš„ï¼Œå› ä¸ºyåæ ‡æ˜¯ä»åº•éƒ¨å¾€é¡¶éƒ¨ä¾æ¬¡å¢å¤§çš„
     mouse_last_x = xpos;
     mouse_last_y = ypos;
 
@@ -78,6 +78,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
         fov = 120.0f;
 }
 
+/* æ¼«æ¸¸é•œå¤´ */
 int main()
 {
     Window window(480, 480, "test4");

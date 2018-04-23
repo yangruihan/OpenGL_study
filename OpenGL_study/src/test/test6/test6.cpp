@@ -3,6 +3,12 @@
 float delta_time = 0.0f; // 当前帧与上一帧的时间差
 float last_frame = 0.0f; // 上一帧的时间
 
+float mouse_last_x;
+float mouse_last_y;
+bool first;
+
+bool mouse_focus = true;
+
 Camera camera(glm::vec3(0.0f, 0.0f, 360.0f));
 
 /**
@@ -10,9 +16,6 @@ Camera camera(glm::vec3(0.0f, 0.0f, 360.0f));
 */
 void process_input(GLFWwindow *window)
 {
-    if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, true);
-
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         camera.process_keyboard(FORWARD, delta_time);
 
@@ -26,10 +29,28 @@ void process_input(GLFWwindow *window)
         camera.process_keyboard(RIGHT, delta_time);
 }
 
-float mouse_last_x;
-float mouse_last_y;
-bool first;
+/**
+ * key callback
+ */
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
 
+    if (key == GLFW_KEY_TAB && action == GLFW_PRESS)
+    {
+        if (mouse_focus)
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        else
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
+        mouse_focus = !mouse_focus;
+    }
+}
+
+/**
+ * mouse callback
+ */
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
     if (first)
@@ -47,6 +68,9 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     camera.process_mouse_movement(xoffset, yoffset);
 }
 
+/**
+ * mouse scroll callback
+ */
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
     camera.process_mouse_scroll(yoffset);
@@ -57,12 +81,18 @@ int main()
     Window window(480, 480, "test4");
 
     // set mouse mode
-    glfwSetInputMode(window.get_window(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    if (mouse_focus)
+        glfwSetInputMode(window.get_window(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+
     // add mouse callback
     glfwSetCursorPosCallback(window.get_window(), mouse_callback);
     first = true;
 
+    // mouse scroll callback
     glfwSetScrollCallback(window.get_window(), scroll_callback);
+    
+    // key callback
+    glfwSetKeyCallback(window.get_window(), key_callback);
 
     mouse_last_x = 240.0f;
     mouse_last_y = 240.0f;
@@ -93,21 +123,31 @@ int main()
         1, 2, 5,
     };
 
-    VertexArray vertex_array;
     VertexBuffer vertex_buffer(pos, 3 * 2 * 8 * sizeof(float));
     VertexBufferLayout vertex_buffer_layout;
     vertex_buffer_layout.push<float>(3);
     vertex_buffer_layout.push<float>(3);
     IndexBuffer index_buffer(index, 3 * 12);
-    vertex_array.add_buffer(vertex_buffer, vertex_buffer_layout, index_buffer);
 
-    auto proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 480.0f);
+    auto proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 3000.0f);
     auto view = camera.get_view_matrix();
-    auto model = glm::rotate(glm::mat4(1.0f), glm::radians(45.0f), glm::vec3(1.0f, 0.0f, 1.0f));
 
-    Shader shader("src/test/test5/test5.shader");
-    shader.set_uniform4f("u_Color", 1, 1, 1, 1);
-    shader.set_uniform_mat4f("u_MVP", proj * view * model);
+    VertexArray obj_va;
+    obj_va.add_buffer(vertex_buffer, vertex_buffer_layout, index_buffer);
+    glm::vec3 obj_pos(0.0f, 0.0f, 0.0f);
+    auto obj_model = glm::translate(glm::mat4(1.0f), obj_pos);
+    
+    VertexArray light_va;
+    light_va.add_buffer(vertex_buffer, vertex_buffer_layout, index_buffer);
+    glm::vec3 light_pos(120.0f, 100.0f, 200.0f);
+    auto light_model = glm::translate(glm::mat4(1.0f), light_pos);
+    light_model = glm::scale(light_model, glm::vec3(0.2f));
+
+    Shader obj_shader("src/test/test6/test6_obj.shader");
+    obj_shader.set_uniform4f("u_LightColor", 1.0f, 0.5f, 0.31f, 1.0f);
+    obj_shader.set_uniform4f("u_ObjColor", 1.0f, 1.0f, 1.0f, 1.0f);
+
+    Shader light_shader("src/test/test6/test6_light.shader");
 
     Renderer renderer;
 
@@ -123,10 +163,14 @@ int main()
 
         renderer.clear();
 
-        proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 480.0f);
+        proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 3000.0f);
         view = camera.get_view_matrix();
-        shader.set_uniform_mat4f("u_MVP", proj * view * model);
-        renderer.draw(vertex_array, shader);
+
+        obj_shader.set_uniform_mat4f("u_MVP", proj * view * obj_model);
+        renderer.draw(obj_va, obj_shader);
+
+        light_shader.set_uniform_mat4f("u_MVP", proj * view * light_model);
+        renderer.draw(light_va, light_shader);
 
         window.clean();
     }
