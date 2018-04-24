@@ -25,8 +25,8 @@ int main()
     auto rotate_mat = glm::mat4(1.0f);
     rotate_mat = glm::translate(rotate_mat, glm::vec3(240, 240 , 0));
 
-    shader.set_uniform_mat4f("u_MVP", proj_mat * rotate_mat);
-    shader.set_uniform4f("u_Color", 1, 0, 0, 1);
+    shader.set_mat4f("u_MVP", proj_mat * rotate_mat);
+    shader.set_vec4f("u_Color", 1, 0, 0, 1);
 
     VertexBufferLayout vertex_buffer_layout;
     vertex_buffer_layout.push<float>(2);
@@ -51,7 +51,7 @@ int main()
 
         rotate_mat = glm::rotate(rotate_mat, 0.01f, glm::vec3(0, 0, 1));
 
-        shader.set_uniform_mat4f("u_MVP", proj_mat * rotate_mat);
+        shader.set_mat4f("u_MVP", proj_mat * rotate_mat);
         renderer.draw(va1, shader);
 
         window.clean();

@@ -23,7 +23,7 @@ int main()
     IndexBuffer index_buffer(index, 3);
 
     Shader shader("src/test/test2/test2.shader");
-    shader.set_uniform_mat4f("u_MVP", proj);
+    shader.set_mat4f("u_MVP", proj);
 
     VertexBufferLayout vertex_buffer_layout;
     vertex_buffer_layout.push<float>(2);

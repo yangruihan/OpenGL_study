@@ -1,7 +1,8 @@
 #include "Shader.h"
+ #include <utility>
 
-Shader::Shader(const std::string& filepath)
-    : filepath_(filepath)
+Shader::Shader(std::string filepath)
+    : filepath_(std::move(filepath))
 {
     // 解析 shader 文件
     const auto shader_src = parse_shader();
@@ -19,19 +20,25 @@ Shader::~Shader()
     GLCall(glDeleteProgram(renderer_id_));
 }
 
-void Shader::set_uniform4f(const std::string& name, float v0, float v1, float v2, float v3)
+void Shader::set_vec4f(const std::string& name, const float v0, const float v1, const float v2, const float v3)
 {
     bind();
     GLCall(glUniform4f(get_uniform_location(name), v0, v1, v2, v3));
 }
 
-void Shader::set_uniform1i(const std::string& name, int value)
+void Shader::set_int(const std::string& name, const int value)
 {
     bind();
     GLCall(glUniform1i(get_uniform_location(name), value));
 }
 
-void Shader::set_uniform_mat4f(const std::string& name, const glm::mat4 mat4)
+void Shader::set_float(const std::string& name, const float value)
+{
+    bind();
+    GLCall(glUniform1f(get_uniform_location(name), value));
+}
+
+void Shader::set_mat4f(const std::string& name, const glm::mat4 mat4)
 {
     bind();
     GLCall(glUniformMatrix4fv(get_uniform_location(name), 1, GL_FALSE, &mat4[0][0]));
@@ -62,19 +69,19 @@ void Shader::unbind() const
     GLCall(glUseProgram(0));
 }
 
-void Shader::set_uniform3f(const std::string& name, const float v0, const float v1, const float v2)
+void Shader::set_vec3f(const std::string& name, const float v0, const float v1, const float v2)
 {
     bind();
     GLCall(glUniform3f(get_uniform_location(name), v0, v1, v2));
 }
 
-void Shader::set_uniform3f(const std::string& name, glm::vec3 value)
+void Shader::set_vec3f(const std::string& name, const glm::vec3 value)
 {
     bind();
     GLCall(glUniform3f(get_uniform_location(name), value.x, value.y, value.z));
 }
 
-void Shader::set_uniform4f(const std::string& name, glm::vec4 value)
+void Shader::set_vec4f(const std::string& name, const glm::vec4 value)
 {
     bind();
     GLCall(glUniform4f(get_uniform_location(name), value.x, value.y, value.z, value.w));
@@ -114,7 +121,7 @@ ShaderProgramSource Shader::parse_shader() const
     return { ss[0].str(), ss[1].str() };
 }
 
-unsigned Shader::compile_shader(unsigned type, const std::string& source)
+unsigned Shader::compile_shader(const unsigned type, const std::string& source)
 {
     unsigned int id = 0;
     GLCall(id = glCreateShader(type));
@@ -141,11 +148,11 @@ unsigned Shader::compile_shader(unsigned type, const std::string& source)
     return id;
 }
 
-unsigned Shader::create_shader(const std::string& vertexShader, const std::string& fragmentShader)
+unsigned Shader::create_shader(const std::string& vertex_shader, const std::string& fragment_shader)
 {
-    auto program = glCreateProgram();
-    vertex_shader_id_ = compile_shader(GL_VERTEX_SHADER, vertexShader);
-    fragment_shader_id_ = compile_shader(GL_FRAGMENT_SHADER, fragmentShader);
+    const auto program = glCreateProgram();
+    vertex_shader_id_ = compile_shader(GL_VERTEX_SHADER, vertex_shader);
+    fragment_shader_id_ = compile_shader(GL_FRAGMENT_SHADER, fragment_shader);
 
     glAttachShader(program, vertex_shader_id_);
     glAttachShader(program, fragment_shader_id_);

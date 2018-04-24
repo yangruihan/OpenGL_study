@@ -1,7 +1,7 @@
 #include "Header.h"
 
-float delta_time = 0.0f; // µ±Ç°Ö¡ÓëÉÏÒ»Ö¡µÄÊ±¼ä²î
-float last_frame = 0.0f; // ÉÏÒ»Ö¡µÄÊ±¼ä
+float delta_time = 0.0f; // å½“å‰å¸§ä¸ä¸Šä¸€å¸§çš„æ—¶é—´å·®
+float last_frame = 0.0f; // ä¸Šä¸€å¸§çš„æ—¶é—´
 
 float mouse_last_x;
 float mouse_last_y;
@@ -67,7 +67,7 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
     }
 
     const auto xoffset = xpos - mouse_last_x;
-    const auto yoffset = mouse_last_y - ypos; // ×¢ÒâÕâÀïÊÇÏà·´µÄ£¬ÒòÎªy×ø±êÊÇ´Óµ×²¿Íù¶¥²¿ÒÀ´ÎÔö´óµÄ
+    const auto yoffset = mouse_last_y - ypos; // æ³¨æ„è¿™é‡Œæ˜¯ç›¸åçš„ï¼Œå› ä¸ºyåæ ‡æ˜¯ä»åº•éƒ¨å¾€é¡¶éƒ¨ä¾æ¬¡å¢å¤§çš„
     mouse_last_x = xpos;
     mouse_last_y = ypos;
 
@@ -82,6 +82,11 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
     camera.process_mouse_scroll(yoffset);
 }
 
+
+/**
+ * é¢œè‰²ä¸å…‰
+ * ç§»åŠ¨å…‰æº
+ */
 int main()
 {
     Window window(480, 480, "test4");
@@ -124,14 +129,14 @@ int main()
     light_model = glm::scale(light_model, glm::vec3(0.2f));
 
     Shader obj_shader("src/test/test6/test6_obj.shader");
-    obj_shader.set_uniform_mat4f("u_Proj", proj);
-    obj_shader.set_uniform_mat4f("u_View", camera.get_view_matrix());
-    obj_shader.set_uniform_mat4f("u_Model", obj_model);
+    obj_shader.set_mat4f("u_Proj", proj);
+    obj_shader.set_mat4f("u_View", camera.get_view_matrix());
+    obj_shader.set_mat4f("u_Model", obj_model);
 
-    obj_shader.set_uniform4f("u_LightColor", 1.0f, 0.5f, 0.31f, 1.0f);
-    obj_shader.set_uniform4f("u_ObjColor", 1.0f, 1.0f, 1.0f, 1.0f);
-    obj_shader.set_uniform3f("u_LightPos", light_pos);
-    obj_shader.set_uniform3f("u_ViewPos", camera.get_position());
+    obj_shader.set_vec4f("u_LightColor", 1.0f, 1.0f, 1.0f, 1.0f);
+    obj_shader.set_vec4f("u_ObjColor", 1.0f, 0.5f, 0.31f, 1.0f);
+    obj_shader.set_vec3f("u_LightPos", light_pos);
+    obj_shader.set_vec3f("u_ViewPos", camera.get_position());
 
     Shader light_shader("src/test/test6/test6_light.shader");
 
@@ -153,20 +158,20 @@ int main()
         proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 3000.0f);
         view = camera.get_view_matrix();
 
-        light_delta += 0.01f;
+        light_delta += 0.03f;
 
         light_pos = glm::vec3(300.0f * glm::cos(light_delta), 300.0f * glm::sin(light_delta), 400.0f);
         light_model = glm::translate(glm::mat4(1.0f), light_pos);
         light_model = glm::scale(light_model, glm::vec3(0.2f));
 
-        obj_shader.set_uniform_mat4f("u_Proj", proj);
-        obj_shader.set_uniform_mat4f("u_View", camera.get_view_matrix());
-        obj_shader.set_uniform_mat4f("u_Model", obj_model);
-        obj_shader.set_uniform3f("u_LightPos", light_pos);
-        obj_shader.set_uniform3f("u_ViewPos", camera.get_position());
+        obj_shader.set_mat4f("u_Proj", proj);
+        obj_shader.set_mat4f("u_View", camera.get_view_matrix());
+        obj_shader.set_mat4f("u_Model", obj_model);
+        obj_shader.set_vec3f("u_LightPos", light_pos);
+        obj_shader.set_vec3f("u_ViewPos", camera.get_position());
         renderer.draw(obj_va, obj_shader);
 
-        light_shader.set_uniform_mat4f("u_MVP", proj * view * light_model);
+        light_shader.set_mat4f("u_MVP", proj * view * light_model);
         renderer.draw(light_va, light_shader);
 
         window.clean();

@@ -129,13 +129,13 @@ int main()
     vertex_array.add_buffer(vertex_buffer, vertex_buffer_layout, index_buffer);
 
     fov = 90;
-    auto proj = glm::perspective(glm::radians(fov), 1.0f, 0.1f, 480.0f);
+    auto proj = glm::perspective(glm::radians(fov), 1.0f, 0.1f, 3000.0f);
     auto view = glm::lookAt(camera_pos, camera_pos + camera_front, camera_up);
     auto model = glm::rotate(glm::mat4(1.0f), glm::radians(45.0f), glm::vec3(1.0f, 0.0f, 1.0f));
 
     Shader shader("src/test/test5/test5.shader");
-    shader.set_uniform4f("u_Color", 1, 1, 1, 1);
-    shader.set_uniform_mat4f("u_MVP", proj * view * model);
+    shader.set_vec4f("u_Color", 1, 1, 1, 1);
+    shader.set_mat4f("u_MVP", proj * view * model);
 
     Renderer renderer;
 
@@ -151,9 +151,9 @@ int main()
 
         renderer.clear();
 
-        proj = glm::perspective(glm::radians(fov), 1.0f, 0.1f, 480.0f);
+        proj = glm::perspective(glm::radians(fov), 1.0f, 0.1f, 3000.0f);
         view = glm::lookAt(camera_pos, camera_pos + camera_front, camera_up);
-        shader.set_uniform_mat4f("u_MVP", proj * view * model);
+        shader.set_mat4f("u_MVP", proj * view * model);
         renderer.draw(vertex_array, shader);
 
         window.clean();

@@ -52,8 +52,8 @@ int main()
     auto model = glm::rotate(glm::mat4(1.0f), glm::radians(45.0f), glm::vec3(1.0f, 1.0f, 1.0f));
 
     Shader shader("src/test/test4/test4.shader");
-    shader.set_uniform4f("u_Color", 1, 1, 1, 1);
-    shader.set_uniform_mat4f("u_MVP", proj * view * model);
+    shader.set_vec4f("u_Color", 1, 1, 1, 1);
+    shader.set_mat4f("u_MVP", proj * view * model);
 
     Renderer renderer;
 
@@ -64,7 +64,7 @@ int main()
         renderer.clear();
 
         model = glm::rotate(model, glm::radians(1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
-        shader.set_uniform_mat4f("u_MVP", proj * view * model);
+        shader.set_mat4f("u_MVP", proj * view * model);
         renderer.draw(vertex_array, shader);
 
         window.clean();

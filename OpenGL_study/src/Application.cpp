@@ -43,14 +43,14 @@ int main()
     Shader shader("res/shaders/texture.shader");
     shader.bind();
 
-    shader.set_uniform_mat4f("u_MVP", mvp);
+    shader.set_mat4f("u_MVP", mvp);
     //shader.set_uniform4f("u_Color", 1.0f, 0.0f, 0.0f, 1.0f);
     
     Texture texture("res/textures/hello.png");
     texture.bind();
 
     // set texture
-    shader.set_uniform1i("m_Texture", 0);
+    shader.set_int("m_Texture", 0);
 
     vertex_array.unbind();
     shader.unbind();
