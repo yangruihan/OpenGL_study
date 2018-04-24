@@ -106,7 +106,7 @@ int main()
     mouse_last_x = 240.0f;
     mouse_last_y = 240.0f;
 
-    VertexBuffer vertex_buffer(cube_vertexs, cube_vb_size);
+    VertexBuffer vertex_buffer(cube_vertexs_n, cube_v_n_b_size);
     VertexBufferLayout vertex_buffer_layout;
     vertex_buffer_layout.push<float>(3);
     vertex_buffer_layout.push<float>(3);

@@ -3,8 +3,8 @@
 float delta_time = 0.0f; // 当前帧与上一帧的时间差
 float last_frame = 0.0f; // 上一帧的时间
 
-float mouse_last_x;
-float mouse_last_y;
+float mouse_last_x = 240.0f;
+float mouse_last_y = 240.0f;
 bool first;
 
 bool mouse_focus = true;
@@ -82,10 +82,8 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
     camera.process_mouse_scroll(yoffset);
 }
 
-
 /**
  * 颜色与光
- * 移动光源
  */
 int main()
 {
@@ -105,17 +103,15 @@ int main()
     // key callback
     glfwSetKeyCallback(window.get_window(), key_callback);
 
-    mouse_last_x = 240.0f;
-    mouse_last_y = 240.0f;
+    auto proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 3000.0f);
+    auto view = camera.get_view_matrix();
 
-    VertexBuffer vertex_buffer(cube_vertexs_n, cube_v_n_b_size);
+    VertexBuffer vertex_buffer(cube_vertexs_nt, cube_v_nt_b_size);
     VertexBufferLayout vertex_buffer_layout;
     vertex_buffer_layout.push<float>(3);
     vertex_buffer_layout.push<float>(3);
+    vertex_buffer_layout.push<float>(2);
     IndexBuffer index_buffer(cube_index, cube_ib_count);
-
-    auto proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 3000.0f);
-    auto view = camera.get_view_matrix();
 
     VertexArray obj_va;
     obj_va.add_buffer(vertex_buffer, vertex_buffer_layout, index_buffer);
@@ -124,26 +120,41 @@ int main()
     
     VertexArray light_va;
     light_va.add_buffer(vertex_buffer, vertex_buffer_layout, index_buffer);
-    glm::vec3 light_pos(120.0f, 100.0f, 200.0f);
+    glm::vec3 light_pos(120.0f, 150.0f, 200.0f);
     auto light_model = glm::translate(glm::mat4(1.0f), light_pos);
     light_model = glm::scale(light_model, glm::vec3(0.2f));
 
-    Shader obj_shader("src/test/test6/test6_obj.shader");
+    Texture texture0("src/test/test8/container.png");
+    texture0.bind();
+
+    Texture texture1("src/test/test8/container_specular.png");
+    texture1.bind(1);
+
+    Shader obj_shader("src/test/test8/test8_obj.shader");
+    // set mvp
     obj_shader.set_mat4f("u_Proj", proj);
     obj_shader.set_mat4f("u_View", camera.get_view_matrix());
     obj_shader.set_mat4f("u_Model", obj_model);
 
-    obj_shader.set_vec4f("u_LightColor", 1.0f, 1.0f, 1.0f, 1.0f);
-    obj_shader.set_vec4f("u_ObjColor", 1.0f, 0.5f, 0.31f, 1.0f);
-    obj_shader.set_vec3f("u_LightPos", light_pos);
+    // set light & view
     obj_shader.set_vec3f("u_ViewPos", camera.get_position());
 
-    Shader light_shader("src/test/test6/test6_light.shader");
+    obj_shader.set_vec3f("u_Light.ambient", glm::vec3(0.3f));
+    obj_shader.set_vec3f("u_Light.diffuse", glm::vec3(0.8f));
+    obj_shader.set_vec3f("u_Light.specular", glm::vec3(1.0f));
+    obj_shader.set_vec3f("u_Light.position", light_pos);
+
+    // set obj material
+    obj_shader.set_int("u_Material.diffuse", 0);
+    obj_shader.set_int("u_Material.specular", 1);
+    obj_shader.set_float("u_Material.shininess", 32.0f);
+
+    Shader light_shader("src/test/test8/test8_light.shader");
 
     Renderer renderer;
+    renderer.set_clear_color(glm::vec4(0.1f));
 
     auto current_frame = 0.0f;
-    auto light_delta = 0.0f;
 
     while (window.show())
     {
@@ -155,19 +166,15 @@ int main()
 
         renderer.clear();
 
+        texture0.bind();
+        texture1.bind(1);
+
         proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 3000.0f);
         view = camera.get_view_matrix();
-
-        light_delta += 0.03f;
-
-        light_pos = glm::vec3(300.0f * glm::cos(light_delta), 300.0f * glm::sin(light_delta), 400.0f);
-        light_model = glm::translate(glm::mat4(1.0f), light_pos);
-        light_model = glm::scale(light_model, glm::vec3(0.2f));
 
         obj_shader.set_mat4f("u_Proj", proj);
         obj_shader.set_mat4f("u_View", camera.get_view_matrix());
         obj_shader.set_mat4f("u_Model", obj_model);
-        obj_shader.set_vec3f("u_LightPos", light_pos);
         obj_shader.set_vec3f("u_ViewPos", camera.get_position());
         renderer.draw(obj_va, obj_shader);
 

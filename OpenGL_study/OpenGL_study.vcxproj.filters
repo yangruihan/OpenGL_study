@@ -884,9 +884,17 @@
     <None Include="src\test\test6\test6_light.shader" />
     <None Include="src\test\test7\test7_obj.shader" />
     <None Include="src\test\test7\test7_light.shader" />
+    <None Include="src\test\test8\test8_light.shader" />
+    <None Include="src\test\test8\test8_obj.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="src\test\test8\container.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="src\test\test8\container_specular.png">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

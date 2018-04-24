@@ -424,9 +424,13 @@
     <None Include="src\test\test6\test6_obj.shader" />
     <None Include="src\test\test7\test7_light.shader" />
     <None Include="src\test\test7\test7_obj.shader" />
+    <None Include="src\test\test8\test8_light.shader" />
+    <None Include="src\test\test8\test8_obj.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png" />
+    <Image Include="src\test\test8\container.png" />
+    <Image Include="src\test\test8\container_specular.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
