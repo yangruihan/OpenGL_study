@@ -8,13 +8,23 @@
 #include "IndexBuffer.h"
 #include "Shader.h"
 
+#include "glm/glm.hpp"
+
 class VertexArray;
 class IndexBuffer;
 class Shader;
 
 class Renderer
 {
+private:
+    glm::vec4 clear_color_;
+
 public:
+    Renderer();
+    ~Renderer();
+
     void clear() const;
     void draw(const VertexArray& va, const Shader& shader) const;
+
+    void set_clear_color(glm::vec4 color = glm::vec4(0.0f));
 };

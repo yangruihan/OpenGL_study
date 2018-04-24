@@ -48,7 +48,7 @@
     <ClCompile Include="src\Camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Application.cpp">
+    <ClCompile Include="src\test\test7\test7.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -882,6 +882,8 @@
     <None Include="src\test\test5\test5.shader" />
     <None Include="src\test\test6\test6_obj.shader" />
     <None Include="src\test\test6\test6_light.shader" />
+    <None Include="src\test\test7\test7_obj.shader" />
+    <None Include="src\test\test7\test7_light.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png">
