@@ -8,7 +8,12 @@
 #include "IndexBuffer.h"
 #include "Shader.h"
 
+#ifdef __APPLE__
+#include "libs/glm/glm.hpp"
+#else
 #include "glm/glm.hpp"
+#endif
+
 
 class VertexArray;
 class IndexBuffer;
