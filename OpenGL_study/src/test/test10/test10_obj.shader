@@ -162,7 +162,7 @@ vec3 CalcPointLight(PointLight light, vec3 normal, vec3 view_dir)
     float attenuation = 1.0 /
                 (light.constant + light.linear * distance + light.quadratic * (distance * distance));
 
-        // ambient
+    // ambient
     vec3 ambient = light.ambient * vec3(texture(u_Material.diffuse, o_TextureCoords));
 
     // diffuse

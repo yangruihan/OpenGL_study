@@ -80,7 +80,7 @@
       <PreprocessorDefinitions>DEBUG;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\ASSIMP\libs;$(SolutionDir)Dependencies\GLFW\libs;$(SolutionDir)Dependencies\GLEW\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
@@ -107,7 +107,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalLibraryDirectories>$(SolutionDir)Dependencies\ASSIMP\libs;$(SolutionDir)Dependencies\GLFW\libs;$(SolutionDir)Dependencies\GLEW\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;assimp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>glfw3.lib;glew32s.lib;opengl32.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -125,11 +125,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
-    <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\libs\glm\detail\glm.cpp" />
     <ClCompile Include="src\libs\stb\stb_image.cpp" />
+    <ClCompile Include="src\test\test11\test11_model.cpp" />
     <ClCompile Include="src\_opengl\Shader.cpp" />
     <ClCompile Include="src\_opengl\IndexBuffer.cpp" />
     <ClCompile Include="src\_opengl\Renderer.cpp" />
@@ -140,6 +141,7 @@
     <ClCompile Include="src\_opengl\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\MOS_glm.h" />
     <ClInclude Include="src\Mesh.h" />
     <ClInclude Include="src\Camera.h" />
@@ -422,6 +424,8 @@
     <None Include="src\libs\glm\gtx\wrap.inl" />
     <None Include="src\test\test10\test10_light.shader" />
     <None Include="src\test\test10\test10_obj.shader" />
+    <None Include="src\test\test11\test11_light.shader" />
+    <None Include="src\test\test11\test11_obj.shader" />
     <None Include="src\test\test2\test2.shader" />
     <None Include="src\test\test3\test3.shader" />
     <None Include="src\test\test4\test4.shader" />

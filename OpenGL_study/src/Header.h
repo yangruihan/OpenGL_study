@@ -15,5 +15,6 @@
 #include "Camera.h"
 #include "Geometry.h"
 #include "Mesh.h"
+#include "Model.h"
 
 #include "MOS_glm.h"
