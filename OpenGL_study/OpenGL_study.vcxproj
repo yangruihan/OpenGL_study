@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src;src\libs;$(SolutionDir)Dependencies\ASSIMP\Include;$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;src\_opengl;src\libs;$(SolutionDir)Dependencies\ASSIMP\Include;$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>DEBUG;GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -100,7 +100,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src;src\libs;$(SolutionDir)Dependencies\ASSIMP\Include;$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;src\_opengl;src\libs;$(SolutionDir)Dependencies\ASSIMP\Include;$(SolutionDir)Dependencies\GLFW\Include;$(SolutionDir)Dependencies\GLEW\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -125,18 +125,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\libs\glm\detail\glm.cpp" />
     <ClCompile Include="src\libs\stb\stb_image.cpp" />
-    <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\IndexBuffer.cpp" />
-    <ClCompile Include="src\Renderer.cpp" />
-    <ClCompile Include="src\VertexBuffer.cpp" />
-    <ClCompile Include="src\VertexArray.cpp" />
-    <ClCompile Include="src\VertexBufferLayout.cpp" />
-    <ClCompile Include="src\Texture.cpp" />
-    <ClCompile Include="src\Window.cpp" />
+    <ClCompile Include="src\test\test10\test10_multi_light.cpp" />
+    <ClCompile Include="src\_opengl\Shader.cpp" />
+    <ClCompile Include="src\_opengl\IndexBuffer.cpp" />
+    <ClCompile Include="src\_opengl\Renderer.cpp" />
+    <ClCompile Include="src\_opengl\VertexBuffer.cpp" />
+    <ClCompile Include="src\_opengl\VertexArray.cpp" />
+    <ClCompile Include="src\_opengl\VertexBufferLayout.cpp" />
+    <ClCompile Include="src\_opengl\Texture.cpp" />
+    <ClCompile Include="src\_opengl\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Camera.h" />
@@ -288,14 +288,14 @@
     <ClInclude Include="src\libs\glm\vec4.hpp" />
     <ClInclude Include="src\libs\glm\vector_relational.hpp" />
     <ClInclude Include="src\libs\stb\stb_image.h" />
-    <ClInclude Include="src\Shader.h" />
-    <ClInclude Include="src\IndexBuffer.h" />
-    <ClInclude Include="src\Renderer.h" />
-    <ClInclude Include="src\VertexBuffer.h" />
-    <ClInclude Include="src\VertexArray.h" />
-    <ClInclude Include="src\VertexBufferLayout.h" />
-    <ClInclude Include="src\Texture.h" />
-    <ClInclude Include="src\Window.h" />
+    <ClInclude Include="src\_opengl\Shader.h" />
+    <ClInclude Include="src\_opengl\IndexBuffer.h" />
+    <ClInclude Include="src\_opengl\Renderer.h" />
+    <ClInclude Include="src\_opengl\VertexBuffer.h" />
+    <ClInclude Include="src\_opengl\VertexArray.h" />
+    <ClInclude Include="src\_opengl\VertexBufferLayout.h" />
+    <ClInclude Include="src\_opengl\Texture.h" />
+    <ClInclude Include="src\_opengl\Window.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\basic.shader" />
