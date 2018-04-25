@@ -7,13 +7,7 @@
 #include "VertexArray.h"
 #include "IndexBuffer.h"
 #include "Shader.h"
-
-#ifdef __APPLE__
-#include "libs/glm/glm.hpp"
-#else
-#include "glm/glm.hpp"
-#endif
-
+#include "MOS_glm.h"
 
 class VertexArray;
 class IndexBuffer;

@@ -1,13 +1,6 @@
 #pragma once
 
-#ifdef __APPLE__
-#include "libs/glm/glm.hpp"
-#include "libs/glm/gtc/matrix_transform.hpp"
-#else
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
-#endif
-
+#include "MOS_glm.h"
 #include <GL/glew.h>
 
 enum CameraMovement
