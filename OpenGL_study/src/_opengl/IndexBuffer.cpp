@@ -1,7 +1,7 @@
 #include "IndexBuffer.h"
 
 IndexBuffer::IndexBuffer(const unsigned int index[], const unsigned& count)
-    : count_(count)
+    : count_(count), renderer_id_(0)
 {
     GLCall(glGenBuffers(1, &renderer_id_));
     GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, renderer_id_));

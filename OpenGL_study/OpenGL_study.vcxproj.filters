@@ -48,7 +48,10 @@
     <ClCompile Include="src\_opengl\Window.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\test10\test10_multi_light.cpp">
+    <ClCompile Include="src\Application.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Mesh.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -522,6 +525,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\_opengl\Window.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Mesh.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MOS_stb_image.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MOS_glm.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

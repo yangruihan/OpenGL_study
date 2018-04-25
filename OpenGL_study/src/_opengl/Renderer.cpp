@@ -23,6 +23,12 @@ void Renderer::draw(const VertexArray& va, const Shader& shader) const
                           GL_UNSIGNED_INT, nullptr));
 }
 
+void Renderer::draw(Mesh& mesh, Shader& shader)
+{
+    mesh.before_draw(shader);
+    draw(*mesh.get_vertex_array(), shader);
+}
+
 void Renderer::set_clear_color(const glm::vec4 color)
 {
     if (color != clear_color_)

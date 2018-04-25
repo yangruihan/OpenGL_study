@@ -14,5 +14,6 @@
 #include "Window.h"
 #include "Camera.h"
 #include "Geometry.h"
+#include "Mesh.h"
 
 #include "MOS_glm.h"
