@@ -30,14 +30,14 @@ void process_input(GLFWwindow *window)
 
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
         camera.process_keyboard(UP, delta_time);
-    
+
     if (glfwGetKey(window, GLFW_KEY_LEFT_SHIFT) == GLFW_PRESS)
         camera.process_keyboard(DOWN, delta_time);
 }
 
 /**
- * key callback
- */
+* key callback
+*/
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
@@ -55,8 +55,8 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 }
 
 /**
- * mouse callback
- */
+* mouse callback
+*/
 void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 {
     if (first)
@@ -75,16 +75,16 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos)
 }
 
 /**
- * mouse scroll callback
- */
+* mouse scroll callback
+*/
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 {
     camera.process_mouse_scroll(yoffset);
 }
 
 /**
- * 颜色与光
- */
+* 颜色与光
+*/
 int main()
 {
     Window window(640, 640, "test9");
@@ -99,7 +99,7 @@ int main()
 
     // mouse scroll callback
     glfwSetScrollCallback(window.get_window(), scroll_callback);
-    
+
     // key callback
     glfwSetKeyCallback(window.get_window(), key_callback);
 
@@ -121,13 +121,13 @@ int main()
         { 150.0f,   0.0f,   0.0f },
         {   0.0f, 350.0f,   0.0f },
         {   0.0f,   0.0f, 250.0f },
-        { 450.0f, 450.0f,   0.0f },
-        { 450.0f,   0.0f, 450.0f },
-        {   0.0f, 450.0f, 450.0f },
-        { 450.0f, 450.0f, 450.0f }
+        { 150.0f, 250.0f,   0.0f },
+        { 250.0f,   0.0f, 250.0f },
+        {   0.0f, 350.0f, 150.0f },
+        { 150.0f, 250.0f, 150.0f }
     };
     glm::mat4 obj_model;
-    
+
     VertexArray light_va;
     light_va.add_buffer(vertex_buffer, vertex_buffer_layout, index_buffer);
     glm::vec3 light_pos(320.0f, 250.0f, 400.0f);
@@ -141,22 +141,21 @@ int main()
     // set mvp
     obj_shader.set_mat4f("u_Proj", proj);
     obj_shader.set_mat4f("u_View", camera.get_view_matrix());
-//    obj_shader.set_mat4f("u_Model", obj_model);
+    //    obj_shader.set_mat4f("u_Model", obj_model);
 
     // set light & view
     obj_shader.set_vec3f("u_ViewPos", camera.get_position());
 
-    obj_shader.set_int("u_Light.type", 1);
+    obj_shader.set_int("u_Light.type", 2);
     obj_shader.set_vec3f("u_Light.ambient", glm::vec3(0.3f));
     obj_shader.set_vec3f("u_Light.diffuse", glm::vec3(0.8f));
     obj_shader.set_vec3f("u_Light.specular", glm::vec3(1.0f));
 
-    // 参考 http://www.ogre3d.org/tikiwiki/tiki-index.php?page=-Point+Light+Attenuation
-    obj_shader.set_float("u_Light.constant", 1.0f);
-    obj_shader.set_float("u_Light.linear", 0.045f);
-    obj_shader.set_float("u_Light.quadratic", 0.0075f);
+    obj_shader.set_float("u_Light.cut_off", glm::cos(glm::radians(12.5f)));
+    obj_shader.set_float("u_Light.outer_cut_off", glm::cos(glm::radians(17.5f)));
 
-    obj_shader.set_vec3f("u_Light.position", light_pos);
+    obj_shader.set_vec3f("u_Light.position", camera.get_position());
+    obj_shader.set_vec3f("u_Light.direction", camera.get_direction());
     obj_shader.set_float("u_DistanceRate", 100.0f);
 
     // set obj material
@@ -196,6 +195,9 @@ int main()
             obj_model = glm::rotate(obj_model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             obj_model = glm::scale(obj_model, glm::vec3(0.3f));
 
+            obj_shader.set_vec3f("u_Light.position", camera.get_position());
+            obj_shader.set_vec3f("u_Light.direction", camera.get_direction());
+
             obj_shader.set_mat4f("u_Proj", proj);
             obj_shader.set_mat4f("u_View", camera.get_view_matrix());
             obj_shader.set_mat4f("u_Model", obj_model);
@@ -203,8 +205,8 @@ int main()
             renderer.draw(obj_va, obj_shader);
         }
 
-        light_shader.set_mat4f("u_MVP", proj * view * light_model);
-        renderer.draw(light_va, light_shader);
+//        light_shader.set_mat4f("u_MVP", proj * view * light_model);
+//        renderer.draw(light_va, light_shader);
 
         window.clean();
     }

@@ -56,6 +56,7 @@ public:
 
     inline float get_zoom() const { return zoom_; }
     inline glm::vec3 get_position() const { return position_; }
+    inline glm::vec3 get_direction() const { return front_; }
 
 private:
     void update_camera_vectors();

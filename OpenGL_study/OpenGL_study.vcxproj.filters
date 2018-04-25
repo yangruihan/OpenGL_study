@@ -48,7 +48,7 @@
     <ClCompile Include="src\Camera.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\test9\test9_directional_light.cpp">
+    <ClCompile Include="src\test\test9\test9_flash_light.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

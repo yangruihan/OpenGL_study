@@ -146,16 +146,18 @@ int main()
     // set light & view
     obj_shader.set_vec3f("u_ViewPos", camera.get_position());
 
+    obj_shader.set_int("u_Light.type", 0);
+
     obj_shader.set_vec3f("u_Light.ambient", glm::vec3(0.3f));
     obj_shader.set_vec3f("u_Light.diffuse", glm::vec3(0.8f));
     obj_shader.set_vec3f("u_Light.specular", glm::vec3(1.0f));
 
-    // 参考 http://www.ogre3d.org/tikiwiki/tiki-index.php?page=-Point+Light+Attenuation
-    obj_shader.set_float("u_Light.constant", 1.0f);
-    obj_shader.set_float("u_Light.linear", 0.045f);
-    obj_shader.set_float("u_Light.quadratic", 0.0075f);
+    // // 参考 http://www.ogre3d.org/tikiwiki/tiki-index.php?page=-Point+Light+Attenuation
+    // obj_shader.set_float("u_Light.constant", 1.0f);
+    // obj_shader.set_float("u_Light.linear", 0.045f);
+    // obj_shader.set_float("u_Light.quadratic", 0.0075f);
 
-    obj_shader.set_vec4f("u_Light.direction", -320.0f, -1500.0f, -400.0f, 0.0f);
+    obj_shader.set_vec3f("u_Light.direction", -320.0f, -1500.0f, -400.0f);
     obj_shader.set_float("u_DistanceRate", 100.0f);
 
     // set obj material

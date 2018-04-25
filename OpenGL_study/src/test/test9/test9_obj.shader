@@ -31,15 +31,28 @@ struct Material {
 };
 
 struct Light {
-    vec4    direction;
+    // 类型
+    // 0 平行光
+    // 1 点光源
+    // 2 聚光灯
+    int     type;      
 
-    vec3    ambient;
-    vec3    diffuse;
-    vec3    specular;
+    vec3    direction;
+    vec3    position;
 
-    float constant;
-    float linear;
-    float quadratic;
+    // --- 基本参数 --- //
+    vec3    ambient;    // 环境光
+    vec3    diffuse;    // 漫反射光
+    vec3    specular;   // 镜面光
+
+    // --- 点光源参数 --- 参考 https://learnopengl-cn.github.io/02%20Lighting/05%20Light%20casters/ //
+    float   constant;   // 常量
+    float   linear;     // 一次项
+    float   quadratic;  // 二次项
+
+    // --- 聚光灯参数 --- //
+    float   cut_off;
+    float   outer_cut_off;
 };
 
 layout(location = 0) out vec4 color;
@@ -60,32 +73,45 @@ void main()
     vec3 light_dir;
     float attenuation = 1.0;
 
-    // w ����Ϊ0����ʾ����������w ����Ϊ1����ʾλ������
-    if (u_Light.direction.w == 0.0f)
+    // w 分量为0，表示方向向量，w 分量为1，表示位置向量
+    if (u_Light.type == 0)
     {
-        light_dir = normalize(-vec3(u_Light.direction.xyz));
+        light_dir = normalize(-u_Light.direction);
     }
     else
     {
-        light_dir = normalize(vec3(u_Light.direction.xyz) - o_FragPos);
+        light_dir = normalize(u_Light.position - o_FragPos);
 
-        float distance = length(vec3(u_Light.direction) - o_FragPos) / u_DistanceRate;
-        attenuation = 1.0 /
-            (u_Light.constant + u_Light.linear * distance + u_Light.quadratic * (distance * distance));
+        if (u_Light.type == 1)
+        {
+            float distance = length(vec3(u_Light.direction) - o_FragPos) / u_DistanceRate;
+            attenuation = 1.0 /
+                (u_Light.constant + u_Light.linear * distance + u_Light.quadratic * (distance * distance));
+        }
     }
 
     // ambient
     vec3 ambient = u_Light.ambient * vec3(texture(u_Material.diffuse, o_TextureCoords));
 
     // diffuse
-    float diff = max(dot(norm, light_dir), 0.0);
+    float diff   = max(dot(norm, light_dir), 0.0);
     vec3 diffuse = u_Light.diffuse * (diff * vec3(texture(u_Material.diffuse, o_TextureCoords)));
 
     // specular
-    vec3 view_dir = normalize(u_ViewPos - o_FragPos);
+    vec3 view_dir    = normalize(u_ViewPos - o_FragPos);
     vec3 reflect_dir = reflect(-light_dir, norm);
-    float spec = pow(max(dot(view_dir, reflect_dir), 0.0), u_Material.shininess);
-    vec3 specular = u_Light.specular * (spec * vec3(texture(u_Material.specular, o_TextureCoords)));
+    float spec       = pow(max(dot(view_dir, reflect_dir), 0.0), u_Material.shininess);
+    vec3 specular    = u_Light.specular * (spec * vec3(texture(u_Material.specular, o_TextureCoords)));
+
+    if (u_Light.type == 2)
+    {
+        float theta     = dot(light_dir, normalize(-u_Light.direction));
+        float epsilon   = u_Light.cut_off - u_Light.outer_cut_off;
+        float intensity = clamp((theta - u_Light.outer_cut_off) / epsilon, 0.0f, 1.0f);
+
+        diffuse  *= intensity;
+        specular *= intensity;
+    }
 
     // result
     vec3 result = (ambient + diffuse + specular) * attenuation;
