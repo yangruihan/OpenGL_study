@@ -87,7 +87,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
  */
 int main()
 {
-    Window window(480, 480, "test4");
+    Window window(480, 480, "test6");
 
     // set mouse mode
     if (mouse_focus)

@@ -87,7 +87,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
  */
 int main()
 {
-    Window window(480, 480, "test4");
+    Window window(480, 480, "test8");
 
     // set mouse mode
     if (mouse_focus)
@@ -124,11 +124,8 @@ int main()
     auto light_model = glm::translate(glm::mat4(1.0f), light_pos);
     light_model = glm::scale(light_model, glm::vec3(0.2f));
 
-    Texture texture0("src/test/test8/container.png");
-    texture0.bind();
-
-    Texture texture1("src/test/test8/container_specular.png");
-    texture1.bind(1);
+    Texture texture0("res/textures/container.png");
+    Texture texture1("res/textures/container_specular.png");
 
     Shader obj_shader("src/test/test8/test8_obj.shader");
     // set mvp

@@ -54,7 +54,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 int main()
 {
-    Window window(480, 480, "test4");
+    Window window(480, 480, "test5");
 
     // set mouse mode
     glfwSetInputMode(window.get_window(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
