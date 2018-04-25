@@ -31,11 +31,15 @@ struct Material {
 };
 
 struct Light {
-    vec3    direction;
+    vec4    direction;
 
     vec3    ambient;
     vec3    diffuse;
     vec3    specular;
+
+    float constant;
+    float linear;
+    float quadratic;
 };
 
 layout(location = 0) out vec4 color;
@@ -43,6 +47,7 @@ layout(location = 0) out vec4 color;
 uniform vec3 u_ViewPos;
 uniform Material u_Material;
 uniform Light u_Light;
+uniform float u_DistanceRate;
 
 in vec3 o_Normal;
 in vec3 o_FragPos;
@@ -50,12 +55,27 @@ in vec2 o_TextureCoords;
 
 void main()
 {
-    // ambient
-    vec3 ambient = u_Light.ambient * vec3(texture(u_Material.diffuse, o_TextureCoords));
-
     // normal && light dir
     vec3 norm = normalize(o_Normal);
-    vec3 light_dir = normalize(-u_Light.direction);
+    vec3 light_dir;
+    float attenuation = 1.0;
+
+    // w 分量为0，表示方向向量，w 分量为1，表示位置向量
+    if (u_Light.direction.w == 0.0)
+    {
+        light_dir = normalize(-vec3(u_Light.direction.xyz));
+    }
+    else
+    {
+        light_dir = normalize(vec3(u_Light.direction.xyz) - o_FragPos);
+
+        float distance = length(vec3(u_Light.direction) - o_FragPos) / u_DistanceRate;
+        attenuation = 1.0 /
+            (u_Light.constant + u_Light.linear * distance + u_Light.quadratic * (distance * distance));
+    }
+
+    // ambient
+    vec3 ambient = u_Light.ambient * vec3(texture(u_Material.diffuse, o_TextureCoords));
 
     // diffuse
     float diff = max(dot(norm, light_dir), 0.0);
@@ -68,6 +88,6 @@ void main()
     vec3 specular = u_Light.specular * (spec * vec3(texture(u_Material.specular, o_TextureCoords)));
 
     // result
-    vec3 result = (ambient + diffuse + specular);
+    vec3 result = (ambient + diffuse + specular) * attenuation;
     color = vec4(result, 1.0);
 }

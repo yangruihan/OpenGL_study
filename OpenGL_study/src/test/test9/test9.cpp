@@ -119,12 +119,12 @@ int main()
     glm::vec3 obj_pos[] = {
         {   0.0f,   0.0f,   0.0f },
         { 150.0f,   0.0f,   0.0f },
-        {   0.0f, 150.0f,   0.0f },
-        {   0.0f,   0.0f, 150.0f },
-        { 150.0f, 150.0f,   0.0f },
-        { 150.0f,   0.0f, 150.0f },
-        {   0.0f, 150.0f, 150.0f },
-        { 150.0f, 150.0f, 150.0f }
+        {   0.0f, 350.0f,   0.0f },
+        {   0.0f,   0.0f, 250.0f },
+        { 450.0f, 450.0f,   0.0f },
+        { 450.0f,   0.0f, 450.0f },
+        {   0.0f, 450.0f, 450.0f },
+        { 450.0f, 450.0f, 450.0f }
     };
     glm::mat4 obj_model;
     
@@ -149,7 +149,14 @@ int main()
     obj_shader.set_vec3f("u_Light.ambient", glm::vec3(0.3f));
     obj_shader.set_vec3f("u_Light.diffuse", glm::vec3(0.8f));
     obj_shader.set_vec3f("u_Light.specular", glm::vec3(1.0f));
-    obj_shader.set_vec3f("u_Light.direction", -0.2f, -1.0f, -0.3f);
+
+    // 参考 http://www.ogre3d.org/tikiwiki/tiki-index.php?page=-Point+Light+Attenuation
+    obj_shader.set_float("u_Light.constant", 1.0f);
+    obj_shader.set_float("u_Light.linear", 0.045f);
+    obj_shader.set_float("u_Light.quadratic", 0.0075f);
+
+    obj_shader.set_vec4f("u_Light.direction", glm::vec4(light_pos, 1.0f));
+    obj_shader.set_float("u_DistanceRate", 100.0f);
 
     // set obj material
     obj_shader.set_int("u_Material.diffuse", 0);
@@ -159,7 +166,7 @@ int main()
     Shader light_shader("src/test/test8/test8_light.shader");
 
     Renderer renderer;
-    renderer.set_clear_color(glm::vec4(0.1f));
+//    renderer.set_clear_color(glm::vec4(0.1f));
 
     auto current_frame = 0.0f;
 
@@ -195,8 +202,8 @@ int main()
             renderer.draw(obj_va, obj_shader);
         }
 
-//        light_shader.set_mat4f("u_MVP", proj * view * light_model);
-//        renderer.draw(light_va, light_shader);
+        light_shader.set_mat4f("u_MVP", proj * view * light_model);
+        renderer.draw(light_va, light_shader);
 
         window.clean();
     }
