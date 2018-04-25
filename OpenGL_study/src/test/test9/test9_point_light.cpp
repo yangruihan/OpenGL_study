@@ -163,10 +163,10 @@ int main()
     obj_shader.set_int("u_Material.specular", 1);
     obj_shader.set_float("u_Material.shininess", 32.0f);
 
-    Shader light_shader("src/test/test8/test8_light.shader");
+    Shader light_shader("src/test/test9/test9_light.shader");
 
     Renderer renderer;
-//    renderer.set_clear_color(glm::vec4(0.1f));
+    renderer.set_clear_color(glm::vec4(0.1f));
 
     auto current_frame = 0.0f;
 

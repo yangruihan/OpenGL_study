@@ -61,7 +61,7 @@ void main()
     float attenuation = 1.0;
 
     // w 分量为0，表示方向向量，w 分量为1，表示位置向量
-    if (u_Light.direction.w == 0.0)
+    if (u_Light.direction.w == 0.0f)
     {
         light_dir = normalize(-vec3(u_Light.direction.xyz));
     }
