@@ -5,6 +5,9 @@
 
 #include <iostream>
 #include <string>
+#include <functional>
+#include <utility>
+#include <iomanip>
 
 #ifdef __APPLE__
 #include <unistd.h>
@@ -13,7 +16,6 @@
 #endif
 
 #include "Common.h"
-#include <functional>
 
 class Window
 {
