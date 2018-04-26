@@ -1,6 +1,4 @@
 #include "Window.h"
-#include <utility>
-#include <iomanip>
 
 Window::Window(const unsigned int& width,
                const unsigned int& height,
