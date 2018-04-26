@@ -22,7 +22,7 @@ int main()
     IndexBuffer index_buffer(index, 3);
 
     Shader shader("res/shaders/basic.shader");
-    shader.set_uniform_mat4f("u_MVP", proj);
+    shader.set_mat4f("u_MVP", proj);
 
     VertexBufferLayout vertex_buffer_layout;
     vertex_buffer_layout.push<float>(2);
@@ -55,13 +55,13 @@ int main()
 
         renderer.clear();
 
-        shader.set_uniform4f("u_Color", 1, 0, 0, 1);
+        shader.set_vec4f("u_Color", 1, 0, 0, 1);
         renderer.draw(va1, shader);
 
-        shader.set_uniform4f("u_Color", 0, 1, 0, 1);
+        shader.set_vec4f("u_Color", 0, 1, 0, 1);
         renderer.draw(va2, shader);
 
-        window.clean();
+        window.end_of_frame();
     }
 
     return 0;

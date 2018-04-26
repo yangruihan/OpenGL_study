@@ -47,14 +47,12 @@ int main()
     {
         process_input(window.get_window());
 
-        renderer.clear();
-
         rotate_mat = glm::rotate(rotate_mat, 0.01f, glm::vec3(0, 0, 1));
 
         shader.set_mat4f("u_MVP", proj_mat * rotate_mat);
         renderer.draw(va1, shader);
 
-        window.clean();
+        window.end_of_frame();
     }
 
     return 0;

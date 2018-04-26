@@ -61,13 +61,11 @@ int main()
     {
         process_input(window.get_window());
 
-        renderer.clear();
-
         model = glm::rotate(model, glm::radians(1.0f), glm::vec3(1.0f, 1.0f, 1.0f));
         shader.set_mat4f("u_MVP", proj * view * model);
         renderer.draw(vertex_array, shader);
 
-        window.clean();
+        window.end_of_frame();
     }
     return 0;
 }

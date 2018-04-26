@@ -149,14 +149,12 @@ int main()
 
         process_input(window.get_window());
 
-        renderer.clear();
-
         proj = glm::perspective(glm::radians(fov), 1.0f, 0.1f, 3000.0f);
         view = glm::lookAt(camera_pos, camera_pos + camera_front, camera_up);
         shader.set_mat4f("u_MVP", proj * view * model);
         renderer.draw(vertex_array, shader);
 
-        window.clean();
+        window.end_of_frame();
     }
     return 0;
 }

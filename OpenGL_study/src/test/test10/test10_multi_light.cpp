@@ -212,8 +212,6 @@ int main()
 
         process_input(window.get_window());
 
-        renderer.clear();
-
         texture0.bind();
         texture1.bind(1);
 
@@ -251,7 +249,7 @@ int main()
             renderer.draw(light_va, light_shader);
         }
 
-        window.clean();
+        window.end_of_frame();
     }
     return 0;
 }

@@ -129,8 +129,6 @@ int main()
 
         process_input(window.get_window());
 
-        renderer.clear();
-
         proj_mat = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 3000.0f);
         view_mat = camera.get_view_matrix();
 
@@ -140,7 +138,7 @@ int main()
 
         renderer.draw(model, obj_shader);
 
-        window.clean();
+        window.end_of_frame();
     }
     return 0;
 }

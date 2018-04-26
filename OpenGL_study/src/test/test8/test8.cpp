@@ -161,8 +161,6 @@ int main()
 
         process_input(window.get_window());
 
-        renderer.clear();
-
         texture0.bind();
         texture1.bind(1);
 
@@ -178,7 +176,7 @@ int main()
         light_shader.set_mat4f("u_MVP", proj * view * light_model);
         renderer.draw(light_va, light_shader);
 
-        window.clean();
+        window.end_of_frame();
     }
     return 0;
 }

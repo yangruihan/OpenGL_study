@@ -44,11 +44,9 @@ int main()
     {
         process_input(window.get_window());
 
-        renderer.clear();
-
         renderer.draw(va1, shader);
 
-        window.clean();
+        window.end_of_frame();
     }
 
     return 0;

@@ -61,11 +61,9 @@ int main()
     {
         process_input(window.get_window());
 
-        renderer.clear();
-
         renderer.draw(vertex_array, shader);
 
-        window.clean();
+        window.end_of_frame();
     }
 
     return 0;

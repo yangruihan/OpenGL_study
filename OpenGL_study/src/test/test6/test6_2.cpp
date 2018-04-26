@@ -153,8 +153,6 @@ int main()
 
         process_input(window.get_window());
 
-        renderer.clear();
-
         proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 3000.0f);
         view = camera.get_view_matrix();
 
@@ -174,7 +172,7 @@ int main()
         light_shader.set_mat4f("u_MVP", proj * view * light_model);
         renderer.draw(light_va, light_shader);
 
-        window.clean();
+        window.end_of_frame();
     }
     return 0;
 }
