@@ -7,7 +7,7 @@
 #include <string>
 
 #ifdef __APPLE__
-#include <stdlib.h>
+#include <unistd.h>
 #else
 #include <Windows.h>
 #endif

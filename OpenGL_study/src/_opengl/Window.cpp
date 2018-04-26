@@ -172,7 +172,7 @@ void Window::main_loop()
         if (sleep_time > 0)
         {
 #ifdef __APPLE__
-            _sleep(sleep_time);
+            usleep(sleep_time);
 #else
             Sleep(sleep_time);
 #endif
