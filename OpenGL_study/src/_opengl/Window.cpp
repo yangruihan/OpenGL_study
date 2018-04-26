@@ -1,15 +1,19 @@
 #include "Window.h"
 #include <utility>
+#include <iomanip>
 
 Window::Window(const unsigned int& width,
                const unsigned int& height,
                std::string title,
-               const unsigned int& target_frame)
+               const unsigned int& target_frame,
+               const bool& v_sync,
+               const bool& debug_info)
     : width_(width), height_(height), 
       title_(std::move(title)),
       target_frame_(target_frame), fixed_delta_time_(1.0 / target_frame), delta_time_(0), 
       window_(nullptr), 
-      update_func_(nullptr), fixed_update_func_(nullptr), render_func_(nullptr)
+      update_func_(nullptr), fixed_update_func_(nullptr), render_func_(nullptr),
+      v_sync_(v_sync), debug_info_(debug_info)
 {
     init();
 }
@@ -39,57 +43,7 @@ void Window::start()
         return;
     }
 
-    float previous_time = glfwGetTime();
-    auto lag = 0.0f;
-    auto start_time = 0.0f;
-    auto end_time = 0.0f;
-    auto duration_time = 0.0f;
-    auto sleep_time = 0.0f;
-
-    while (!glfwWindowShouldClose(window_))
-    {
-        start_time = glfwGetTime();
-        delta_time_ = start_time - previous_time;
-        previous_time = start_time;
-        lag += delta_time_;
-
-        // update call
-        if (update_func_ != nullptr)
-            (update_func_)(delta_time_);
-
-        while (lag - fixed_delta_time_ >= 0)
-        {
-            // fixed update call
-            if (fixed_update_func_ != nullptr)
-                (fixed_update_func_)(fixed_delta_time_);
-            lag -= fixed_delta_time_;
-        }
-
-        // clear screen
-        clear();
-
-        // render call
-        if (render_func_ != nullptr)
-            (render_func_)();
-
-        end_of_frame();
-
-        end_time = glfwGetTime();
-        duration_time = end_time - start_time;
-        sleep_time = duration_time < fixed_delta_time_ ? fixed_delta_time_ - duration_time : 0;
-
-        if (sleep_time > 0)
-        {
-
-#ifdef __APPLE__
-            _sleep(sleep_time);
-#else
-            Sleep(sleep_time);
-#endif
-
-        }
-
-    }
+    main_loop();
 }
 
 void Window::clear() const
@@ -134,17 +88,22 @@ bool Window::init()
     glfwMakeContextCurrent(window_);
 
     glfwSetFramebufferSizeCallback(window_, framebuffer_size_callback);
-    
-    glfwSwapInterval(1);
+
+    // 开启垂直同步
+    if (v_sync_)
+        glfwSwapInterval(1);
 
     if (glewInit() != GLEW_OK)
     {   
         std::cout << "Window Create Error: glew init error" << std::endl;
     }
 
-    std::cout << glGetString(GL_VERSION) << std::endl;
+    std::cout << "--- Window Info ---" << std::endl;
+    std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+    std::cout << "Target Frame: " << target_frame_ << std::endl;
+    std::cout << "------------------\n" << std::endl;
 
-    // set view port
+    // 设置视口
     GLCall(glViewport(0, 0, width_, height_));
 
     // line mode or fill mode
@@ -164,6 +123,62 @@ bool Window::init()
     GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
     return true;
+}
+
+void Window::main_loop()
+{
+    float previous_time = glfwGetTime();
+    auto lag = 0.0f;
+
+    while (!glfwWindowShouldClose(window_))
+    {
+        const float start_time = glfwGetTime();
+        delta_time_ = start_time - previous_time;
+        previous_time = start_time;
+        lag += delta_time_;
+
+        // update call
+        if (update_func_ != nullptr)
+            (update_func_)(delta_time_);
+
+#if DEBUG
+        if (debug_info_)
+        {
+            std::cout << "\r" << "                              " << std::flush;
+            std::cout << "\r" << "FPS: " << std::fixed << std::setprecision(2) << 1 / delta_time_ << std::flush;
+        }
+#endif
+
+        while (lag - fixed_delta_time_ >= 0)
+        {
+            // fixed update call
+            if (fixed_update_func_ != nullptr)
+                (fixed_update_func_)(fixed_delta_time_);
+            lag -= fixed_delta_time_;
+        }
+
+        // clear screen
+        clear();
+
+        // render call
+        if (render_func_ != nullptr)
+            (render_func_)();
+
+        end_of_frame();
+
+        const float duration_time = glfwGetTime() - start_time;
+        const auto sleep_time = duration_time < fixed_delta_time_ ? fixed_delta_time_ - duration_time : 0;
+
+        if (sleep_time > 0)
+        {
+#ifdef __APPLE__
+            _sleep(sleep_time);
+#else
+            Sleep(sleep_time);
+#endif
+
+        }
+    }
 }
 
 /**

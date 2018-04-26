@@ -54,7 +54,7 @@
     <ClCompile Include="src\Model.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\test12\test12_z_test.cpp">
+    <ClCompile Include="src\Application.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

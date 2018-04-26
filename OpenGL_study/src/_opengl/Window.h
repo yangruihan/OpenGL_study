@@ -26,17 +26,23 @@ private:
     float fixed_delta_time_;        // 预计更新间隔时间
     float delta_time_;              // 实际更新间隔时间
 
+    bool v_sync_;                   // 垂直同步
+
     GLFWwindow *window_;
 
     std::function<void(const float)> update_func_;
     std::function<void(const float)> fixed_update_func_;
     std::function<void(void)>        render_func_;
 
+    bool debug_info_;               // 是否显示 debug 信息
+
 public:
     Window(const unsigned int& width,
            const unsigned int& height,
            std::string title,
-           const unsigned int& target_frame = 60);
+           const unsigned int& target_frame = 60,
+           const bool& v_sync = true,
+           const bool& debug_info = false);
     ~Window();
 
     // --- old api --- //
@@ -61,8 +67,15 @@ public:
         fixed_delta_time_ = 1.0f / target_frame;
     }
 
+    inline bool get_v_sync() const { return v_sync_; }
+    inline void set_v_sync(const bool v_sync) { v_sync_ = v_sync; }
+
+    inline bool get_debug_info() const { return debug_info_; }
+    inline void set_debug_info(const bool debug_info) { debug_info_ = debug_info; }
+
 private:
-    bool init();
+    bool init();        // 初始化
+    void main_loop();   // 主循环
 
     static void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 };
