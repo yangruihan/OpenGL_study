@@ -14,11 +14,13 @@ class Renderer;
 /**
  * 顶点数据
  */
-struct Vertex
+struct VertexData
 {
     glm::vec3 position;     // 位置向量
     glm::vec3 normal;       // 法线向量
     glm::vec2 tex_coords;   // 纹理坐标
+    glm::vec3 tangent;      // 切线向量
+    glm::vec3 bitangent;    // 双切线向量
 };
 
 /**
@@ -28,21 +30,20 @@ struct TextureData
 {
     Texture *texture;       // 纹理数据
     std::string type;       // 纹理类型
-
     std::string path;       // 路径
 };
 
 class Mesh
 {
 private:
-    std::vector<Vertex>       vertices_;
+    std::vector<VertexData>   vertices_;
     std::vector<unsigned int> indices_;
     std::vector<TextureData>  texture_datas_;
 
     VertexArray *vertex_array_;
 
 public:
-    Mesh(std::vector<Vertex>      vertices,
+    Mesh(std::vector<VertexData>  vertices,
          std::vector<unsigned>    indices,
          std::vector<TextureData> textures);
     ~Mesh();

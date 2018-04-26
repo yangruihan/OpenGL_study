@@ -21,6 +21,8 @@ void Renderer::draw(const VertexArray& va, const Shader& shader) const
     GLCall(glDrawElements(GL_TRIANGLES, 
                           va.get_index_buffer()->get_count(), 
                           GL_UNSIGNED_INT, nullptr));
+    shader.unbind();
+    va.unbind();
 }
 
 void Renderer::draw(Mesh& mesh, Shader& shader)

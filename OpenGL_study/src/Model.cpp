@@ -1,7 +1,7 @@
 #include "Model.h"
 
-Model::Model(const std::string& path)
-    : path_(path)
+Model::Model(const std::string& path, const bool& gamma)
+    : path_(path), gamma_correction_(gamma)
 {
     load_model(path);
 }
@@ -10,15 +10,15 @@ Model::~Model() = default;
 
 void Model::draw(const Renderer& renderer, Shader& shader)
 {
-    for (auto& meshe : meshes_)
-        meshe.draw(renderer, shader);
+    for (auto& mesh : meshes_)
+        mesh.draw(renderer, shader);
 }
 
 void Model::load_model(const std::string& path)
 {
     Assimp::Importer importer;
     // 后期指令参考 http://assimp.sourceforge.net/lib_html/postprocess_8h.html
-    const auto scene = importer.ReadFile(path.c_str(), aiProcess_Triangulate | aiProcess_FlipUVs);
+    const auto scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_CalcTangentSpace);
     if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
     {
         std::cout << "[ERROR] Load model fail, ASSIMP::" << importer.GetErrorString() << std::endl;
@@ -45,23 +45,39 @@ void Model::process_node(aiNode* node, const aiScene* scene)
 
 Mesh Model::process_mesh(aiMesh* mesh, const aiScene* scene)
 {
-    std::vector<Vertex> vertices;
+    std::vector<VertexData>   vertices;
     std::vector<unsigned int> indices;
-    std::vector<TextureData> texture_datas;
+    std::vector<TextureData>  texture_datas;
 
     for (size_t i = 0, count = mesh->mNumVertices; i < count; i++)
     {
-        Vertex vertex {};
+        VertexData vertex {};
 
         // 位置坐标
-        vertex.position = { mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z };
+        vertex.position = { mesh->mVertices[i].x,
+                            mesh->mVertices[i].y,
+                            mesh->mVertices[i].z };
+
         // 法线向量
-        vertex.normal = { mesh->mNormals[i].x, mesh->mNormals[i].y, mesh->mNormals[i].z };
+        vertex.normal = { mesh->mNormals[i].x,
+                          mesh->mNormals[i].y, 
+                          mesh->mNormals[i].z };
+
         // 纹理坐标，只关心第一组
         if (mesh->mTextureCoords[0])
             vertex.tex_coords = { mesh->mTextureCoords[0][i].x, mesh->mTextureCoords[0][i].y };
         else
             vertex.tex_coords = glm::vec2(0.0f);
+    
+        // 切线向量
+        vertex.tangent = { mesh->mTangents[i].x,
+                           mesh->mTangents[i].y,
+                           mesh->mTangents[i].z };
+
+        // 二向切线
+        vertex.bitangent = { mesh->mBitangents[i].x,
+                             mesh->mBitangents[i].y,
+                             mesh->mBitangents[i].z };
 
         vertices.push_back(vertex);
     }
@@ -73,22 +89,25 @@ Mesh Model::process_mesh(aiMesh* mesh, const aiScene* scene)
             indices.push_back(face.mIndices[j]);
     }
 
-    if (mesh->mMaterialIndex >= 0)
-    {
-        const auto material = scene->mMaterials[mesh->mMaterialIndex];
-        auto diffuse_maps = load_material_textures(material, aiTextureType_DIFFUSE, "texture_diffuse");
-        texture_datas.insert(texture_datas.end(), diffuse_maps.begin(), diffuse_maps.end());
+    const auto material = scene->mMaterials[mesh->mMaterialIndex];
+    auto diffuse_maps = load_material_textures(material, aiTextureType_DIFFUSE, "texture_diffuse");
+    texture_datas.insert(texture_datas.end(), diffuse_maps.begin(), diffuse_maps.end());
 
-        auto specular_maps = load_material_textures(material, aiTextureType_SPECULAR, "texture_specular");
-        texture_datas.insert(texture_datas.end(), specular_maps.begin(), specular_maps.end());
-    }
+    auto specular_maps = load_material_textures(material, aiTextureType_SPECULAR, "texture_specular");
+    texture_datas.insert(texture_datas.end(), specular_maps.begin(), specular_maps.end());
+
+    auto normal_maps = load_material_textures(material, aiTextureType_HEIGHT, "texture_normal");
+    texture_datas.insert(texture_datas.end(), normal_maps.begin(), normal_maps.end());
+
+    auto height_maps = load_material_textures(material, aiTextureType_AMBIENT, "texture_height");
+    texture_datas.insert(texture_datas.end(), height_maps.begin(), height_maps.end());
 
     return Mesh(vertices, indices, texture_datas);
 }
 
 std::vector<TextureData> Model::load_material_textures(aiMaterial* mat,
-                                                             const aiTextureType type,
-                                                             const std::string& type_name)
+                                                       const aiTextureType type,
+                                                       const std::string& type_name)
 {
     std::vector<TextureData> texture_datas;
 

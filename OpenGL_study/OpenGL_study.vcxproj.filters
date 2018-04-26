@@ -54,7 +54,7 @@
     <ClCompile Include="src\Model.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\test11\test11_model.cpp">
+    <ClCompile Include="src\Application.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -910,6 +910,8 @@
     <None Include="src\test\test10\test10_obj.shader" />
     <None Include="src\test\test11\test11_light.shader" />
     <None Include="src\test\test11\test11_obj.shader" />
+    <None Include="res\model\nanosuit.blend" />
+    <None Include="res\model\nanosuit.mtl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png">
@@ -921,5 +923,59 @@
     <Image Include="res\textures\container_specular.png">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="res\model\arm_dif.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\arm_showroom_ddn.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\arm_showroom_spec.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\body_dif.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\body_showroom_ddn.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\body_showroom_spec.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\glass_ddn.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\glass_dif.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\hand_dif.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\hand_showroom_ddn.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\hand_showroom_spec.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\helmet_diff.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\helmet_showroom_ddn.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\helmet_showroom_spec.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\leg_dif.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\leg_showroom_ddn.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\model\leg_showroom_spec.png">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="res\model\LICENSE.txt" />
   </ItemGroup>
 </Project>

@@ -23,6 +23,8 @@ struct Material
 {
     sampler2D texture_diffuse1;
     sampler2D texture_specular1;
+    sampler2D texture_normal1;
+    sampler2D texture_height1;
 };
 
 out vec4 FragColor;
@@ -33,5 +35,5 @@ uniform Material u_Material;
 
 void main()
 {    
-    FragColor = clamp(0.7 * texture(u_Material.texture_diffuse1, TexCoords) + 0.3 * texture(u_Material.texture_specular1, TexCoords), 0, 1);
+    FragColor = texture(u_Material.texture_diffuse1, TexCoords);
 }

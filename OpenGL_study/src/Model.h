@@ -12,7 +12,7 @@ class Mesh;
 class Shader;
 class Renderer;
 struct TextureData;
-struct Vertex;
+struct VertexData;
 
 class Model
 {
@@ -20,11 +20,12 @@ private:
     std::vector<Mesh> meshes_ {};
     std::string path_;
     std::string directory_;
+    bool gamma_correction_;
 
     std::vector<TextureData> loaded_texture_datas_;
 
 public:
-    Model(const std::string& path);
+    Model(const std::string& path, const bool& gamma = false);
     ~Model();
 
     void draw(const Renderer& renderer, Shader& shader);
