@@ -428,6 +428,8 @@
     <None Include="src\test\test10\test10_obj.shader" />
     <None Include="src\test\test11\test11_light.shader" />
     <None Include="src\test\test11\test11_obj.shader" />
+    <None Include="src\test\test12\test12_light.shader" />
+    <None Include="src\test\test12\test12_obj.shader" />
     <None Include="src\test\test2\test2.shader" />
     <None Include="src\test\test3\test3.shader" />
     <None Include="src\test\test4\test4.shader" />

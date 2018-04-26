@@ -912,6 +912,8 @@
     <None Include="src\test\test11\test11_obj.shader" />
     <None Include="res\model\nanosuit.blend" />
     <None Include="res\model\nanosuit.mtl" />
+    <None Include="src\test\test12\test12_obj.shader" />
+    <None Include="src\test\test12\test12_light.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png">
