@@ -34,6 +34,7 @@ private:
     float fixed_delta_time_;        // 预计更新间隔时间
     float delta_time_;              // 实际更新间隔时间
 
+    bool cull_face_;                // 背面剔除
     bool v_sync_;                   // 垂直同步
 
     CursorMode cursor_mode_;        // 指针模式
@@ -51,6 +52,7 @@ public:
            const unsigned int& height,
            std::string title,
            const unsigned int& target_frame = 60,
+           const bool& cull_face = false,
            const bool& v_sync = true,
            const bool& debug_info = false);
     ~Window();
@@ -79,8 +81,26 @@ public:
         fixed_delta_time_ = 1.0f / target_frame;
     }
 
+    inline bool get_cull_face() const { return cull_face_; }
+    inline void set_cull_face(const bool cull_face)
+    {
+        cull_face_ = cull_face;
+        if (cull_face_)
+        {
+            GLCall(glEnable(GL_CULL_FACE));
+        }
+        else
+        {
+            GLCall(glDisable(GL_CULL_FACE));
+        }
+    }
+
     inline bool get_v_sync() const { return v_sync_; }
-    inline void set_v_sync(const bool v_sync) { v_sync_ = v_sync; }
+    inline void set_v_sync(const bool v_sync)
+    {
+        v_sync_ = v_sync;
+        glfwSwapInterval(v_sync_ ? 1 : 0);
+    }
 
     inline bool get_debug_info() const { return debug_info_; }
     inline void set_debug_info(const bool debug_info) { debug_info_ = debug_info; }

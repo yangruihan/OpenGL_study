@@ -4,6 +4,7 @@ Window::Window(const unsigned int& width,
                const unsigned int& height,
                std::string title,
                const unsigned int& target_frame,
+               const bool& cull_face,
                const bool& v_sync,
                const bool& debug_info)
     : width_(width), height_(height), 
@@ -12,7 +13,7 @@ Window::Window(const unsigned int& width,
       window_(nullptr), 
       update_func_(nullptr), fixed_update_func_(nullptr), render_func_(nullptr),
       cursor_mode_(CursorMode::disabled),
-      v_sync_(v_sync), debug_info_(debug_info)
+      cull_face_(cull_face), v_sync_(v_sync), debug_info_(debug_info)
 {
     init();
 }
@@ -105,9 +106,8 @@ bool Window::init()
 
     glfwSetFramebufferSizeCallback(window_, framebuffer_size_callback);
 
-    // 开启垂直同步
-    if (v_sync_)
-        glfwSwapInterval(1);
+    // 设置垂直同步
+    set_v_sync(v_sync_);
 
     if (glewInit() != GLEW_OK)
     {   
@@ -133,6 +133,9 @@ bool Window::init()
     // 开启 ALPHA 混合
     GLCall(glEnable(GL_BLEND));
     GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+
+    // 设置背面剔除
+    set_cull_face(cull_face_);
 
     // 设置指针模式
     set_cursor_mode(cursor_mode_);

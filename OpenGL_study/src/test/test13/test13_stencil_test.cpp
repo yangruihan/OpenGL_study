@@ -175,6 +175,7 @@ int main()
         glEnable(GL_DEPTH_TEST);
     });
 
+    window.set_cull_face(true);
     window.set_debug_info(true);
     window.start();
 
