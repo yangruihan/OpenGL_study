@@ -11,6 +11,7 @@ Window::Window(const unsigned int& width,
       target_frame_(target_frame), fixed_delta_time_(1.0 / target_frame), delta_time_(0), 
       window_(nullptr), 
       update_func_(nullptr), fixed_update_func_(nullptr), render_func_(nullptr),
+      cursor_mode_(CursorMode::disabled),
       v_sync_(v_sync), debug_info_(debug_info)
 {
     init();
@@ -58,6 +59,23 @@ void Window::end_of_frame() const
     GLCall(glfwPollEvents());
 }
 
+void Window::set_cursor_mode(const CursorMode mode)
+{
+    cursor_mode_ = mode;
+
+    switch (mode)
+    {
+    case CursorMode::disabled:
+        glfwSetInputMode(window_, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        break;
+    
+    case CursorMode::normal:
+    default:
+        glfwSetInputMode(window_, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        break;
+    }
+}
+
 bool Window::init()
 {
     /* Initialize the library */
@@ -94,12 +112,8 @@ bool Window::init()
     if (glewInit() != GLEW_OK)
     {   
         std::cout << "Window Create Error: glew init error" << std::endl;
+        ASSERT(false);
     }
-
-    std::cout << "--- Window Info ---" << std::endl;
-    std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
-    std::cout << "Target Frame: " << target_frame_ << std::endl;
-    std::cout << "------------------\n" << std::endl;
 
     // 设置视口
     GLCall(glViewport(0, 0, width_, height_));
@@ -119,6 +133,14 @@ bool Window::init()
     // 开启 ALPHA 混合
     GLCall(glEnable(GL_BLEND));
     GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+
+    // 设置指针模式
+    set_cursor_mode(cursor_mode_);
+
+    std::cout << "--- Window Info ---" << std::endl;
+    std::cout << "OpenGL Version: " << glGetString(GL_VERSION) << std::endl;
+    std::cout << "Target Frame: " << target_frame_ << std::endl;
+    std::cout << "------------------\n" << std::endl;
 
     return true;
 }

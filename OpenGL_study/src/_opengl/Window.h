@@ -17,6 +17,12 @@
 
 #include "Common.h"
 
+enum CursorMode
+{
+    normal,
+    disabled
+};
+
 class Window
 {
 private:
@@ -29,6 +35,8 @@ private:
     float delta_time_;              // 实际更新间隔时间
 
     bool v_sync_;                   // 垂直同步
+
+    CursorMode cursor_mode_;        // 指针模式
 
     GLFWwindow *window_;
 
@@ -56,10 +64,12 @@ public:
     void clear() const;
     void end_of_frame() const;
 
+
     // --- set && get ---//
     inline void set_update_func(const std::function<void(float)>& update_func)             { update_func_ = update_func; }
     inline void set_fixed_update_func(const std::function<void(float)>& fixed_update_func) { fixed_update_func_ = fixed_update_func; }
     inline void set_render_func(const std::function<void()>& render_func)                  { render_func_ = render_func; }
+    
     inline GLFWwindow* get_window() const { return window_; }
 
     inline int get_target_frame() const { return target_frame_; }
@@ -74,6 +84,13 @@ public:
 
     inline bool get_debug_info() const { return debug_info_; }
     inline void set_debug_info(const bool debug_info) { debug_info_ = debug_info; }
+
+    inline void set_cursor_pos_callback(const GLFWcursorposfun cbfun) const { glfwSetCursorPosCallback(window_, cbfun); }
+    inline void set_scroll_callback(const GLFWscrollfun cbfun) const        { glfwSetScrollCallback(window_, cbfun); }
+    inline void set_key_callback(const GLFWkeyfun cbfun) const              { glfwSetKeyCallback(window_, cbfun); }
+
+    inline CursorMode get_cursor_mode() const { return cursor_mode_; }
+    void set_cursor_mode(const CursorMode mode);
 
 private:
     bool init();        // 初始化
