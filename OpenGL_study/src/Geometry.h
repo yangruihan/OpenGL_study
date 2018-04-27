@@ -1,5 +1,41 @@
 #pragma once
 
+// ----- rect -----//
+
+// rect vertexs with normal buffer size
+unsigned int rect_v_b_size = 3 * 1 * 4 * sizeof(float);
+unsigned int rect_v_t_b_size = (3 + 2) * 4 * sizeof(float);
+
+/**
+ * Rectrangle vertexs
+ */
+float rect_vertexs[] = {
+    -100.0f, -100.0f,  0.0f,      // 0 
+     100.0f, -100.0f,  0.0f,      // 1 
+     100.0f,  100.0f,  0.0f,      // 2 
+    -100.0f,  100.0f,  0.0f,      // 3 
+};
+
+/**
+* Rectrangle vertexs
+*/
+float rect_vertexs_t[] = {
+    -100.0f, -100.0f,  0.0f,  0.0f,  0.0f,      // 0 
+     100.0f, -100.0f,  0.0f,  1.0f,  0.0f,      // 1 
+     100.0f,  100.0f,  0.0f,  1.0f,  1.0f,      // 2 
+    -100.0f,  100.0f,  0.0f,  0.0f,  1.0f,      // 3 
+};
+
+unsigned int rect_index[] = {
+    0, 1, 2,
+    2, 3, 0,
+};
+
+unsigned int rect_ib_count = 3 * 2;
+
+
+// ----- cube -----//
+
 // cube vertexs with normal buffer size
 unsigned int cube_v_b_size = 3 * 1 * 24 * sizeof(float);
 
@@ -10,8 +46,8 @@ unsigned int cube_v_n_b_size = 3 * 2 * 24 * sizeof(float);
 unsigned int cube_v_nt_b_size = (3 + 3 + 2) * 24 * sizeof(float);
 
 /**
-* Cube vertexs
-*/
+ * Cube vertexs
+ */
 float cube_vertexs[] = {
     -100.0f, -100.0f,  100.0f,      // 0 
      100.0f, -100.0f,  100.0f,      // 1 
@@ -68,15 +104,15 @@ float cube_vertexs_n[] = {
     -100.0f,  100.0f, -100.0f, -1.0f,  0.0f,  0.0f,    // 6     14
     -100.0f, -100.0f, -100.0f, -1.0f,  0.0f,  0.0f,    // 7     15
 
-     100.0f, -100.0f, -100.0f,  0.0f,  0.0f,  -1.0f,   // 4     16
-     100.0f,  100.0f, -100.0f,  0.0f,  0.0f,  -1.0f,   // 5     17
-    -100.0f,  100.0f, -100.0f,  0.0f,  0.0f,  -1.0f,   // 6     18
-    -100.0f, -100.0f, -100.0f,  0.0f,  0.0f,  -1.0f,   // 7     19
-
-    -100.0f, -100.0f,  100.0f,  0.0f, -1.0f,   0.0f,   // 0     20
-     100.0f, -100.0f,  100.0f,  0.0f, -1.0f,   0.0f,   // 1     21
-     100.0f, -100.0f, -100.0f,  0.0f, -1.0f,   0.0f,   // 4     22
-    -100.0f, -100.0f, -100.0f,  0.0f, -1.0f,   0.0f,   // 7     23
+     100.0f, -100.0f, -100.0f,  0.0f,  0.0f, -1.0f,    // 4     16
+     100.0f,  100.0f, -100.0f,  0.0f,  0.0f, -1.0f,    // 5     17
+    -100.0f,  100.0f, -100.0f,  0.0f,  0.0f, -1.0f,    // 6     18
+    -100.0f, -100.0f, -100.0f,  0.0f,  0.0f, -1.0f,    // 7     19
+                                                       
+    -100.0f, -100.0f,  100.0f,  0.0f, -1.0f,  0.0f,    // 0     20
+     100.0f, -100.0f,  100.0f,  0.0f, -1.0f,  0.0f,    // 1     21
+     100.0f, -100.0f, -100.0f,  0.0f, -1.0f,  0.0f,    // 4     22
+    -100.0f, -100.0f, -100.0f,  0.0f, -1.0f,  0.0f,    // 7     23
 };
 
 /**

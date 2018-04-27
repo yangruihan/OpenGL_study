@@ -54,7 +54,7 @@
     <ClCompile Include="src\Model.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\test\test13\test13_stencil_test.cpp">
+    <ClCompile Include="src\Application.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -917,6 +917,8 @@
     <None Include="src\test\test13\test13_light.shader" />
     <None Include="src\test\test13\test13_obj.shader" />
     <None Include="src\test\test13\test13_boarder.shader" />
+    <None Include="src\test\test14\test14_obj.shader" />
+    <None Include="src\test\test14\test14_light.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png">
@@ -977,6 +979,12 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="res\model\leg_showroom_spec.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\textures\blending_transparent_window.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\textures\grass.png">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>
