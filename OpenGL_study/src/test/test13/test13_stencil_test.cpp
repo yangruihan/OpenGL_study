@@ -9,6 +9,7 @@ bool first;
 bool mouse_focus = true;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 360.0f));
+Window window(640, 640, "test13");
 
 /**
 * process input
@@ -86,21 +87,19 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 */
 int main()
 {
-    Window window(640, 640, "test12");
-
     // set mouse mode
     if (mouse_focus)
-        glfwSetInputMode(window.get_window(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        window.set_cursor_mode(CursorMode::disabled);
 
     // add mouse callback
-    glfwSetCursorPosCallback(window.get_window(), mouse_callback);
+    window.set_cursor_pos_callback(mouse_callback);
     first = true;
 
     // mouse scroll callback
-    glfwSetScrollCallback(window.get_window(), scroll_callback);
+    window.set_scroll_callback(scroll_callback);
 
     // key callback
-    glfwSetKeyCallback(window.get_window(), key_callback);
+    window.set_key_callback(key_callback);
 
     auto proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 3000.0f);
     auto view = camera.get_view_matrix();
@@ -114,39 +113,18 @@ int main()
 
     VertexArray obj_va;
     obj_va.add_buffer(vertex_buffer, vertex_buffer_layout, index_buffer);
-    const auto obj_count = 8;
+    const auto obj_count = 1;
     glm::vec3 obj_pos[] = {
         {   0.0f,   0.0f,   0.0f },
-        { 150.0f,   0.0f,   0.0f },
-        {   0.0f, 350.0f,   0.0f },
-        {   0.0f,   0.0f, 250.0f },
-        { 450.0f, 450.0f,   0.0f },
-        { 450.0f,   0.0f, 450.0f },
-        {   0.0f, 450.0f, 450.0f },
-        { 450.0f, 450.0f, 450.0f }
     };
     glm::mat4 obj_model = glm::mat4(1.0f);
 
-    VertexArray light_va;
-    light_va.add_buffer(vertex_buffer, vertex_buffer_layout, index_buffer);
-    const auto light_count = 4;
-    glm::vec3 light_pos[] = {
-        {  520.0f,  650.0f,  500.0f },
-        { -520.0f, -650.0f, -500.0f },
-        { -520.0f,  550.0f,  650.0f },
-        {  620.0f, -450.0f, -500.0f },
-    };
-    glm::mat4 light_model = glm::mat4(1.0f);
+    Shader obj_shader("src/test/test13/test13_obj.shader");
+    obj_shader.set_int("u_Texture", 0);
 
-    Shader obj_shader("src/test/test12/test12_obj.shader");
-    // set mvp
-    obj_shader.set_mat4f("u_Proj", proj);
-    obj_shader.set_mat4f("u_View", camera.get_view_matrix());
+    Shader boarder_shader("src/test/test13/test13_boarder.shader");
 
     Texture texture0("res/textures/container.png");
-    Texture texture1("res/textures/container_specular.png");
-
-    Shader light_shader("src/test/test12/test12_light.shader");
 
     Renderer renderer;
     renderer.set_clear_color(glm::vec4(0.1f));
@@ -156,39 +134,45 @@ int main()
         process_input(window.get_window(), delta_time);
     });
 
+    glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
+
     window.set_render_func([&] ()
     {
         texture0.bind();
-        texture1.bind(1);
     
         proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 3000.0f);
         view = camera.get_view_matrix();
 
-        // renderer object
+        glStencilFunc(GL_ALWAYS, 1, 0xff);
+        glStencilMask(0xff);
+
         for (auto i = 0; i < obj_count; i++)
         {
             obj_model = glm::translate(glm::mat4(1.0f), obj_pos[i]);
-    
-            const auto angle = 20.0f * i;
-            obj_model = glm::rotate(obj_model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
-            obj_model = glm::scale(obj_model, glm::vec3(0.3f));
-    
+
             obj_shader.set_mat4f("u_Proj", proj);
             obj_shader.set_mat4f("u_View", view);
             obj_shader.set_mat4f("u_Model", obj_model);
             renderer.draw(obj_va, obj_shader);
         }
-    
-        // renderer light
-        for (auto i = 0; i < light_count; i++)
+
+        glStencilFunc(GL_NOTEQUAL, 1, 0xff);
+        glStencilMask(0x00);
+        glDisable(GL_DEPTH_TEST);
+
+        for (auto i = 0; i < obj_count; i++)
         {
-            light_model = glm::translate(glm::mat4(1.0f), light_pos[i]);
-            light_model = glm::scale(light_model, glm::vec3(0.15f));
-            light_shader.set_mat4f("u_Proj", proj);
-            light_shader.set_mat4f("u_View", view);
-            light_shader.set_mat4f("u_Model", light_model);
-            renderer.draw(light_va, light_shader);
+            obj_model = glm::translate(glm::mat4(1.0f), obj_pos[i]);
+            obj_model = glm::scale(obj_model, glm::vec3(1.03f));
+
+            boarder_shader.set_mat4f("u_Proj", proj);
+            boarder_shader.set_mat4f("u_View", view);
+            boarder_shader.set_mat4f("u_Model", obj_model);
+            renderer.draw(obj_va, boarder_shader);
         }
+
+        glStencilMask(0xff);
+        glEnable(GL_DEPTH_TEST);
     });
 
     window.set_debug_info(true);

@@ -54,7 +54,7 @@
     <ClCompile Include="src\Model.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\Application.cpp">
+    <ClCompile Include="src\test\test13\test13_stencil_test.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -914,6 +914,9 @@
     <None Include="res\model\nanosuit.mtl" />
     <None Include="src\test\test12\test12_obj.shader" />
     <None Include="src\test\test12\test12_light.shader" />
+    <None Include="src\test\test13\test13_light.shader" />
+    <None Include="src\test\test13\test13_obj.shader" />
+    <None Include="src\test\test13\test13_boarder.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png">
