@@ -54,6 +54,9 @@
     <ClCompile Include="src\Model.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\_opengl\FrameBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="src\Application.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -540,6 +543,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\Model.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\_opengl\FrameBuffer.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

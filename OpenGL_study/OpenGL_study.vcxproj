@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -131,6 +131,7 @@
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\libs\glm\detail\glm.cpp" />
     <ClCompile Include="src\libs\stb\stb_image.cpp" />
+    <ClCompile Include="src\_opengl\FrameBuffer.cpp" />
     <ClCompile Include="src\_opengl\Shader.cpp" />
     <ClCompile Include="src\_opengl\IndexBuffer.cpp" />
     <ClCompile Include="src\_opengl\Renderer.cpp" />
@@ -294,6 +295,7 @@
     <ClInclude Include="src\libs\glm\vector_relational.hpp" />
     <ClInclude Include="src\libs\stb\stb_image.h" />
     <ClInclude Include="src\MOS_stb_image.h" />
+    <ClInclude Include="src\_opengl\FrameBuffer.h" />
     <ClInclude Include="src\_opengl\Shader.h" />
     <ClInclude Include="src\_opengl\IndexBuffer.h" />
     <ClInclude Include="src\_opengl\Renderer.h" />
