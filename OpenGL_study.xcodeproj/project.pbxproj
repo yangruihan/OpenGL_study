@@ -39,7 +39,7 @@
 		8D77191E2092338500A2F39F /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D77191C2092338500A2F39F /* stb_image.cpp */; };
 		8D77191F2092338500A2F39F /* stb_image.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D77191D2092338500A2F39F /* stb_image.h */; };
 		8D77192320923C2200A2F39F /* libassimp.4.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D77192220923C2200A2F39F /* libassimp.4.1.0.dylib */; };
-		8D77192520923CE800A2F39F /* test12_z_test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D77192420923CE800A2F39F /* test12_z_test.cpp */; };
+		8D8BC5FF20961506008E2972 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D8BC5FE20961506008E2972 /* Application.cpp */; };
 		8DCA1C72208AE7EC009F737A /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCA1C71208AE7EC009F737A /* libglfw.3.3.dylib */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +94,23 @@
 		8D7719202092339700A2F39F /* test10_multi_light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test10_multi_light.cpp; path = OpenGL_study/src/test/test10/test10_multi_light.cpp; sourceTree = "<group>"; };
 		8D77192220923C2200A2F39F /* libassimp.4.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libassimp.4.1.0.dylib; path = Dependencies/ASSIMP/libs/libassimp.4.1.0.dylib; sourceTree = "<group>"; };
 		8D77192420923CE800A2F39F /* test12_z_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test12_z_test.cpp; path = OpenGL_study/src/test/test12/test12_z_test.cpp; sourceTree = "<group>"; };
+		8D8BC5D92096129A008E2972 /* test14_blend.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test14_blend.cpp; path = OpenGL_study/src/test/test14/test14_blend.cpp; sourceTree = "<group>"; };
+		8D8BC5DF209613A0008E2972 /* test1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test1.cpp; path = OpenGL_study/src/test/test1/test1.cpp; sourceTree = "<group>"; };
+		8D8BC5E1209613C3008E2972 /* test2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test2.cpp; path = OpenGL_study/src/test/test2/test2.cpp; sourceTree = "<group>"; };
+		8D8BC5E3209613D5008E2972 /* test3.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test3.cpp; path = OpenGL_study/src/test/test3/test3.cpp; sourceTree = "<group>"; };
+		8D8BC5E5209613E3008E2972 /* test4.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test4.cpp; path = OpenGL_study/src/test/test4/test4.cpp; sourceTree = "<group>"; };
+		8D8BC5E7209613F2008E2972 /* test5_use_camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test5_use_camera.cpp; path = OpenGL_study/src/test/test5/test5_use_camera.cpp; sourceTree = "<group>"; };
+		8D8BC5E920961401008E2972 /* test6_2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test6_2.cpp; path = OpenGL_study/src/test/test6/test6_2.cpp; sourceTree = "<group>"; };
+		8D8BC5EA20961401008E2972 /* test6.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test6.cpp; path = OpenGL_study/src/test/test6/test6.cpp; sourceTree = "<group>"; };
+		8D8BC5ED2096140E008E2972 /* test7.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test7.cpp; path = OpenGL_study/src/test/test7/test7.cpp; sourceTree = "<group>"; };
+		8D8BC5EE2096140E008E2972 /* test7_2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test7_2.cpp; path = OpenGL_study/src/test/test7/test7_2.cpp; sourceTree = "<group>"; };
+		8D8BC5F120961421008E2972 /* test8.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test8.cpp; path = OpenGL_study/src/test/test8/test8.cpp; sourceTree = "<group>"; };
+		8D8BC5F320961431008E2972 /* test9_spot_light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test9_spot_light.cpp; path = OpenGL_study/src/test/test9/test9_spot_light.cpp; sourceTree = "<group>"; };
+		8D8BC5F420961431008E2972 /* test9_directional_light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test9_directional_light.cpp; path = OpenGL_study/src/test/test9/test9_directional_light.cpp; sourceTree = "<group>"; };
+		8D8BC5F520961431008E2972 /* test9_point_light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test9_point_light.cpp; path = OpenGL_study/src/test/test9/test9_point_light.cpp; sourceTree = "<group>"; };
+		8D8BC5F92096146D008E2972 /* test11_model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test11_model.cpp; path = OpenGL_study/src/test/test11/test11_model.cpp; sourceTree = "<group>"; };
+		8D8BC5FB20961480008E2972 /* test13_stencil_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test13_stencil_test.cpp; path = OpenGL_study/src/test/test13/test13_stencil_test.cpp; sourceTree = "<group>"; };
+		8D8BC5FE20961506008E2972 /* Application.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Application.cpp; path = OpenGL_study/src/Application.cpp; sourceTree = "<group>"; };
 		8DCA1C6F208AE78E009F737A /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
 		8DCA1C71208AE7EC009F737A /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../usr/local/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,37 +133,11 @@
 		8D04F4372087AB8D00078D63 = {
 			isa = PBXGroup;
 			children = (
-				8D77192420923CE800A2F39F /* test12_z_test.cpp */,
-				8D7719202092339700A2F39F /* test10_multi_light.cpp */,
-				8D77191C2092338500A2F39F /* stb_image.cpp */,
-				8D77191D2092338500A2F39F /* stb_image.h */,
-				8D77190C2092337200A2F39F /* Camera.cpp */,
-				8D7719082092337100A2F39F /* Camera.h */,
-				8D7719092092337200A2F39F /* Common.h */,
-				8D7719102092337300A2F39F /* Geometry.h */,
-				8D77190F2092337200A2F39F /* Header.h */,
-				8D7719072092337100A2F39F /* Mesh.cpp */,
-				8D7719062092337100A2F39F /* Mesh.h */,
-				8D77190A2092337200A2F39F /* Model.cpp */,
-				8D77190B2092337200A2F39F /* Model.h */,
-				8D77190D2092337200A2F39F /* MOS_glm.h */,
-				8D77190E2092337200A2F39F /* MOS_stb_image.h */,
-				8D7718ED2092335800A2F39F /* IndexBuffer.cpp */,
-				8D7718F02092335800A2F39F /* IndexBuffer.h */,
-				8D7718EE2092335800A2F39F /* Renderer.cpp */,
-				8D7718EB2092335700A2F39F /* Renderer.h */,
-				8D7718EF2092335800A2F39F /* Shader.cpp */,
-				8D7718F12092335800A2F39F /* Shader.h */,
-				8D7718F52092335900A2F39F /* Texture.cpp */,
-				8D7718E72092335700A2F39F /* Texture.h */,
-				8D7718E82092335700A2F39F /* VertexArray.cpp */,
-				8D7718F22092335800A2F39F /* VertexArray.h */,
-				8D7718F32092335800A2F39F /* VertexBuffer.cpp */,
-				8D7718E62092335700A2F39F /* VertexBuffer.h */,
-				8D7718EA2092335700A2F39F /* VertexBufferLayout.cpp */,
-				8D7718EC2092335700A2F39F /* VertexBufferLayout.h */,
-				8D7718E92092335700A2F39F /* Window.cpp */,
-				8D7718F42092335800A2F39F /* Window.h */,
+				8D8BC5FE20961506008E2972 /* Application.cpp */,
+				8D8BC5DE2096133C008E2972 /* _common */,
+				8D8BC5DD209612FC008E2972 /* test */,
+				8D8BC5DC209612ED008E2972 /* libs */,
+				8D8BC5DB209612D0008E2972 /* _opengl */,
 				8D04F4422087AB8D00078D63 /* OpenGL_study */,
 				8D04F4412087AB8D00078D63 /* Products */,
 				8D04F44C2087AC5E00078D63 /* Frameworks */,
@@ -181,6 +172,81 @@
 				8D04F44D2087AC5E00078D63 /* OpenGL.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8D8BC5DB209612D0008E2972 /* _opengl */ = {
+			isa = PBXGroup;
+			children = (
+				8D7718ED2092335800A2F39F /* IndexBuffer.cpp */,
+				8D7718F02092335800A2F39F /* IndexBuffer.h */,
+				8D7718EE2092335800A2F39F /* Renderer.cpp */,
+				8D7718EB2092335700A2F39F /* Renderer.h */,
+				8D7718EF2092335800A2F39F /* Shader.cpp */,
+				8D7718F12092335800A2F39F /* Shader.h */,
+				8D7718F52092335900A2F39F /* Texture.cpp */,
+				8D7718E72092335700A2F39F /* Texture.h */,
+				8D7718E82092335700A2F39F /* VertexArray.cpp */,
+				8D7718F22092335800A2F39F /* VertexArray.h */,
+				8D7718F32092335800A2F39F /* VertexBuffer.cpp */,
+				8D7718E62092335700A2F39F /* VertexBuffer.h */,
+				8D7718EA2092335700A2F39F /* VertexBufferLayout.cpp */,
+				8D7718EC2092335700A2F39F /* VertexBufferLayout.h */,
+				8D7718E92092335700A2F39F /* Window.cpp */,
+				8D7718F42092335800A2F39F /* Window.h */,
+			);
+			name = _opengl;
+			sourceTree = "<group>";
+		};
+		8D8BC5DC209612ED008E2972 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				8D77191C2092338500A2F39F /* stb_image.cpp */,
+				8D77191D2092338500A2F39F /* stb_image.h */,
+			);
+			name = libs;
+			sourceTree = "<group>";
+		};
+		8D8BC5DD209612FC008E2972 /* test */ = {
+			isa = PBXGroup;
+			children = (
+				8D8BC5DF209613A0008E2972 /* test1.cpp */,
+				8D8BC5E1209613C3008E2972 /* test2.cpp */,
+				8D8BC5E3209613D5008E2972 /* test3.cpp */,
+				8D8BC5E5209613E3008E2972 /* test4.cpp */,
+				8D8BC5E7209613F2008E2972 /* test5_use_camera.cpp */,
+				8D8BC5E920961401008E2972 /* test6_2.cpp */,
+				8D8BC5EA20961401008E2972 /* test6.cpp */,
+				8D8BC5EE2096140E008E2972 /* test7_2.cpp */,
+				8D8BC5ED2096140E008E2972 /* test7.cpp */,
+				8D8BC5F120961421008E2972 /* test8.cpp */,
+				8D8BC5F420961431008E2972 /* test9_directional_light.cpp */,
+				8D8BC5F520961431008E2972 /* test9_point_light.cpp */,
+				8D8BC5F320961431008E2972 /* test9_spot_light.cpp */,
+				8D7719202092339700A2F39F /* test10_multi_light.cpp */,
+				8D8BC5F92096146D008E2972 /* test11_model.cpp */,
+				8D77192420923CE800A2F39F /* test12_z_test.cpp */,
+				8D8BC5FB20961480008E2972 /* test13_stencil_test.cpp */,
+				8D8BC5D92096129A008E2972 /* test14_blend.cpp */,
+			);
+			name = test;
+			sourceTree = "<group>";
+		};
+		8D8BC5DE2096133C008E2972 /* _common */ = {
+			isa = PBXGroup;
+			children = (
+				8D7719072092337100A2F39F /* Mesh.cpp */,
+				8D7719062092337100A2F39F /* Mesh.h */,
+				8D7719092092337200A2F39F /* Common.h */,
+				8D7719102092337300A2F39F /* Geometry.h */,
+				8D77190F2092337200A2F39F /* Header.h */,
+				8D77190C2092337200A2F39F /* Camera.cpp */,
+				8D7719082092337100A2F39F /* Camera.h */,
+				8D77190A2092337200A2F39F /* Model.cpp */,
+				8D77190B2092337200A2F39F /* Model.h */,
+				8D77190D2092337200A2F39F /* MOS_glm.h */,
+				8D77190E2092337200A2F39F /* MOS_stb_image.h */,
+			);
+			name = _common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,7 +305,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D77192520923CE800A2F39F /* test12_z_test.cpp in Sources */,
+				8D8BC5FF20961506008E2972 /* Application.cpp in Sources */,
 				8D77191E2092338500A2F39F /* stb_image.cpp in Sources */,
 				8D77191F2092338500A2F39F /* stb_image.h in Sources */,
 				8D7719112092337300A2F39F /* Mesh.h in Sources */,
