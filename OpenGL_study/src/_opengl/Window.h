@@ -68,6 +68,14 @@ public:
 
 
     // --- set && get ---//
+    inline unsigned int get_width() const { return width_; }
+    inline unsigned int get_height() const { return height_; }
+    inline void get_size(unsigned int& width, unsigned int& height)
+    {
+        width = width_;
+        height = height_;
+    }
+    
     inline void set_update_func(const std::function<void(float)>& update_func)             { update_func_ = update_func; }
     inline void set_fixed_update_func(const std::function<void(float)>& fixed_update_func) { fixed_update_func_ = fixed_update_func; }
     inline void set_render_func(const std::function<void()>& render_func)                  { render_func_ = render_func; }
