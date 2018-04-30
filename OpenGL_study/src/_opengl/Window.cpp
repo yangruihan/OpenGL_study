@@ -6,6 +6,7 @@ Window::Window(const unsigned int& width,
                const unsigned int& target_frame,
                const bool& cull_face,
                const bool& v_sync,
+               const unsigned int& msaa,
                const bool& debug_info)
     : width_(width), height_(height), 
       title_(std::move(title)),
@@ -13,7 +14,7 @@ Window::Window(const unsigned int& width,
       window_(nullptr), 
       update_func_(nullptr), fixed_update_func_(nullptr), render_func_(nullptr),
       cursor_mode_(CursorMode::disabled),
-      cull_face_(cull_face), v_sync_(v_sync), debug_info_(debug_info)
+      cull_face_(cull_face), v_sync_(v_sync), msaa_(msaa), debug_info_(debug_info)
 {
     init();
 }
@@ -91,6 +92,12 @@ bool Window::init()
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
+    // 开启 MSAA
+    if (msaa_ > 0)
+    {
+        glfwWindowHint(GLFW_SAMPLES, msaa_);
+    }
+
     /* Create a windowed mode window and its OpenGL context */
     window_ = glfwCreateWindow(width_,
                                height_,
@@ -137,6 +144,9 @@ bool Window::init()
     // 设置背面剔除
     set_cull_face(cull_face_);
 
+    if (msaa_ > 0)
+        GLCall(glEnable(GL_MULTISAMPLE));
+    
     // 设置指针模式
     set_cursor_mode(cursor_mode_);
 

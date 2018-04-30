@@ -37,14 +37,15 @@ class Window
 private:
     unsigned int width_;            // 宽度
     unsigned int height_;           // 高度
-    std::string title_;             // 标题
+    std::string  title_;            // 标题
 
     unsigned int target_frame_;     // 目标帧率
     float fixed_delta_time_;        // 预计更新间隔时间
     float delta_time_;              // 实际更新间隔时间
 
-    bool cull_face_;                // 背面剔除
-    bool v_sync_;                   // 垂直同步
+    bool         cull_face_;        // 背面剔除
+    bool         v_sync_;           // 垂直同步
+    unsigned int msaa_;             // 开启多重采样缓冲
 
     CursorMode cursor_mode_;        // 指针模式
 
@@ -64,6 +65,7 @@ public:
            const unsigned int& target_frame = 60,
            const bool& cull_face = false,
            const bool& v_sync = true,
+           const unsigned int& msaa = 0,
            const bool& debug_info = false);
     ~Window();
 

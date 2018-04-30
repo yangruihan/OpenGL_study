@@ -1,14 +1,11 @@
 #include "Header.h"
 
-float delta_time = 0.0f; // 当前帧与上一帧的时间差
-float last_frame = 0.0f; // 上一帧的时间
-
 Camera camera(glm::vec3(0.0f, 0.0f, 360.0f));
 
 /**
 * process input
 */
-void process_input(GLFWwindow *window)
+void process_input(GLFWwindow *window, float delta_time)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
@@ -54,7 +51,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 int main()
 {
-    Window window(480, 480, "test5");
+    Window window(480, 480, "test19", 60, false, true, 16);
 
     // set mouse mode
     glfwSetInputMode(window.get_window(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
@@ -106,29 +103,24 @@ int main()
     auto model = glm::rotate(glm::mat4(1.0f), glm::radians(45.0f), glm::vec3(1.0f, 0.0f, 1.0f));
 
     Shader shader("src/test/test5/test5.shader");
-    shader.set_vec4f("u_Color", 1, 1, 1, 1);
     shader.set_mat4f("u_MVP", proj * view * model);
 
-    Renderer renderer;
 
-    auto current_frame = 0.0f;
-
-    while (window.show())
+    window.set_update_func([&](float deltatime)
     {
-        current_frame = glfwGetTime();
-        delta_time = current_frame - last_frame;
-        last_frame = current_frame;
+        process_input(window.get_window(), deltatime);
+    });
 
-        process_input(window.get_window());
-
-        renderer.clear();
-
+    window.set_render_func([&]()
+    {
         proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 3000.0f);
         view = camera.get_view_matrix();
         shader.set_mat4f("u_MVP", proj * view * model);
-        renderer.draw(vertex_array, shader);
+        window.draw(vertex_array, shader);
+    });
 
-        window.end_of_frame();
-    }
+    window.set_debug_info(true);
+    window.start();
+
     return 0;
 }

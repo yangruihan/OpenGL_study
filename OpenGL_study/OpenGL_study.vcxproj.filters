@@ -945,6 +945,7 @@
     <None Include="src\test\test15\test15_cube.shader" />
     <None Include="src\test\test15\test15_rect.shader" />
     <None Include="src\test\test18\test18_cube_normal.shader" />
+    <None Include="src\test\test19\test19.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png">
