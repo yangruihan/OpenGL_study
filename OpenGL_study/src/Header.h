@@ -8,6 +8,7 @@
 #include "Renderer.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "CubeTexture.h"
 #include "VertexArray.h"
 #include "VertexBuffer.h"
 #include "VertexBufferLayout.h"
