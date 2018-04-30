@@ -28,8 +28,8 @@ public:
 
     void clear() const;
     void draw(const VertexArray& va, const Shader& shader) const;
-    void draw(Mesh& mesh, Shader& shader);
-    void draw(Model& model, Shader& shader);
+    void draw(Mesh& mesh, Shader& shader) const;
+    void draw(Model& model, Shader& shader) const;
 
     void set_clear_color(glm::vec4 color = glm::vec4(0.0f));
 };

@@ -140,7 +140,6 @@ int main()
     UniformBuffer uniform_buffer(2 * sizeof(glm::mat4), 0);
     uniform_buffer.put_data(sizeof(glm::mat4), glm::value_ptr(proj));
 
-    Renderer renderer;
     cube_model = glm::translate(glm::mat4(1.0f), cube_pos);
     cube_model = glm::rotate(cube_model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
@@ -156,11 +155,11 @@ int main()
 
         // render cube
         cube_shader.set_mat4f("u_Model", cube_model);
-        renderer.draw(cube_va, cube_shader);
+        window.draw(cube_va, cube_shader);
 
         // render normal line
         cube_normal_shader.set_mat4f("u_Model", cube_model);
-        renderer.draw(cube_va, cube_normal_shader);
+        window.draw(cube_va, cube_normal_shader);
     });
 
     window.set_debug_info(true);

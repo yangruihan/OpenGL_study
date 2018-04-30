@@ -48,7 +48,7 @@ void Window::start()
 
 void Window::clear() const
 {
-    GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT));
+    renderer_.clear();
 }
 
 void Window::end_of_frame() const
@@ -199,9 +199,23 @@ void Window::main_loop()
 #else
             Sleep(sleep_time);
 #endif
-
         }
     }
+}
+
+void Window::draw(const VertexArray& va, const Shader& shader) const
+{
+    renderer_.draw(va, shader);
+}
+
+void Window::draw(Mesh& mesh, Shader& shader) const
+{
+    renderer_.draw(mesh, shader);
+}
+
+void Window::draw(Model& model, Shader& shader) const
+{
+    renderer_.draw(model, shader);
 }
 
 /**

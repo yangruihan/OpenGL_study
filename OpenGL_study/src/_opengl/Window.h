@@ -10,12 +10,21 @@
 #include <iomanip>
 
 #ifdef __APPLE__
-#include <unistd.h>
+    #include <unistd.h>
 #else
-#include <Windows.h>
+    #include <Windows.h>
 #endif
 
 #include "Common.h"
+#include "Model.h"
+#include "Mesh.h"
+#include "Shader.h"
+#include "VertexArray.h"
+
+class Model;
+class Mesh;
+class Shader;
+class VertexArray;
 
 enum CursorMode
 {
@@ -40,6 +49,7 @@ private:
     CursorMode cursor_mode_;        // 指针模式
 
     GLFWwindow *window_;
+    Renderer renderer_;
 
     std::function<void(const float)> update_func_;
     std::function<void(const float)> fixed_update_func_;
@@ -66,8 +76,12 @@ public:
     void clear() const;
     void end_of_frame() const;
 
+    // --- draw --- //
+    void draw(const VertexArray& va, const Shader& shader) const;
+    void draw(Mesh& mesh, Shader& shader) const;
+    void draw(Model& model, Shader& shader) const;
 
-    // --- set && get ---//
+    // --- set && get --- //
     inline unsigned int get_width() const { return width_; }
     inline unsigned int get_height() const { return height_; }
     inline void get_size(unsigned int& width, unsigned int& height)

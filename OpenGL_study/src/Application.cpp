@@ -55,16 +55,18 @@ int main()
     vertex_array.unbind();
     shader.unbind();
 
-    Renderer renderer;
-
-    while (window.show())
+    window.set_update_func([&](float deltatime)
     {
         process_input(window.get_window());
+    });
 
-        renderer.draw(vertex_array, shader);
+    window.set_render_func([&]()
+    {
+        window.draw(vertex_array, shader);
+    });
 
-        window.end_of_frame();
-    }
+    window.set_debug_info(true);
+    window.start();
 
     return 0;
 }

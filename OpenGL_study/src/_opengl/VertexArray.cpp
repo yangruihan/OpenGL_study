@@ -37,6 +37,9 @@ void VertexArray::add_buffer(VertexBuffer&       vertex_buffer,
                                      vertex_buffer_layout.get_stride(),
                                      reinterpret_cast<const void*>(offset)));
 
+        if (elements[i].divisor != 0)
+            GLCall(glVertexAttribDivisor(i, elements[i].divisor));
+
         offset += elements[i].count * VertexBufferLayoutElement::get_type_size(elements[i].type);
     }
 

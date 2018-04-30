@@ -7,9 +7,10 @@
 
 struct VertexBufferLayoutElement
 {
-    unsigned int type;
-    unsigned int count;
-    unsigned char normalized;
+    unsigned int  type;         // 类型
+    unsigned int  count;        // 数量
+    unsigned char normalized;   // 是否需要归一化
+    unsigned int  divisor;      // 除数
 
     static unsigned int get_type_size(unsigned int type)
     {
@@ -37,7 +38,7 @@ public:
     ~VertexBufferLayout();
 
     template <typename T>
-    void push(unsigned count)
+    void push(unsigned count, const unsigned int divisor = 0)
     {
         ASSERT(false);
     }
@@ -47,22 +48,22 @@ public:
 };
 
 template <>
-inline void VertexBufferLayout::push<float>(unsigned count)
+inline void VertexBufferLayout::push<float>(unsigned count, const unsigned int divisor)
 {
-    elements_.push_back({ GL_FLOAT, count, GL_FALSE });
+    elements_.push_back({ GL_FLOAT, count, GL_FALSE, divisor });
     stride_ += count * VertexBufferLayoutElement::get_type_size(GL_FLOAT);
 }
 
 template <>
-inline void VertexBufferLayout::push<unsigned>(unsigned count)
+inline void VertexBufferLayout::push<unsigned>(unsigned count, const unsigned int divisor)
 {
-    elements_.push_back({ GL_UNSIGNED_INT, count, GL_FALSE });
+    elements_.push_back({ GL_UNSIGNED_INT, count, GL_FALSE, divisor });
     stride_ += count * VertexBufferLayoutElement::get_type_size(GL_UNSIGNED_INT);
 }
 
 template <>
-inline void VertexBufferLayout::push<unsigned char>(unsigned count)
+inline void VertexBufferLayout::push<unsigned char>(unsigned count, const unsigned int divisor)
 {
-    elements_.push_back({ GL_UNSIGNED_BYTE, count, GL_TRUE });
+    elements_.push_back({ GL_UNSIGNED_BYTE, count, GL_TRUE, divisor });
     stride_ += count * VertexBufferLayoutElement::get_type_size(GL_UNSIGNED_BYTE);
 }

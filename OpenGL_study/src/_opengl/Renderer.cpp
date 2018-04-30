@@ -3,7 +3,6 @@
 Renderer::Renderer()
     : clear_color_(glm::vec4(0.0f))
 {
-    GLCall(glClearColor(clear_color_.x, clear_color_.y, clear_color_.z, clear_color_.w));
 }
 
 Renderer::~Renderer() = default;
@@ -25,12 +24,12 @@ void Renderer::draw(const VertexArray& va, const Shader& shader) const
     va.unbind();
 }
 
-void Renderer::draw(Mesh& mesh, Shader& shader)
+void Renderer::draw(Mesh& mesh, Shader& shader) const
 {
     mesh.draw(*this, shader);
 }
 
-void Renderer::draw(Model& model, Shader& shader)
+void Renderer::draw(Model& model, Shader& shader) const
 {
     model.draw(*this, shader);
 }
