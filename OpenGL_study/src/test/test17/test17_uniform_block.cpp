@@ -9,7 +9,7 @@ bool first;
 bool mouse_focus = true;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 360.0f));
-Window window(640, 640, "test15");
+Window window(640, 640, "test17");
 
 /**
 * process input
