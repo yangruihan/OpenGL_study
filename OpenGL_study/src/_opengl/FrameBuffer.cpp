@@ -1,12 +1,13 @@
 #include "FrameBuffer.h"
 
 FrameBuffer::FrameBuffer()
-    :attach_depth_texture_(-1),
-     attach_stencil_texture_(-1),
-     attach_depth_stencil_texture_(-1),
-     attach_depth_rbo_(-1),
-     attach_stencil_rbo_(-1),
-     attach_depth_stencil_rbo_(-1)
+    : renderer_id_(0),
+      attach_depth_texture_(-1),
+      attach_stencil_texture_(-1),
+      attach_depth_stencil_texture_(-1),
+      attach_depth_rbo_(-1),
+      attach_stencil_rbo_(-1),
+      attach_depth_stencil_rbo_(-1)
 {
     GLCall(glGenFramebuffers(1, &renderer_id_));
 }
@@ -89,7 +90,7 @@ void FrameBuffer::add_texture_attachment(const FB_ATTACHMENT_TYPE& type,
         }
     }
     
-    check();
+    ASSERT(check());
     GLCall(glBindTexture(GL_TEXTURE_2D, 0));
     unbind();
 }
@@ -151,7 +152,7 @@ void FrameBuffer::add_render_buffer_attachment(const FB_ATTACHMENT_TYPE& type,
         }
     }
     
-    check();
+    ASSERT(check());
     GLCall(glBindRenderbuffer(GL_RENDERBUFFER, 0));
     unbind();
 }

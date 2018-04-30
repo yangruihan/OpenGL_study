@@ -176,7 +176,7 @@ int main()
                                                       window.get_height() / 100.0f,
                                                       1.0f));
 
-        // step one
+        // 将内容渲染到自己创建的FrameBuffer
         framebuffer.bind();
         texture0.bind();
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -188,7 +188,8 @@ int main()
         cube_shader.set_mat4f("u_View", view);
         cube_shader.set_mat4f("u_Model", cube_model);
         renderer.draw(cube_va, cube_shader);
-        
+
+        // 将自己创建的FrameBuffer绑定的Texture渲染到默认FrameBuffer中
         framebuffer.unbind();
         framebuffer.bind_texture(FB_ATTACHMENT_TYPE::Color);
         glClearColor(1.0f, 1.0f, 1.0f, 1.0f);

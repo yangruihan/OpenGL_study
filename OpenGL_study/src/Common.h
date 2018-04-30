@@ -3,10 +3,14 @@
 #include <GL/glew.h>
 #include <iostream>
 
-#ifdef __APPLE__
-    #define ASSERT(x) assert(x)
+#ifdef DEBUG
+    #ifdef __APPLE__
+        #define ASSERT(x) assert(x)
+    #else
+        #define ASSERT(x) if (!(x)) __debugbreak();
+    #endif
 #else
-    #define ASSERT(x) if (!(x)) __debugbreak();
+    #define ASSERT(x) x
 #endif
 
 #ifdef DEBUG
