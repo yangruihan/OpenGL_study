@@ -15,9 +15,9 @@ VertexBuffer::VertexBuffer(const VertexBuffer& other)
 
 VertexBuffer::~VertexBuffer()
 {
-    renderer_id_= 0;
-    unbind();
     GLCall(glDeleteBuffers(1, &renderer_id_));
+    unbind();
+    renderer_id_= 0;
 }
 
 void VertexBuffer::bind() const

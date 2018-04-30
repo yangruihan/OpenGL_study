@@ -18,6 +18,7 @@
 #include "Mesh.h"
 #include "Model.h"
 #include "FrameBuffer.h"
+#include "UniformBuffer.h"
 
 #include "MOS_glm.h"
 #include "MOS_stb_image.h"

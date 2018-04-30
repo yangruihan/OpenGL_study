@@ -15,6 +15,8 @@ FrameBuffer::FrameBuffer()
 FrameBuffer::~FrameBuffer()
 {
     GLCall(glDeleteFramebuffers(1, &renderer_id_));
+    unbind();
+    renderer_id_ = 0;
 }
 
 void FrameBuffer::bind() const

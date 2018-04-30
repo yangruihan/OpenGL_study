@@ -60,6 +60,9 @@
     <ClCompile Include="src\_opengl\Shader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="src\_opengl\UniformBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="src\Application.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -551,6 +554,12 @@
     <ClInclude Include="src\_opengl\CubeTexture.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="src\_opengl\Shader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\_opengl\UniformBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\libs\glm\detail\func_common.inl">
@@ -932,6 +941,8 @@
     <None Include="src\test\test15\test15_cube.shader" />
     <None Include="src\test\test16\test16_cube.shader" />
     <None Include="src\test\test16\test16_skybox.shader" />
+    <None Include="src\test\test17\test17_cube.shader" />
+    <None Include="src\test\test17\test17_skybox.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png">

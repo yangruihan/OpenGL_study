@@ -136,6 +136,7 @@
     <ClCompile Include="src\_opengl\IndexBuffer.cpp" />
     <ClCompile Include="src\_opengl\Renderer.cpp" />
     <ClCompile Include="src\_opengl\Shader.cpp" />
+    <ClCompile Include="src\_opengl\UniformBuffer.cpp" />
     <ClCompile Include="src\_opengl\VertexBuffer.cpp" />
     <ClCompile Include="src\_opengl\VertexArray.cpp" />
     <ClCompile Include="src\_opengl\VertexBufferLayout.cpp" />
@@ -300,6 +301,8 @@
     <ClInclude Include="src\_opengl\FrameBuffer.h" />
     <ClInclude Include="src\_opengl\IndexBuffer.h" />
     <ClInclude Include="src\_opengl\Renderer.h" />
+    <ClInclude Include="src\_opengl\Shader.h" />
+    <ClInclude Include="src\_opengl\UniformBuffer.h" />
     <ClInclude Include="src\_opengl\VertexBuffer.h" />
     <ClInclude Include="src\_opengl\VertexArray.h" />
     <ClInclude Include="src\_opengl\VertexBufferLayout.h" />
@@ -442,6 +445,8 @@
     <None Include="src\test\test15\test15_rect.shader" />
     <None Include="src\test\test16\test16_cube.shader" />
     <None Include="src\test\test16\test16_skybox.shader" />
+    <None Include="src\test\test17\test17_skybox.shader" />
+    <None Include="src\test\test17\test17_cube.shader" />
     <None Include="src\test\test2\test2.shader" />
     <None Include="src\test\test3\test3.shader" />
     <None Include="src\test\test4\test4.shader" />
