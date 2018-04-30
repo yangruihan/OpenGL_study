@@ -41,7 +41,11 @@
 		8D77192320923C2200A2F39F /* libassimp.4.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D77192220923C2200A2F39F /* libassimp.4.1.0.dylib */; };
 		8D8BC60720961BB4008E2972 /* FrameBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D8BC60520961BB4008E2972 /* FrameBuffer.h */; };
 		8D8BC60820961BB4008E2972 /* FrameBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D8BC60620961BB4008E2972 /* FrameBuffer.cpp */; };
-		8DC60BD220963A2D00234AFD /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D8BC5FE20961506008E2972 /* Application.cpp */; };
+		8DC60BD52096C87A00234AFD /* CubeTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DC60BD32096C87A00234AFD /* CubeTexture.cpp */; };
+		8DC60BD62096C87A00234AFD /* CubeTexture.h in Sources */ = {isa = PBXBuildFile; fileRef = 8DC60BD42096C87A00234AFD /* CubeTexture.h */; };
+		8DC60BDB2096E33B00234AFD /* UniformBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8DC60BD92096E33A00234AFD /* UniformBuffer.h */; };
+		8DC60BDC2096E33B00234AFD /* UniformBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DC60BDA2096E33B00234AFD /* UniformBuffer.cpp */; };
+		8DC60BDF2096E3E700234AFD /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D8BC5FE20961506008E2972 /* Application.cpp */; };
 		8DCA1C72208AE7EC009F737A /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCA1C71208AE7EC009F737A /* libglfw.3.3.dylib */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +120,12 @@
 		8D8BC60020961631008E2972 /* test15_framebuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test15_framebuffer.cpp; path = OpenGL_study/src/test/test15/test15_framebuffer.cpp; sourceTree = "<group>"; };
 		8D8BC60520961BB4008E2972 /* FrameBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FrameBuffer.h; path = OpenGL_study/src/_opengl/FrameBuffer.h; sourceTree = "<group>"; };
 		8D8BC60620961BB4008E2972 /* FrameBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FrameBuffer.cpp; path = OpenGL_study/src/_opengl/FrameBuffer.cpp; sourceTree = "<group>"; };
+		8DC60BD32096C87A00234AFD /* CubeTexture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = CubeTexture.cpp; path = OpenGL_study/src/_opengl/CubeTexture.cpp; sourceTree = "<group>"; };
+		8DC60BD42096C87A00234AFD /* CubeTexture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CubeTexture.h; path = OpenGL_study/src/_opengl/CubeTexture.h; sourceTree = "<group>"; };
+		8DC60BD72096C89E00234AFD /* test16_skybox.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test16_skybox.cpp; path = OpenGL_study/src/test/test16/test16_skybox.cpp; sourceTree = "<group>"; };
+		8DC60BD92096E33A00234AFD /* UniformBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = UniformBuffer.h; path = OpenGL_study/src/_opengl/UniformBuffer.h; sourceTree = "<group>"; };
+		8DC60BDA2096E33B00234AFD /* UniformBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = UniformBuffer.cpp; path = OpenGL_study/src/_opengl/UniformBuffer.cpp; sourceTree = "<group>"; };
+		8DC60BDD2096E35500234AFD /* test17_uniform_block.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test17_uniform_block.cpp; path = OpenGL_study/src/test/test17/test17_uniform_block.cpp; sourceTree = "<group>"; };
 		8DCA1C6F208AE78E009F737A /* libglfw3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libglfw3.a; path = ../../../../usr/local/lib/libglfw3.a; sourceTree = "<group>"; };
 		8DCA1C71208AE7EC009F737A /* libglfw.3.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.3.dylib; path = ../../../../usr/local/lib/libglfw.3.3.dylib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -181,6 +191,8 @@
 		8D8BC5DB209612D0008E2972 /* _opengl */ = {
 			isa = PBXGroup;
 			children = (
+				8DC60BD32096C87A00234AFD /* CubeTexture.cpp */,
+				8DC60BD42096C87A00234AFD /* CubeTexture.h */,
 				8D8BC60620961BB4008E2972 /* FrameBuffer.cpp */,
 				8D8BC60520961BB4008E2972 /* FrameBuffer.h */,
 				8D7718ED2092335800A2F39F /* IndexBuffer.cpp */,
@@ -191,6 +203,8 @@
 				8D7718F12092335800A2F39F /* Shader.h */,
 				8D7718F52092335900A2F39F /* Texture.cpp */,
 				8D7718E72092335700A2F39F /* Texture.h */,
+				8DC60BDA2096E33B00234AFD /* UniformBuffer.cpp */,
+				8DC60BD92096E33A00234AFD /* UniformBuffer.h */,
 				8D7718E82092335700A2F39F /* VertexArray.cpp */,
 				8D7718F22092335800A2F39F /* VertexArray.h */,
 				8D7718F32092335800A2F39F /* VertexBuffer.cpp */,
@@ -234,6 +248,8 @@
 				8D8BC5FB20961480008E2972 /* test13_stencil_test.cpp */,
 				8D8BC5D92096129A008E2972 /* test14_blend.cpp */,
 				8D8BC60020961631008E2972 /* test15_framebuffer.cpp */,
+				8DC60BD72096C89E00234AFD /* test16_skybox.cpp */,
+				8DC60BDD2096E35500234AFD /* test17_uniform_block.cpp */,
 			);
 			name = test;
 			sourceTree = "<group>";
@@ -313,7 +329,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8DC60BD220963A2D00234AFD /* Application.cpp in Sources */,
+				8DC60BDF2096E3E700234AFD /* Application.cpp in Sources */,
+				8DC60BDB2096E33B00234AFD /* UniformBuffer.h in Sources */,
+				8DC60BDC2096E33B00234AFD /* UniformBuffer.cpp in Sources */,
+				8DC60BD52096C87A00234AFD /* CubeTexture.cpp in Sources */,
+				8DC60BD62096C87A00234AFD /* CubeTexture.h in Sources */,
 				8D8BC60720961BB4008E2972 /* FrameBuffer.h in Sources */,
 				8D8BC60820961BB4008E2972 /* FrameBuffer.cpp in Sources */,
 				8D77191E2092338500A2F39F /* stb_image.cpp in Sources */,

@@ -1,7 +1,6 @@
 #include <iostream>
 #include <iomanip>
 #include "Header.h"
-#include "glm/gtc/type_ptr.inl"
 
 float mouse_last_x = 240.0f;
 float mouse_last_y = 240.0f;
