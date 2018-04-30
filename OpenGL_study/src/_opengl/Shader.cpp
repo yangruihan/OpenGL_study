@@ -69,7 +69,7 @@ void Shader::unbind() const
     GLCall(glUseProgram(0));
 }
 
-void Shader::unifrom_block_bind(const std::string& name, const unsigned int bind_point) const
+void Shader::uniform_block_bind(const std::string& name, const unsigned int bind_point) const
 {
     auto uniform_index = 0;
     GLCall(uniform_index = glGetUniformBlockIndex(renderer_id_, name.c_str()));

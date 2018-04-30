@@ -133,10 +133,10 @@ int main()
     glm::mat4 cube_model = glm::mat4(1.0f);
     
     Shader cube_shader("src/test/test17/test17_cube.shader");
-    cube_shader.unifrom_block_bind("u_Matrices", 0);
+    cube_shader.uniform_block_bind("u_Matrices", 0);
 
     Shader skybox_shader("src/test/test17/test17_skybox.shader");
-    skybox_shader.unifrom_block_bind("u_Matrices", 0);
+    skybox_shader.uniform_block_bind("u_Matrices", 0);
     
     const std::vector<std::string> sky_face_paths {
         "res/textures/skybox/right.jpg",
