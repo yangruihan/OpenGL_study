@@ -9,12 +9,14 @@ uniform mat4 u_Model;
 uniform mat4 u_View;
 uniform mat4 u_Proj;
 
-out vec2 o_TextureCoord;
+out vec3 o_Normal;
+out vec3 o_Position;
 
 void main()
 {
     gl_Position = u_Proj * u_View * u_Model * position;
-    o_TextureCoord = texture_coords;
+    o_Position = vec3(u_Model * position);
+    o_Normal = mat3(transpose(inverse(u_Model))) * normal.xyz;
 }
 
 #shader fragment
@@ -22,11 +24,15 @@ void main()
 
 layout(location = 0) out vec4 color;
 
-uniform sampler2D u_Texture;
+uniform vec3 u_CamPos;
+uniform samplerCube u_Texture;
 
-in vec2 o_TextureCoord;
+in vec3 o_Normal;
+in vec3 o_Position;
 
 void main()
 {
-    color = texture(u_Texture, o_TextureCoord);
+    vec3 i = normalize(o_Position - u_CamPos);
+    vec3 r = reflect(i, normalize(o_Normal));
+    color = vec4(texture(u_Texture, vec3(r.x, -r.y, r.z)).rgb, 1.0f);
 }

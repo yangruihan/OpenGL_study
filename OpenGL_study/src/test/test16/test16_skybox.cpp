@@ -132,7 +132,6 @@ int main()
     glm::mat4 cube_model = glm::mat4(1.0f);
     
     Shader cube_shader("src/test/test16/test16_cube.shader");
-    Texture texture0("res/textures/container.png");
 
     Shader skybox_shader("src/test/test16/test16_skybox.shader");
     const std::vector<std::string> sky_face_paths {
@@ -157,10 +156,12 @@ int main()
         proj = glm::perspective(glm::radians(camera.get_zoom()), 1.0f, 0.1f, 3000.0f);
         view = camera.get_view_matrix();
 
+        cube_texture.bind();
+
         cube_model = glm::translate(glm::mat4(1.0f), cube_pos);
         cube_model = glm::rotate(cube_model, glm::radians(45.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-        texture0.bind();
         cube_shader.set_int("u_Texture", 0);
+        cube_shader.set_vec3f("u_CamPos", camera.get_position());
         cube_shader.set_mat4f("u_Proj", proj);
         cube_shader.set_mat4f("u_View", view);
         cube_shader.set_mat4f("u_Model", cube_model);
@@ -168,7 +169,6 @@ int main()
 
         GLCall(glDepthFunc(GL_LEQUAL));
         cube_model = glm::scale(glm::mat4(1.0f), glm::vec3(15, 15, 15));
-        cube_texture.bind();
         skybox_shader.set_int("u_Texture", 0);
         skybox_shader.set_mat4f("u_Proj", proj);
         skybox_shader.set_mat4f("u_View", glm::mat4(glm::mat3(view)));
