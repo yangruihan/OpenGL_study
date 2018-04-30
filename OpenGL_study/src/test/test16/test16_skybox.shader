@@ -13,7 +13,7 @@ out vec3 o_TextureCoord;
 
 void main()
 {
-    gl_Position = u_Proj * u_View * u_Model * position;
+    gl_Position = (u_Proj * u_View * u_Model * position).xyww;
     o_TextureCoord = position.xyz;
 }
 
