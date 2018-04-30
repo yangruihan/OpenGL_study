@@ -126,15 +126,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\Application.cpp" />
+    <ClCompile Include="src\_opengl\CubeTexture.cpp" />
     <ClCompile Include="src\Model.cpp" />
     <ClCompile Include="src\Mesh.cpp" />
     <ClCompile Include="src\Camera.cpp" />
     <ClCompile Include="src\libs\glm\detail\glm.cpp" />
     <ClCompile Include="src\libs\stb\stb_image.cpp" />
     <ClCompile Include="src\_opengl\FrameBuffer.cpp" />
-    <ClCompile Include="src\_opengl\Shader.cpp" />
     <ClCompile Include="src\_opengl\IndexBuffer.cpp" />
     <ClCompile Include="src\_opengl\Renderer.cpp" />
+    <ClCompile Include="src\_opengl\Shader.cpp" />
     <ClCompile Include="src\_opengl\VertexBuffer.cpp" />
     <ClCompile Include="src\_opengl\VertexArray.cpp" />
     <ClCompile Include="src\_opengl\VertexBufferLayout.cpp" />
@@ -142,6 +143,7 @@
     <ClCompile Include="src\_opengl\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\_opengl\CubeTexture.h" />
     <ClInclude Include="src\Model.h" />
     <ClInclude Include="src\MOS_glm.h" />
     <ClInclude Include="src\Mesh.h" />
@@ -296,7 +298,6 @@
     <ClInclude Include="src\libs\stb\stb_image.h" />
     <ClInclude Include="src\MOS_stb_image.h" />
     <ClInclude Include="src\_opengl\FrameBuffer.h" />
-    <ClInclude Include="src\_opengl\Shader.h" />
     <ClInclude Include="src\_opengl\IndexBuffer.h" />
     <ClInclude Include="src\_opengl\Renderer.h" />
     <ClInclude Include="src\_opengl\VertexBuffer.h" />
@@ -437,6 +438,10 @@
     <None Include="src\test\test13\test13_obj.shader" />
     <None Include="src\test\test14\test14_light.shader" />
     <None Include="src\test\test14\test14_obj.shader" />
+    <None Include="src\test\test15\test15_cube.shader" />
+    <None Include="src\test\test15\test15_rect.shader" />
+    <None Include="src\test\test16\test16_cube.shader" />
+    <None Include="src\test\test16\test16_skybox.shader" />
     <None Include="src\test\test2\test2.shader" />
     <None Include="src\test\test3\test3.shader" />
     <None Include="src\test\test4\test4.shader" />
@@ -473,6 +478,12 @@
     <Image Include="res\textures\hello.png" />
     <Image Include="res\textures\container.png" />
     <Image Include="res\textures\container_specular.png" />
+    <Image Include="res\textures\skybox\back.jpg" />
+    <Image Include="res\textures\skybox\bottom.jpg" />
+    <Image Include="res\textures\skybox\front.jpg" />
+    <Image Include="res\textures\skybox\left.jpg" />
+    <Image Include="res\textures\skybox\right.jpg" />
+    <Image Include="res\textures\skybox\top.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="res\model\LICENSE.txt" />

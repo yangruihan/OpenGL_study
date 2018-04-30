@@ -33,6 +33,6 @@ in vec3 o_Position;
 void main()
 {
     vec3 i = normalize(o_Position - u_CamPos);
-    vec3 r = reflect(i, normalize(o_Normal));
+    vec3 r = refract(i, normalize(o_Normal), 1.00 / 1.52);
     color = vec4(texture(u_Texture, vec3(r.x, -r.y, r.z)).rgb, 1.0f);
 }

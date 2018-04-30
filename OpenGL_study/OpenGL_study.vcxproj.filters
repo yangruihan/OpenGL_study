@@ -30,9 +30,6 @@
     <ClCompile Include="src\_opengl\Renderer.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="src\_opengl\Shader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="src\_opengl\Texture.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -55,6 +52,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\_opengl\FrameBuffer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\_opengl\CubeTexture.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\_opengl\Shader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="src\Application.cpp">
@@ -515,9 +518,6 @@
     <ClInclude Include="src\_opengl\Renderer.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="src\_opengl\Shader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="src\_opengl\Texture.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -546,6 +546,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="src\_opengl\FrameBuffer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\_opengl\CubeTexture.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -925,6 +928,10 @@
     <None Include="src\test\test13\test13_boarder.shader" />
     <None Include="src\test\test14\test14_obj.shader" />
     <None Include="src\test\test14\test14_light.shader" />
+    <None Include="src\test\test15\test15_rect.shader" />
+    <None Include="src\test\test15\test15_cube.shader" />
+    <None Include="src\test\test16\test16_cube.shader" />
+    <None Include="src\test\test16\test16_skybox.shader" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\hello.png">
@@ -991,6 +998,24 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="res\textures\grass.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\textures\skybox\back.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\textures\skybox\bottom.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\textures\skybox\front.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\textures\skybox\left.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\textures\skybox\right.jpg">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\textures\skybox\top.jpg">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>
