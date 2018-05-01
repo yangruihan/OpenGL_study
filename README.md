@@ -27,6 +27,8 @@ OpenGL 学习库
 
 # 目录
 
+*注：以下各部分并非完全对应教程中的每一章节*
+
 1. [你好，三角形](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test1)
 
 2. [着色器](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test2)
@@ -36,6 +38,8 @@ OpenGL 学习库
 4. [旋转立方体](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test4)
 
 5. [摄像机](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test5)
+
+6. [基础光照](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test6)
 
 # 笔记
 ## 图形渲染管线（Graphics Pipeline）

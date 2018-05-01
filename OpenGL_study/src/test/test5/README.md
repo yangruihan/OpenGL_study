@@ -12,7 +12,7 @@
 ![](../../../../README/test5_camera.gif)
 
 ## 关键字
-- 观察空间（View Space）
+- 观察空间（View Space）
 
     ![](../../../../README/test5_view_space.png)
 
@@ -33,9 +33,9 @@
 
     - 偏航角（Yaw）
 
-    - 滚转角（Row）
+    - 滚转角（Row）
 
 ## 说明
 - [未封装成 Camera 类对应代码](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test5/test5.cpp)
 
-- [封装 Camera 类对应代码](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test5/test5_use_camera.cpp)
+- [封装 Camera 类对应代码](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test5/test5_use_camera.cpp)
