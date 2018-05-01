@@ -1,14 +1,15 @@
 # 着色器
 
+## 参考教程
 - 英文原版：http://learnopengl.com/#!Getting-started/Shaders
 
 - 中文版：https://learnopengl-cn.github.io/01%20Getting%20started/05%20Shaders/
 
-# 效果
+## 效果
 
 ![](../../../../README/test2_shader.png)
 
-# 关键字
+## 关键字
 
 - [GLSL（OpenGL Shading Language）](https://zh.wikipedia.org/wiki/GLSL)
 

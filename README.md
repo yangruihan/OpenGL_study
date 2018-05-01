@@ -1,6 +1,6 @@
 # OpenGL Study
 
-A repository for OpenGL studying.
+OpenGL 学习库
 
 # 相关资料
 ## 教程地址：
@@ -34,6 +34,8 @@ A repository for OpenGL studying.
 3. [旋转三角形](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test3)
 
 4. [旋转立方体](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test4)
+
+5. [摄像机](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test5)
 
 # 笔记
 ## 图形渲染管线（Graphics Pipeline）

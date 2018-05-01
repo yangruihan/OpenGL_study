@@ -81,7 +81,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 /* 漫游镜头 */
 int main()
 {
-    Window window(480, 480, "test5");
+    Window window(480, 480, "test5_camera");
 
     // set mouse mode
     glfwSetInputMode(window.get_window(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);

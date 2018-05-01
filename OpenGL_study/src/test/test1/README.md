@@ -1,13 +1,13 @@
 # 你好，三角形
-
+## 参考教程
 - 英文原版：http://www.learnopengl.com/#!Getting-started/Hello-Triangle
 
 - 中文版：https://learnopengl-cn.github.io/01%20Getting%20started/04%20Hello%20Triangle/
 
-# 效果
+## 效果
 ![](../../../../README/test1_hello_triangles.png)
 
-# 关键字
+## 关键字
 
 - 顶点数组对象：Vertex Array Object，VAO
 

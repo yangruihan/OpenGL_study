@@ -3,7 +3,10 @@
 float delta_time = 0.0f; // 当前帧与上一帧的时间差
 float last_frame = 0.0f; // 上一帧的时间
 
+bool mouse_focus = false;
+
 Camera camera(glm::vec3(0.0f, 0.0f, 360.0f));
+Window window(480, 480, "test5_camera");
 
 /**
 * process input
@@ -25,6 +28,42 @@ void process_input(GLFWwindow *window)
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.process_keyboard(RIGHT, delta_time);
 }
+
+/**
+ * key callback
+ */
+void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, true);
+    
+    if (key == GLFW_KEY_TAB && action == GLFW_PRESS)
+    {
+        if (mouse_focus)
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        else
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        
+        mouse_focus = !mouse_focus;
+    }
+    
+    // set default size
+    if (key == GLFW_KEY_R && action == GLFW_PRESS)
+    {
+        glfwSetWindowSize(window, ::window.get_width(), ::window.get_height());
+    }
+    
+    if (key == GLFW_KEY_LEFT_BRACKET && action == GLFW_PRESS)
+    {
+        glfwSetWindowSize(window, ::window.get_width() + 100, ::window.get_height() + 100);
+    }
+    
+    if (key == GLFW_KEY_RIGHT_BRACKET && action == GLFW_PRESS)
+    {
+        glfwSetWindowSize(window, ::window.get_width() - 100, ::window.get_height() - 100);
+    }
+}
+
 
 float mouse_last_x;
 float mouse_last_y;
@@ -54,8 +93,6 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 
 int main()
 {
-    Window window(480, 480, "test5");
-
     // set mouse mode
     glfwSetInputMode(window.get_window(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);
     // add mouse callback
@@ -63,6 +100,8 @@ int main()
     first = true;
 
     glfwSetScrollCallback(window.get_window(), scroll_callback);
+    
+    glfwSetKeyCallback(window.get_window(), key_callback);
 
     mouse_last_x = 240.0f;
     mouse_last_y = 240.0f;
