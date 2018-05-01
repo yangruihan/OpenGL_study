@@ -16,7 +16,7 @@ int main()
 {
     const auto proj = glm::ortho(0.0f, 480.0f, 0.0f, 480.0f, -1.0f, 1.0f);
 
-    Window window(480, 480, "test1");
+    Window window(480, 480, "test1_hello_triangles");
 
     unsigned int index[] = { 0, 1, 2 };
     IndexBuffer index_buffer(index, 3);
