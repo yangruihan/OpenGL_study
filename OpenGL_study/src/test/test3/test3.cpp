@@ -14,8 +14,9 @@ void process_input(GLFWwindow *window)
  */
 int main()
 {
-    Window window(480, 480, "test3");
-
+    Window window(480, 480, "test3_rotate_triangles");
+    window.set_cursor_mode(CursorMode::normal);
+    
     unsigned int index[] = { 0, 1, 2 };
     IndexBuffer index_buffer(index, 3);
 

@@ -31,6 +31,10 @@ A repository for OpenGL studying.
 
 2. [着色器](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test2)
 
+3. [旋转三角形](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test3)
+
+4. [旋转立方体](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test4)
+
 # 笔记
 ## 图形渲染管线（Graphics Pipeline）
 

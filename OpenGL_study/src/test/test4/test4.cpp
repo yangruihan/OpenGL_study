@@ -12,7 +12,8 @@ void process_input(GLFWwindow *window)
 /* 立方体 */
 int main()
 {
-    Window window(480, 480, "test4");
+    Window window(480, 480, "test4_rotate_cube");
+    window.set_cursor_mode(CursorMode::normal);
 
     float pos[] = {
         -100.0f, -100.0f,  100.0f,
