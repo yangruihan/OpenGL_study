@@ -2,8 +2,23 @@
 
 A repository for OpenGL studying.
 
-- 原教程地址：https://learnopengl.com/
-- 中文教程地址：https://learnopengl-cn.github.io/
+# 相关资料
+1. 教程地址：
+
+  - 原教程地址：https://learnopengl.com/
+  
+  - 中文教程地址：https://learnopengl-cn.github.io/
+
+2. 参考网址：
+
+  - OpenGL API doc： http://docs.gl/
+  
+  - GLFW： http://www.glfw.org/index.html
+  
+  - GLEW： http://glew.sourceforge.net/
+  
+  - OpenGL tutorial video：https://www.youtube.com/watch?v=W3gAzLwfIP0&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2
+
 
 # 笔记
 ## 图形渲染管线（Graphics Pipeline）
