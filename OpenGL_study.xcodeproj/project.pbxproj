@@ -9,43 +9,43 @@
 /* Begin PBXBuildFile section */
 		8D04F44E2087AC5E00078D63 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D04F44D2087AC5E00078D63 /* OpenGL.framework */; };
 		8D04F4502087AC7600078D63 /* libGLEW.2.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D04F44F2087AC7600078D63 /* libGLEW.2.1.0.dylib */; };
-		8D7718F62092335900A2F39F /* VertexBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718E62092335700A2F39F /* VertexBuffer.h */; };
-		8D7718F72092335900A2F39F /* Texture.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718E72092335700A2F39F /* Texture.h */; };
-		8D7718F82092335900A2F39F /* VertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718E82092335700A2F39F /* VertexArray.cpp */; };
-		8D7718F92092335900A2F39F /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718E92092335700A2F39F /* Window.cpp */; };
-		8D7718FA2092335900A2F39F /* VertexBufferLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718EA2092335700A2F39F /* VertexBufferLayout.cpp */; };
-		8D7718FB2092335900A2F39F /* Renderer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718EB2092335700A2F39F /* Renderer.h */; };
-		8D7718FC2092335900A2F39F /* VertexBufferLayout.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718EC2092335700A2F39F /* VertexBufferLayout.h */; };
-		8D7718FD2092335900A2F39F /* IndexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718ED2092335800A2F39F /* IndexBuffer.cpp */; };
-		8D7718FE2092335900A2F39F /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718EE2092335800A2F39F /* Renderer.cpp */; };
-		8D7718FF2092335900A2F39F /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718EF2092335800A2F39F /* Shader.cpp */; };
-		8D7719002092335900A2F39F /* IndexBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718F02092335800A2F39F /* IndexBuffer.h */; };
-		8D7719012092335900A2F39F /* Shader.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718F12092335800A2F39F /* Shader.h */; };
-		8D7719022092335900A2F39F /* VertexArray.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718F22092335800A2F39F /* VertexArray.h */; };
-		8D7719032092335900A2F39F /* VertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718F32092335800A2F39F /* VertexBuffer.cpp */; };
-		8D7719042092335900A2F39F /* Window.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718F42092335800A2F39F /* Window.h */; };
-		8D7719052092335900A2F39F /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718F52092335900A2F39F /* Texture.cpp */; };
-		8D7719112092337300A2F39F /* Mesh.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7719062092337100A2F39F /* Mesh.h */; };
-		8D7719122092337300A2F39F /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7719072092337100A2F39F /* Mesh.cpp */; };
-		8D7719132092337300A2F39F /* Camera.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7719082092337100A2F39F /* Camera.h */; };
-		8D7719142092337300A2F39F /* Common.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7719092092337200A2F39F /* Common.h */; };
-		8D7719152092337300A2F39F /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D77190A2092337200A2F39F /* Model.cpp */; };
-		8D7719162092337300A2F39F /* Model.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D77190B2092337200A2F39F /* Model.h */; };
-		8D7719172092337300A2F39F /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D77190C2092337200A2F39F /* Camera.cpp */; };
-		8D7719182092337300A2F39F /* MOS_glm.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D77190D2092337200A2F39F /* MOS_glm.h */; };
-		8D7719192092337300A2F39F /* MOS_stb_image.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D77190E2092337200A2F39F /* MOS_stb_image.h */; };
-		8D77191A2092337300A2F39F /* Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D77190F2092337200A2F39F /* Header.h */; };
-		8D77191B2092337300A2F39F /* Geometry.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7719102092337300A2F39F /* Geometry.h */; };
-		8D77191E2092338500A2F39F /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D77191C2092338500A2F39F /* stb_image.cpp */; };
-		8D77191F2092338500A2F39F /* stb_image.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D77191D2092338500A2F39F /* stb_image.h */; };
 		8D77192320923C2200A2F39F /* libassimp.4.1.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8D77192220923C2200A2F39F /* libassimp.4.1.0.dylib */; };
-		8D8719C420981C5F00A38CA1 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D8BC5FE20961506008E2972 /* Application.cpp */; };
-		8D8BC60720961BB4008E2972 /* FrameBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D8BC60520961BB4008E2972 /* FrameBuffer.h */; };
-		8D8BC60820961BB4008E2972 /* FrameBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D8BC60620961BB4008E2972 /* FrameBuffer.cpp */; };
-		8DC60BD52096C87A00234AFD /* CubeTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DC60BD32096C87A00234AFD /* CubeTexture.cpp */; };
-		8DC60BD62096C87A00234AFD /* CubeTexture.h in Sources */ = {isa = PBXBuildFile; fileRef = 8DC60BD42096C87A00234AFD /* CubeTexture.h */; };
-		8DC60BDB2096E33B00234AFD /* UniformBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8DC60BD92096E33A00234AFD /* UniformBuffer.h */; };
-		8DC60BDC2096E33B00234AFD /* UniformBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DC60BDA2096E33B00234AFD /* UniformBuffer.cpp */; };
+		8D8719C62098254C00A38CA1 /* CubeTexture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DC60BD32096C87A00234AFD /* CubeTexture.cpp */; };
+		8D8719C72098254C00A38CA1 /* CubeTexture.h in Sources */ = {isa = PBXBuildFile; fileRef = 8DC60BD42096C87A00234AFD /* CubeTexture.h */; };
+		8D8719C82098254C00A38CA1 /* FrameBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D8BC60620961BB4008E2972 /* FrameBuffer.cpp */; };
+		8D8719C92098254C00A38CA1 /* FrameBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D8BC60520961BB4008E2972 /* FrameBuffer.h */; };
+		8D8719CA2098254C00A38CA1 /* IndexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718ED2092335800A2F39F /* IndexBuffer.cpp */; };
+		8D8719CB2098254C00A38CA1 /* IndexBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718F02092335800A2F39F /* IndexBuffer.h */; };
+		8D8719CC2098254C00A38CA1 /* Renderer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718EE2092335800A2F39F /* Renderer.cpp */; };
+		8D8719CD2098254C00A38CA1 /* Renderer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718EB2092335700A2F39F /* Renderer.h */; };
+		8D8719CE2098254C00A38CA1 /* Shader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718EF2092335800A2F39F /* Shader.cpp */; };
+		8D8719CF2098254C00A38CA1 /* Shader.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718F12092335800A2F39F /* Shader.h */; };
+		8D8719D02098254C00A38CA1 /* Texture.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718F52092335900A2F39F /* Texture.cpp */; };
+		8D8719D12098254C00A38CA1 /* Texture.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718E72092335700A2F39F /* Texture.h */; };
+		8D8719D22098254C00A38CA1 /* UniformBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8DC60BDA2096E33B00234AFD /* UniformBuffer.cpp */; };
+		8D8719D32098254C00A38CA1 /* UniformBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8DC60BD92096E33A00234AFD /* UniformBuffer.h */; };
+		8D8719D42098254C00A38CA1 /* VertexArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718E82092335700A2F39F /* VertexArray.cpp */; };
+		8D8719D52098254C00A38CA1 /* VertexArray.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718F22092335800A2F39F /* VertexArray.h */; };
+		8D8719D62098254C00A38CA1 /* VertexBuffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718F32092335800A2F39F /* VertexBuffer.cpp */; };
+		8D8719D72098254C00A38CA1 /* VertexBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718E62092335700A2F39F /* VertexBuffer.h */; };
+		8D8719D82098254C00A38CA1 /* VertexBufferLayout.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718EA2092335700A2F39F /* VertexBufferLayout.cpp */; };
+		8D8719D92098254C00A38CA1 /* VertexBufferLayout.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718EC2092335700A2F39F /* VertexBufferLayout.h */; };
+		8D8719DA2098254C00A38CA1 /* Window.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718E92092335700A2F39F /* Window.cpp */; };
+		8D8719DB2098254C00A38CA1 /* Window.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D7718F42092335800A2F39F /* Window.h */; };
+		8D8719DC2098255200A38CA1 /* stb_image.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D77191C2092338500A2F39F /* stb_image.cpp */; };
+		8D8719DD2098255200A38CA1 /* stb_image.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D77191D2092338500A2F39F /* stb_image.h */; };
+		8D8719EA2098256200A38CA1 /* Model.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D8719DE2098256000A38CA1 /* Model.cpp */; };
+		8D8719EC2098256200A38CA1 /* Mesh.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D8719E02098256000A38CA1 /* Mesh.cpp */; };
+		8D8719ED2098256200A38CA1 /* Model.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D8719E12098256100A38CA1 /* Model.h */; };
+		8D8719EE2098256200A38CA1 /* Camera.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D8719E22098256100A38CA1 /* Camera.h */; };
+		8D8719EF2098256200A38CA1 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D8719E32098256100A38CA1 /* Camera.cpp */; };
+		8D8719F02098256200A38CA1 /* Geometry.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D8719E42098256100A38CA1 /* Geometry.h */; };
+		8D8719F12098256200A38CA1 /* MOS_glm.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D8719E52098256100A38CA1 /* MOS_glm.h */; };
+		8D8719F22098256200A38CA1 /* Mesh.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D8719E62098256200A38CA1 /* Mesh.h */; };
+		8D8719F32098256200A38CA1 /* Common.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D8719E72098256200A38CA1 /* Common.h */; };
+		8D8719F42098256200A38CA1 /* MOS_stb_image.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D8719E82098256200A38CA1 /* MOS_stb_image.h */; };
+		8D8719F52098256200A38CA1 /* Header.h in Sources */ = {isa = PBXBuildFile; fileRef = 8D8719E92098256200A38CA1 /* Header.h */; };
+		8D91C7D72098295D00C887DE /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8D8719DF2098256000A38CA1 /* Application.cpp */; };
 		8DCA1C72208AE7EC009F737A /* libglfw.3.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCA1C71208AE7EC009F737A /* libglfw.3.3.dylib */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +67,6 @@
 		8D04F44B2087AC0D00078D63 /* res */ = {isa = PBXFileReference; lastKnownFileType = folder; path = res; sourceTree = "<group>"; };
 		8D04F44D2087AC5E00078D63 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
 		8D04F44F2087AC7600078D63 /* libGLEW.2.1.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libGLEW.2.1.0.dylib; path = ../../../../usr/local/Cellar/glew/2.1.0/lib/libGLEW.2.1.0.dylib; sourceTree = "<group>"; };
-		8D04F4512087AC8A00078D63 /* libglfw.3.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libglfw.3.2.dylib; path = ../../../../usr/local/Cellar/glfw/3.2.1/lib/libglfw.3.2.dylib; sourceTree = "<group>"; };
 		8D7718E62092335700A2F39F /* VertexBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VertexBuffer.h; path = OpenGL_study/src/_opengl/VertexBuffer.h; sourceTree = "<group>"; };
 		8D7718E72092335700A2F39F /* Texture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Texture.h; path = OpenGL_study/src/_opengl/Texture.h; sourceTree = "<group>"; };
 		8D7718E82092335700A2F39F /* VertexArray.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VertexArray.cpp; path = OpenGL_study/src/_opengl/VertexArray.cpp; sourceTree = "<group>"; };
@@ -84,17 +83,6 @@
 		8D7718F32092335800A2F39F /* VertexBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = VertexBuffer.cpp; path = OpenGL_study/src/_opengl/VertexBuffer.cpp; sourceTree = "<group>"; };
 		8D7718F42092335800A2F39F /* Window.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Window.h; path = OpenGL_study/src/_opengl/Window.h; sourceTree = "<group>"; };
 		8D7718F52092335900A2F39F /* Texture.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Texture.cpp; path = OpenGL_study/src/_opengl/Texture.cpp; sourceTree = "<group>"; };
-		8D7719062092337100A2F39F /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mesh.h; path = OpenGL_study/src/Mesh.h; sourceTree = "<group>"; };
-		8D7719072092337100A2F39F /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Mesh.cpp; path = OpenGL_study/src/Mesh.cpp; sourceTree = "<group>"; };
-		8D7719082092337100A2F39F /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = OpenGL_study/src/Camera.h; sourceTree = "<group>"; };
-		8D7719092092337200A2F39F /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Common.h; path = OpenGL_study/src/Common.h; sourceTree = "<group>"; };
-		8D77190A2092337200A2F39F /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Model.cpp; path = OpenGL_study/src/Model.cpp; sourceTree = "<group>"; };
-		8D77190B2092337200A2F39F /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Model.h; path = OpenGL_study/src/Model.h; sourceTree = "<group>"; };
-		8D77190C2092337200A2F39F /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = OpenGL_study/src/Camera.cpp; sourceTree = "<group>"; };
-		8D77190D2092337200A2F39F /* MOS_glm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MOS_glm.h; path = OpenGL_study/src/MOS_glm.h; sourceTree = "<group>"; };
-		8D77190E2092337200A2F39F /* MOS_stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MOS_stb_image.h; path = OpenGL_study/src/MOS_stb_image.h; sourceTree = "<group>"; };
-		8D77190F2092337200A2F39F /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Header.h; path = OpenGL_study/src/Header.h; sourceTree = "<group>"; };
-		8D7719102092337300A2F39F /* Geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Geometry.h; path = OpenGL_study/src/Geometry.h; sourceTree = "<group>"; };
 		8D77191C2092338500A2F39F /* stb_image.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = stb_image.cpp; path = OpenGL_study/src/libs/stb/stb_image.cpp; sourceTree = "<group>"; };
 		8D77191D2092338500A2F39F /* stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = stb_image.h; path = OpenGL_study/src/libs/stb/stb_image.h; sourceTree = "<group>"; };
 		8D7719202092339700A2F39F /* test10_multi_light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test10_multi_light.cpp; path = OpenGL_study/src/test/test10/test10_multi_light.cpp; sourceTree = "<group>"; };
@@ -103,6 +91,18 @@
 		8D8719BC209814C800A38CA1 /* test20_point_light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test20_point_light.cpp; path = OpenGL_study/src/test/test20/test20_point_light.cpp; sourceTree = "<group>"; };
 		8D8719BD209814C800A38CA1 /* test20_directional_light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test20_directional_light.cpp; path = OpenGL_study/src/test/test20/test20_directional_light.cpp; sourceTree = "<group>"; };
 		8D8719BE209814C900A38CA1 /* test20_spot_light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test20_spot_light.cpp; path = OpenGL_study/src/test/test20/test20_spot_light.cpp; sourceTree = "<group>"; };
+		8D8719DE2098256000A38CA1 /* Model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Model.cpp; path = OpenGL_study/src/_common/Model.cpp; sourceTree = "<group>"; };
+		8D8719DF2098256000A38CA1 /* Application.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Application.cpp; path = OpenGL_study/src/_common/Application.cpp; sourceTree = "<group>"; };
+		8D8719E02098256000A38CA1 /* Mesh.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Mesh.cpp; path = OpenGL_study/src/_common/Mesh.cpp; sourceTree = "<group>"; };
+		8D8719E12098256100A38CA1 /* Model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Model.h; path = OpenGL_study/src/_common/Model.h; sourceTree = "<group>"; };
+		8D8719E22098256100A38CA1 /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Camera.h; path = OpenGL_study/src/_common/Camera.h; sourceTree = "<group>"; };
+		8D8719E32098256100A38CA1 /* Camera.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Camera.cpp; path = OpenGL_study/src/_common/Camera.cpp; sourceTree = "<group>"; };
+		8D8719E42098256100A38CA1 /* Geometry.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Geometry.h; path = OpenGL_study/src/_common/Geometry.h; sourceTree = "<group>"; };
+		8D8719E52098256100A38CA1 /* MOS_glm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MOS_glm.h; path = OpenGL_study/src/_common/MOS_glm.h; sourceTree = "<group>"; };
+		8D8719E62098256200A38CA1 /* Mesh.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Mesh.h; path = OpenGL_study/src/_common/Mesh.h; sourceTree = "<group>"; };
+		8D8719E72098256200A38CA1 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Common.h; path = OpenGL_study/src/_common/Common.h; sourceTree = "<group>"; };
+		8D8719E82098256200A38CA1 /* MOS_stb_image.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MOS_stb_image.h; path = OpenGL_study/src/_common/MOS_stb_image.h; sourceTree = "<group>"; };
+		8D8719E92098256200A38CA1 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Header.h; path = OpenGL_study/src/_common/Header.h; sourceTree = "<group>"; };
 		8D8BC5D92096129A008E2972 /* test14_blend.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test14_blend.cpp; path = OpenGL_study/src/test/test14/test14_blend.cpp; sourceTree = "<group>"; };
 		8D8BC5DF209613A0008E2972 /* test1.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test1.cpp; path = OpenGL_study/src/test/test1/test1.cpp; sourceTree = "<group>"; };
 		8D8BC5E1209613C3008E2972 /* test2.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test2.cpp; path = OpenGL_study/src/test/test2/test2.cpp; sourceTree = "<group>"; };
@@ -119,7 +119,6 @@
 		8D8BC5F520961431008E2972 /* test9_point_light.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test9_point_light.cpp; path = OpenGL_study/src/test/test9/test9_point_light.cpp; sourceTree = "<group>"; };
 		8D8BC5F92096146D008E2972 /* test11_model.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test11_model.cpp; path = OpenGL_study/src/test/test11/test11_model.cpp; sourceTree = "<group>"; };
 		8D8BC5FB20961480008E2972 /* test13_stencil_test.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test13_stencil_test.cpp; path = OpenGL_study/src/test/test13/test13_stencil_test.cpp; sourceTree = "<group>"; };
-		8D8BC5FE20961506008E2972 /* Application.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Application.cpp; path = OpenGL_study/src/Application.cpp; sourceTree = "<group>"; };
 		8D8BC60020961631008E2972 /* test15_framebuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = test15_framebuffer.cpp; path = OpenGL_study/src/test/test15/test15_framebuffer.cpp; sourceTree = "<group>"; };
 		8D8BC60520961BB4008E2972 /* FrameBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FrameBuffer.h; path = OpenGL_study/src/_opengl/FrameBuffer.h; sourceTree = "<group>"; };
 		8D8BC60620961BB4008E2972 /* FrameBuffer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = FrameBuffer.cpp; path = OpenGL_study/src/_opengl/FrameBuffer.cpp; sourceTree = "<group>"; };
@@ -186,7 +185,6 @@
 				8D77192220923C2200A2F39F /* libassimp.4.1.0.dylib */,
 				8DCA1C71208AE7EC009F737A /* libglfw.3.3.dylib */,
 				8DCA1C6F208AE78E009F737A /* libglfw3.a */,
-				8D04F4512087AC8A00078D63 /* libglfw.3.2.dylib */,
 				8D04F44F2087AC7600078D63 /* libGLEW.2.1.0.dylib */,
 				8D04F44D2087AC5E00078D63 /* OpenGL.framework */,
 			);
@@ -267,18 +265,18 @@
 		8D8BC5DE2096133C008E2972 /* _common */ = {
 			isa = PBXGroup;
 			children = (
-				8D8BC5FE20961506008E2972 /* Application.cpp */,
-				8D77190C2092337200A2F39F /* Camera.cpp */,
-				8D7719082092337100A2F39F /* Camera.h */,
-				8D7719092092337200A2F39F /* Common.h */,
-				8D7719102092337300A2F39F /* Geometry.h */,
-				8D77190F2092337200A2F39F /* Header.h */,
-				8D7719072092337100A2F39F /* Mesh.cpp */,
-				8D7719062092337100A2F39F /* Mesh.h */,
-				8D77190A2092337200A2F39F /* Model.cpp */,
-				8D77190B2092337200A2F39F /* Model.h */,
-				8D77190D2092337200A2F39F /* MOS_glm.h */,
-				8D77190E2092337200A2F39F /* MOS_stb_image.h */,
+				8D8719DF2098256000A38CA1 /* Application.cpp */,
+				8D8719E32098256100A38CA1 /* Camera.cpp */,
+				8D8719E22098256100A38CA1 /* Camera.h */,
+				8D8719E72098256200A38CA1 /* Common.h */,
+				8D8719E42098256100A38CA1 /* Geometry.h */,
+				8D8719E92098256200A38CA1 /* Header.h */,
+				8D8719E02098256000A38CA1 /* Mesh.cpp */,
+				8D8719E62098256200A38CA1 /* Mesh.h */,
+				8D8719DE2098256000A38CA1 /* Model.cpp */,
+				8D8719E12098256100A38CA1 /* Model.h */,
+				8D8719E52098256100A38CA1 /* MOS_glm.h */,
+				8D8719E82098256200A38CA1 /* MOS_stb_image.h */,
 			);
 			name = _common;
 			sourceTree = "<group>";
@@ -339,42 +337,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D8719C420981C5F00A38CA1 /* Application.cpp in Sources */,
-				8DC60BDB2096E33B00234AFD /* UniformBuffer.h in Sources */,
-				8DC60BDC2096E33B00234AFD /* UniformBuffer.cpp in Sources */,
-				8DC60BD52096C87A00234AFD /* CubeTexture.cpp in Sources */,
-				8DC60BD62096C87A00234AFD /* CubeTexture.h in Sources */,
-				8D8BC60720961BB4008E2972 /* FrameBuffer.h in Sources */,
-				8D8BC60820961BB4008E2972 /* FrameBuffer.cpp in Sources */,
-				8D77191E2092338500A2F39F /* stb_image.cpp in Sources */,
-				8D77191F2092338500A2F39F /* stb_image.h in Sources */,
-				8D7719112092337300A2F39F /* Mesh.h in Sources */,
-				8D7719122092337300A2F39F /* Mesh.cpp in Sources */,
-				8D7719132092337300A2F39F /* Camera.h in Sources */,
-				8D7719142092337300A2F39F /* Common.h in Sources */,
-				8D7719152092337300A2F39F /* Model.cpp in Sources */,
-				8D7719162092337300A2F39F /* Model.h in Sources */,
-				8D7719172092337300A2F39F /* Camera.cpp in Sources */,
-				8D7719182092337300A2F39F /* MOS_glm.h in Sources */,
-				8D7719192092337300A2F39F /* MOS_stb_image.h in Sources */,
-				8D77191A2092337300A2F39F /* Header.h in Sources */,
-				8D77191B2092337300A2F39F /* Geometry.h in Sources */,
-				8D7718F62092335900A2F39F /* VertexBuffer.h in Sources */,
-				8D7718F72092335900A2F39F /* Texture.h in Sources */,
-				8D7718F82092335900A2F39F /* VertexArray.cpp in Sources */,
-				8D7718F92092335900A2F39F /* Window.cpp in Sources */,
-				8D7718FA2092335900A2F39F /* VertexBufferLayout.cpp in Sources */,
-				8D7718FB2092335900A2F39F /* Renderer.h in Sources */,
-				8D7718FC2092335900A2F39F /* VertexBufferLayout.h in Sources */,
-				8D7718FD2092335900A2F39F /* IndexBuffer.cpp in Sources */,
-				8D7718FE2092335900A2F39F /* Renderer.cpp in Sources */,
-				8D7718FF2092335900A2F39F /* Shader.cpp in Sources */,
-				8D7719002092335900A2F39F /* IndexBuffer.h in Sources */,
-				8D7719012092335900A2F39F /* Shader.h in Sources */,
-				8D7719022092335900A2F39F /* VertexArray.h in Sources */,
-				8D7719032092335900A2F39F /* VertexBuffer.cpp in Sources */,
-				8D7719042092335900A2F39F /* Window.h in Sources */,
-				8D7719052092335900A2F39F /* Texture.cpp in Sources */,
+				8D91C7D72098295D00C887DE /* Application.cpp in Sources */,
+				8D8719EA2098256200A38CA1 /* Model.cpp in Sources */,
+				8D8719EC2098256200A38CA1 /* Mesh.cpp in Sources */,
+				8D8719ED2098256200A38CA1 /* Model.h in Sources */,
+				8D8719EE2098256200A38CA1 /* Camera.h in Sources */,
+				8D8719EF2098256200A38CA1 /* Camera.cpp in Sources */,
+				8D8719F02098256200A38CA1 /* Geometry.h in Sources */,
+				8D8719F12098256200A38CA1 /* MOS_glm.h in Sources */,
+				8D8719F22098256200A38CA1 /* Mesh.h in Sources */,
+				8D8719F32098256200A38CA1 /* Common.h in Sources */,
+				8D8719F42098256200A38CA1 /* MOS_stb_image.h in Sources */,
+				8D8719F52098256200A38CA1 /* Header.h in Sources */,
+				8D8719DC2098255200A38CA1 /* stb_image.cpp in Sources */,
+				8D8719DD2098255200A38CA1 /* stb_image.h in Sources */,
+				8D8719C62098254C00A38CA1 /* CubeTexture.cpp in Sources */,
+				8D8719C72098254C00A38CA1 /* CubeTexture.h in Sources */,
+				8D8719C82098254C00A38CA1 /* FrameBuffer.cpp in Sources */,
+				8D8719C92098254C00A38CA1 /* FrameBuffer.h in Sources */,
+				8D8719CA2098254C00A38CA1 /* IndexBuffer.cpp in Sources */,
+				8D8719CB2098254C00A38CA1 /* IndexBuffer.h in Sources */,
+				8D8719CC2098254C00A38CA1 /* Renderer.cpp in Sources */,
+				8D8719CD2098254C00A38CA1 /* Renderer.h in Sources */,
+				8D8719CE2098254C00A38CA1 /* Shader.cpp in Sources */,
+				8D8719CF2098254C00A38CA1 /* Shader.h in Sources */,
+				8D8719D02098254C00A38CA1 /* Texture.cpp in Sources */,
+				8D8719D12098254C00A38CA1 /* Texture.h in Sources */,
+				8D8719D22098254C00A38CA1 /* UniformBuffer.cpp in Sources */,
+				8D8719D32098254C00A38CA1 /* UniformBuffer.h in Sources */,
+				8D8719D42098254C00A38CA1 /* VertexArray.cpp in Sources */,
+				8D8719D52098254C00A38CA1 /* VertexArray.h in Sources */,
+				8D8719D62098254C00A38CA1 /* VertexBuffer.cpp in Sources */,
+				8D8719D72098254C00A38CA1 /* VertexBuffer.h in Sources */,
+				8D8719D82098254C00A38CA1 /* VertexBufferLayout.cpp in Sources */,
+				8D8719D92098254C00A38CA1 /* VertexBufferLayout.h in Sources */,
+				8D8719DA2098254C00A38CA1 /* Window.cpp in Sources */,
+				8D8719DB2098254C00A38CA1 /* Window.h in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -496,9 +494,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = (
 					"${glfw_header}",
-					"$(glew_header)",
-					"/Users/yangruihan/Workspace/OpenGL_study/src/libs/**",
-					/Users/yangruihan/Workspace/OpenGL_study/Dependencies/ASSIMP/Include,
+					"${glew_header}",
+					$PROJECT_DIR/Dependencies/ASSIMP/Include,
+					"$PROJECT_DIR/OpenGL_study/src/libs/**",
+					$PROJECT_DIR/OpenGL_study/src/_opengl,
+					$PROJECT_DIR/OpenGL_study/src/_common,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(glew_lib)",
@@ -515,10 +515,12 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				HEADER_SEARCH_PATHS = (
-					"$(glew_header)",
-					"$(glfw_header)",
-					"/Users/yangruihan/Workspace/OpenGL_study/src/libs/**",
-					/Users/yangruihan/Workspace/OpenGL_study/Dependencies/ASSIMP/Include,
+					"${glfw_header}",
+					"${glew_header}",
+					$PROJECT_DIR/Dependencies/ASSIMP/Include,
+					"$PROJECT_DIR/OpenGL_study/src/libs/**",
+					$PROJECT_DIR/OpenGL_study/src/_opengl,
+					$PROJECT_DIR/OpenGL_study/src/_common,
 				);
 				LIBRARY_SEARCH_PATHS = (
 					"$(glew_lib)",
