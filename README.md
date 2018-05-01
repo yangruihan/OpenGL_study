@@ -45,6 +45,10 @@ OpenGL 学习库
 
 8. [光照贴图](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test8)
 
+9. [投光物](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test9)
+
+10. [多光源](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test10)
+
 # 笔记
 ## 图形渲染管线（Graphics Pipeline）
 

@@ -12,4 +12,4 @@
 
 ## 补充
 
-- [这里](http://devernay.free.fr/cours/opengl/materials.html)展示了几种材质属性，模拟了现实世界中的真实材质（可能需要翻墙）
+- [这里](http://devernay.free.fr/cours/opengl/materials.html)展示了几种材质属性，模拟了现实世界中的真实材质（可能需要翻墙）
