@@ -3,13 +3,13 @@
 A repository for OpenGL studying.
 
 # 相关资料
-1. 教程地址：
+## 教程地址：
 
   - 原教程地址：https://learnopengl.com/
   
   - 中文教程地址：https://learnopengl-cn.github.io/
 
-2. 参考网址：
+## 参考网址：
 
   - OpenGL API doc： http://docs.gl/
   
@@ -17,8 +17,13 @@ A repository for OpenGL studying.
   
   - GLEW： http://glew.sourceforge.net/
   
+  - stb: https://github.com/nothings/stb
+  
+  - assimp：https://github.com/assimp/assimp
+  
   - OpenGL tutorial video：https://www.youtube.com/watch?v=W3gAzLwfIP0&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2
 
+  - Xcode GLFW & GLEW 环境配置：https://blog.csdn.net/LongZh_CN/article/details/55001345
 
 # 笔记
 ## 图形渲染管线（Graphics Pipeline）
