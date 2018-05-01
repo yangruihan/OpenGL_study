@@ -130,7 +130,7 @@ std::vector<TextureData> Model::load_material_textures(aiMaterial* mat,
         if (!skip)
         {
             TextureData texture_data {};
-            texture_data.texture = new Texture(directory_ + "/" + str.C_Str());
+            texture_data.texture = new Texture(directory_ + "/" + str.C_Str(), true);
             texture_data.type = type_name;
             texture_data.path = str.C_Str();
             texture_datas.push_back(texture_data);

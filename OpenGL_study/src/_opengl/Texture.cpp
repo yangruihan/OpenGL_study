@@ -1,8 +1,9 @@
 #include "Texture.h"
 
-Texture::Texture(const std::string& filepath)
+Texture::Texture(const std::string& filepath, const bool is_model)
     : renderer_id_(0), width_(0), height_(0),
-      bpp_(0), filepath_(filepath), img_buffer_(nullptr)
+      bpp_(0), filepath_(filepath), img_buffer_(nullptr),
+      is_model_(is_model)
 {
     GLCall(glGenTextures(1, &renderer_id_));
 
@@ -22,15 +23,26 @@ Texture::Texture(const std::string& filepath)
             format = GL_RGBA;
 
         GLCall(glBindTexture(GL_TEXTURE_2D, renderer_id_));
-
+        GLCall(glTexImage2D(GL_TEXTURE_2D,   0, format,
+                            width_, height_, 0, format,
+                            GL_UNSIGNED_BYTE, img_buffer_));
+        
         GLCall(glGenerateMipmap(GL_TEXTURE_2D));
-        GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR));
-        GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
-        GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE));
-        GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE));
 
-        GLCall(glTexImage2D(GL_TEXTURE_2D, 0, format,
-                            width_, height_, 0, format, GL_UNSIGNED_BYTE, img_buffer_));
+        if (is_model)
+        {
+            GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR));
+            GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
+            GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT));
+            GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT));
+        }
+        else
+        {
+            GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR));
+            GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR));
+            GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE));
+            GLCall(glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE));
+        }
 
         GLCall(glBindTexture(GL_TEXTURE_2D, 0));
     }

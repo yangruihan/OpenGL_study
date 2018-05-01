@@ -13,9 +13,11 @@ private:
     int bpp_;
     std::string filepath_;
     unsigned char* img_buffer_;
+    
+    bool is_model_;
 
 public:
-    Texture(const std::string& filepath);
+    Texture(const std::string& filepath, const bool is_model = false);
     ~Texture();
    
     void bind(unsigned int slot = 0) const;

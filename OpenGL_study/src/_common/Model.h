@@ -35,7 +35,7 @@ private:
     void process_node(aiNode *node, const aiScene *scene);
     Mesh process_mesh(aiMesh *mesh, const aiScene *scene);
     std::vector<TextureData> load_material_textures(aiMaterial *mat,
-                                                          aiTextureType type,
-                                                          const std::string& type_name);
+                                                    aiTextureType type,
+                                                    const std::string& type_name);
 };
 
