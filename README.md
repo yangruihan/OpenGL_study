@@ -2,6 +2,9 @@
 
 A repository for OpenGL studying.
 
+- 原教程地址：https://learnopengl.com/
+- 中文教程地址：https://learnopengl-cn.github.io/
+
 # 笔记
 ## 图形渲染管线（Graphics Pipeline）
 
