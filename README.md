@@ -25,6 +25,12 @@ A repository for OpenGL studying.
 
   - Xcode GLFW & GLEW 环境配置：https://blog.csdn.net/LongZh_CN/article/details/55001345
 
+# 目录
+
+1. [你好，三角形](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test1)
+
+2. [着色器](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test2)
+
 # 笔记
 ## 图形渲染管线（Graphics Pipeline）
 

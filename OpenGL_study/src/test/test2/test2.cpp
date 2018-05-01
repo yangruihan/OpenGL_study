@@ -17,7 +17,7 @@ int main()
 {
     const auto proj = glm::ortho(0.0f, 480.0f, 0.0f, 480.0f, -1.0f, 1.0f);
 
-    Window window(480, 480, "test2");
+    Window window(480, 480, "test2_shader");
 
     unsigned int index[] = { 0, 1, 2 };
     IndexBuffer index_buffer(index, 3);
