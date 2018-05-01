@@ -10,6 +10,7 @@ bool first;
 bool mouse_focus = true;
 
 Camera camera(glm::vec3(0.0f, 0.0f, 360.0f));
+Window window(480, 480, "test7_material");
 
 /**
 * process input
@@ -42,15 +43,31 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, true);
-
+    
     if (key == GLFW_KEY_TAB && action == GLFW_PRESS)
     {
         if (mouse_focus)
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
         else
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-
+        
         mouse_focus = !mouse_focus;
+    }
+    
+    // set default size
+    if (key == GLFW_KEY_R && action == GLFW_PRESS)
+    {
+        glfwSetWindowSize(window, ::window.get_width(), ::window.get_height());
+    }
+    
+    if (key == GLFW_KEY_LEFT_BRACKET && action == GLFW_PRESS)
+    {
+        glfwSetWindowSize(window, ::window.get_width() + 100, ::window.get_height() + 100);
+    }
+    
+    if (key == GLFW_KEY_RIGHT_BRACKET && action == GLFW_PRESS)
+    {
+        glfwSetWindowSize(window, ::window.get_width() - 100, ::window.get_height() - 100);
     }
 }
 
@@ -83,12 +100,10 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
 }
 
 /**
- * 颜色与光
+ * 材质
  */
 int main()
 {
-    Window window(480, 480, "test7");
-
     // set mouse mode
     if (mouse_focus)
         glfwSetInputMode(window.get_window(), GLFW_CURSOR, GLFW_CURSOR_DISABLED);

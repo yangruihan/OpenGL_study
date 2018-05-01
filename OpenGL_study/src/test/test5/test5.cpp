@@ -78,7 +78,9 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset)
         fov = 120.0f;
 }
 
-/* 漫游镜头 */
+/**
+ * 漫游镜头
+ */
 int main()
 {
     Window window(480, 480, "test5_camera");
