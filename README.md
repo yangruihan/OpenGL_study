@@ -51,6 +51,8 @@ OpenGL 学习库
 
 11. [模型](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test11)
 
+12. [深度测试](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test12)
+
 # 笔记
 ## 图形渲染管线（Graphics Pipeline）
 
