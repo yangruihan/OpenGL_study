@@ -57,6 +57,8 @@ OpenGL 学习库
 
 14. [混合](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test14)
 
+15. [帧缓冲](https://github.com/yangruihan/OpenGL_study/tree/master/OpenGL_study/src/test/test15)
+
 # 笔记
 ## 图形渲染管线（Graphics Pipeline）
 
