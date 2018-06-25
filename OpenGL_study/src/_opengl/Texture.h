@@ -18,7 +18,7 @@ private:
 
 public:
     Texture(const std::string& filepath, const bool is_model = false);
-    ~Texture();
+    virtual ~Texture();
    
     void bind(unsigned int slot = 0) const;
     void unbind() const;

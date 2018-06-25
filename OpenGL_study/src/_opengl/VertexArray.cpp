@@ -18,8 +18,8 @@ void VertexArray::add_buffer(VertexBuffer&       vertex_buffer,
                              VertexBufferLayout& vertex_buffer_layout,
                              IndexBuffer&        index_buffer)
 {
-    vertex_buffer_ = new VertexBuffer(vertex_buffer);
-    index_buffer_ = new IndexBuffer(index_buffer);
+    vertex_buffer_ = &vertex_buffer;
+    index_buffer_ = &index_buffer;
 
     bind();
     vertex_buffer.bind();

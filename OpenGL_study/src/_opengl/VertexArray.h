@@ -18,7 +18,7 @@ private:
 
 public:
     VertexArray();
-    ~VertexArray();
+    virtual ~VertexArray();
 
     void add_buffer(VertexBuffer&       vertex_buffer, 
                     VertexBufferLayout& vertex_buffer_layout,

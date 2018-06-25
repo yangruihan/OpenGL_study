@@ -13,7 +13,7 @@ private:
 
 public:
     CubeTexture(std::vector<std::string> face_paths);
-    ~CubeTexture();
+    virtual ~CubeTexture();
 
     void bind(const unsigned int slot = 0) const;
     void unbind() const;

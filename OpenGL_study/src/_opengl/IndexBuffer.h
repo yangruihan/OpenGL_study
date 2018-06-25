@@ -11,7 +11,7 @@ private:
 public:
     IndexBuffer(const unsigned int index[], const unsigned int& count);
     IndexBuffer(const IndexBuffer& other);
-    ~IndexBuffer();
+    virtual ~IndexBuffer();
 
     void bind() const;
     void unbind() const;

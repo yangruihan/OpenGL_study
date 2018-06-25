@@ -24,7 +24,7 @@ private:
 
 public:
     Renderer();
-    ~Renderer();
+    virtual ~Renderer();
 
     void clear() const;
     void draw(const VertexArray& va, const Shader& shader) const;

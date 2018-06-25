@@ -28,7 +28,7 @@ private:
 
 public:
     FrameBuffer();
-    ~FrameBuffer();
+    virtual ~FrameBuffer();
     
     // 添加纹理附件
     void add_texture_attachment(const FB_ATTACHMENT_TYPE& type,

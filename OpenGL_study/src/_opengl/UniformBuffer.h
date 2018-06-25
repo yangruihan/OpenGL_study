@@ -11,7 +11,7 @@ private:
 
 public:
     UniformBuffer(const unsigned int& size, const unsigned int& bind_point, const void *data = nullptr);
-    ~UniformBuffer();
+    virtual ~UniformBuffer();
 
     void bind() const;
     void unbind() const;

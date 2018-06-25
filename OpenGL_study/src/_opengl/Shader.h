@@ -30,7 +30,7 @@ private:
 
 public:
     Shader(std::string  filepath);
-    ~Shader();
+    virtual ~Shader();
 
     void bind() const;
     void unbind() const;

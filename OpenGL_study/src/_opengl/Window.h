@@ -67,7 +67,7 @@ public:
            const bool& v_sync = true,
            const unsigned int& msaa = 0,
            const bool& debug_info = false);
-    ~Window();
+    virtual ~Window();
 
     // --- old api --- //
     bool show(const bool& auto_clear = true) const;
